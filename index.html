@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1f2a10" />
+
+  <title>Sri Ramya weds Pavan Choudary · 27 August 2026</title>
+  <meta name="description" content="Together with their families, Sri Ramya & Pavan Choudary cordially invite you to celebrate their wedding on 27 August 2026 at The Grand Celebration Hall, Rajahmundry, Andhra Pradesh." />
+
+  <!-- WhatsApp / social share preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sri Ramya weds Pavan Choudary" />
+  <meta property="og:description" content="Together with their families, we cordially invite you to celebrate our wedding on 27 August 2026 in Rajahmundry, Andhra Pradesh." />
+  <meta property="og:url" content="https://ramya-pavan-wedding.vercel.app" />
+  <meta property="og:image" content="https://ramya-pavan-wedding.vercel.app/assets/images/og-preview.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon (placeholder - replace later) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='central' font-size='28' fill='%23b8893a'%3E%26amp;%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Italianno&family=DM+Sans:wght@300;400;500&family=Tiro+Telugu:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/styles/main.css" />
+
+  <!-- Libraries via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+</head>
+<body>
+
+  <!-- ============== Reusable SVG defs ============== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <!-- Banana leaf gradient -->
+      <linearGradient id="lg-leaf" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#8aa856"/>
+        <stop offset="40%" stop-color="#6a8038"/>
+        <stop offset="80%" stop-color="#3a4a1f"/>
+        <stop offset="100%" stop-color="#1f2a10"/>
+      </linearGradient>
+      <linearGradient id="lg-leaf-shade" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+        <stop offset="55%" stop-color="rgba(255,255,255,0)"/>
+        <stop offset="100%" stop-color="rgba(0,0,0,.35)"/>
+      </linearGradient>
+      <filter id="leafSoft"><feGaussianBlur stdDeviation="1.5"/></filter>
+
+      <!-- Banana leaf symbol -->
+      <symbol id="banana-leaf" viewBox="0 0 240 500">
+        <path d="M120 5 Q200 80 225 250 Q215 420 120 495 Q25 420 15 250 Q40 80 120 5 Z"
+              fill="rgba(106,128,56,.5)" filter="url(#leafSoft)"/>
+        <path d="M120 12 Q195 82 220 252 Q210 415 120 488 Q30 415 20 252 Q45 82 120 12 Z"
+              fill="url(#lg-leaf)"/>
+        <path d="M120 12 Q195 82 220 252 Q210 415 120 488 Q30 415 20 252 Q45 82 120 12 Z"
+              fill="url(#lg-leaf-shade)"/>
+        <path d="M120 18 L120 482" stroke="#1c2810" stroke-width="2.4" opacity=".55"/>
+        <path d="M120 22 L120 478" stroke="#a8c478" stroke-width=".8" opacity=".4"/>
+        <g stroke="#1c2810" stroke-width=".7" fill="none" opacity=".42">
+          <path d="M120 50 Q165 75 200 125"/>
+          <path d="M120 90 Q175 125 215 185"/>
+          <path d="M120 135 Q180 175 215 245"/>
+          <path d="M120 195 Q180 235 215 305"/>
+          <path d="M120 255 Q175 295 210 355"/>
+          <path d="M120 315 Q170 345 200 405"/>
+          <path d="M120 375 Q160 405 180 445"/>
+        </g>
+        <g stroke="#1c2810" stroke-width=".7" fill="none" opacity=".42">
+          <path d="M120 50 Q75 75 40 125"/>
+          <path d="M120 90 Q65 125 25 185"/>
+          <path d="M120 135 Q60 175 25 245"/>
+          <path d="M120 195 Q60 235 25 305"/>
+          <path d="M120 255 Q65 295 30 355"/>
+          <path d="M120 315 Q70 345 40 405"/>
+          <path d="M120 375 Q80 405 60 445"/>
+        </g>
+      </symbol>
+
+      <!-- Jasmine flower -->
+      <symbol id="jasmine" viewBox="0 0 24 24">
+        <ellipse cx="12" cy="6" rx="3.4" ry="5" fill="#fffdf2" opacity=".95"/>
+        <ellipse cx="17" cy="9.5" rx="3.4" ry="5" fill="#fffdf2" opacity=".95" transform="rotate(72 17 9.5)"/>
+        <ellipse cx="15.2" cy="16.5" rx="3.4" ry="5" fill="#fffdf2" opacity=".95" transform="rotate(144 15.2 16.5)"/>
+        <ellipse cx="8.8" cy="16.5" rx="3.4" ry="5" fill="#fffdf2" opacity=".95" transform="rotate(216 8.8 16.5)"/>
+        <ellipse cx="7" cy="9.5" rx="3.4" ry="5" fill="#fffdf2" opacity=".95" transform="rotate(288 7 9.5)"/>
+        <circle cx="12" cy="12" r="1.6" fill="#e8c779"/>
+        <circle cx="12" cy="12" r=".7" fill="#a87a18"/>
+      </symbol>
+
+      <!-- Kolam (Telugu geometric pattern) -->
+      <symbol id="kolam" viewBox="0 0 60 60">
+        <g fill="none" stroke="#b8893a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M30 6 Q35 18 30 30 Q25 18 30 6 Z" fill="rgba(184,137,58,.18)"/>
+          <path d="M54 30 Q42 35 30 30 Q42 25 54 30 Z" fill="rgba(184,137,58,.18)"/>
+          <path d="M30 54 Q25 42 30 30 Q35 42 30 54 Z" fill="rgba(184,137,58,.18)"/>
+          <path d="M6 30 Q18 25 30 30 Q18 35 6 30 Z" fill="rgba(184,137,58,.18)"/>
+          <circle cx="30" cy="30" r="3" fill="#b8893a"/>
+          <circle cx="30" cy="6" r="1.2" fill="#b8893a"/>
+          <circle cx="54" cy="30" r="1.2" fill="#b8893a"/>
+          <circle cx="30" cy="54" r="1.2" fill="#b8893a"/>
+          <circle cx="6" cy="30" r="1.2" fill="#b8893a"/>
+          <circle cx="13" cy="13" r=".8" fill="#b8893a"/>
+          <circle cx="47" cy="13" r=".8" fill="#b8893a"/>
+          <circle cx="47" cy="47" r=".8" fill="#b8893a"/>
+          <circle cx="13" cy="47" r=".8" fill="#b8893a"/>
+          <path d="M16 8 Q22 14 16 22"/>
+          <path d="M44 8 Q38 14 44 22"/>
+          <path d="M16 52 Q22 46 16 38"/>
+          <path d="M44 52 Q38 46 44 38"/>
+        </g>
+      </symbol>
+
+      <!-- Wax seal -->
+      <radialGradient id="lg-wax" cx="35%" cy="30%">
+        <stop offset="0%" stop-color="#b83646"/>
+        <stop offset="35%" stop-color="#7e1f2c"/>
+        <stop offset="80%" stop-color="#4a1018"/>
+        <stop offset="100%" stop-color="#2a0810"/>
+      </radialGradient>
+      <radialGradient id="lg-wax-glow" cx="30%" cy="25%" r="40%">
+        <stop offset="0%" stop-color="rgba(255,210,200,.6)"/>
+        <stop offset="100%" stop-color="rgba(255,210,200,0)"/>
+      </radialGradient>
+
+      <symbol id="wax-seal" viewBox="0 0 200 200">
+        <ellipse cx="100" cy="180" rx="78" ry="9" fill="rgba(0,0,0,.45)" filter="url(#leafSoft)"/>
+        <path d="M100 18 C140 16 174 36 182 78 C188 110 178 138 168 152 C172 158 168 162 162 161 C156 168 144 172 132 168 C118 178 92 178 78 173 C60 178 42 166 35 148 C22 132 16 102 24 72 C32 38 62 18 100 18 Z"
+              fill="url(#lg-wax)"/>
+        <circle cx="100" cy="100" r="62" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="5" filter="url(#leafSoft)"/>
+        <ellipse cx="78" cy="62" rx="32" ry="20" fill="url(#lg-wax-glow)"/>
+        <circle cx="100" cy="100" r="62" fill="none" stroke="#d4a445" stroke-width="1.4" stroke-dasharray="1.5 4" opacity=".85"/>
+        <circle cx="100" cy="100" r="56" fill="none" stroke="rgba(212,164,69,.35)" stroke-width=".5"/>
+        <g transform="translate(100,108)">
+          <path d="M-22 -22 C-30 -22 -34 -16 -34 -10 C-34 -2 -28 2 -18 4 C-8 6 -2 10 -2 16 C-2 22 -8 26 -16 26"
+                fill="none" stroke="#f1d99c" stroke-width="6" stroke-linecap="round"/>
+          <path d="M-22 -22 C-30 -22 -34 -16 -34 -10 C-34 -2 -28 2 -18 4 C-8 6 -2 10 -2 16 C-2 22 -8 26 -16 26"
+                fill="none" stroke="#a8741e" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+          <path d="M4 -28 L4 28 M4 -28 L20 -28 C30 -28 34 -22 34 -14 C34 -6 30 0 20 0 L4 0"
+                fill="none" stroke="#f1d99c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 -28 L4 28 M4 -28 L20 -28 C30 -28 34 -22 34 -14 C34 -6 30 0 20 0 L4 0"
+                fill="none" stroke="#a8741e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
+        </g>
+        <g transform="translate(100,52)" stroke="#d4a445" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".75">
+          <path d="M-12 0 Q-6 -5 0 0 Q6 -5 12 0"/>
+          <circle cx="0" cy="-2" r="1.4" fill="#d4a445"/>
+        </g>
+      </symbol>
+
+      <!-- Arch gradient -->
+      <linearGradient id="lg-arch" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#fbf3df"/>
+        <stop offset="60%" stop-color="#f6ecd6"/>
+        <stop offset="100%" stop-color="#ebdfc1"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Scroll progress bar -->
+  <div class="progress-line" id="progress"></div>
+
+  <!-- Music toggle -->
+  <button class="music-btn" id="musicBtn" aria-label="Toggle ambient music">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+  </button>
+
+  <!-- ============== ENVELOPE OPENING SCREEN ============== -->
+  <div id="envelope-screen">
+    <div class="scene-glow"></div>
+
+    <svg class="scn-leaf tl" viewBox="0 0 240 500"><use href="#banana-leaf"/></svg>
+    <svg class="scn-leaf tr" viewBox="0 0 240 500"><use href="#banana-leaf"/></svg>
+    <svg class="scn-leaf bl" viewBox="0 0 240 500"><use href="#banana-leaf"/></svg>
+    <svg class="scn-leaf br" viewBox="0 0 240 500"><use href="#banana-leaf"/></svg>
+
+    <div class="intro-greeting">
+      <span class="telugu">శుభలేఖ</span>
+      <span class="latin">An invitation to celebrate</span>
+    </div>
+
+    <div class="envelope-wrap" id="envelopeWrap">
+      <div class="env-back"></div>
+
+      <div class="env-letter">
+        <div class="lt-tag">శ్రీ గణేశాయ నమః</div>
+        <div class="lt-rule"></div>
+        <div class="lt-name">SRI&nbsp;RAMYA</div>
+        <div class="lt-amp">&amp;</div>
+        <div class="lt-name">PAVAN&nbsp;CHOUDARY</div>
+        <div class="lt-rule"></div>
+        <div class="lt-date">27 · 08 · 2026</div>
+      </div>
+
+      <div class="env-front"></div>
+      <div class="env-flap"></div>
+
+      <div class="wax-stage" id="waxSeal" role="button" tabindex="0" aria-label="Open invitation">
+        <svg class="wax-half left" viewBox="0 0 200 200"><use href="#wax-seal"/></svg>
+        <svg class="wax-half right" viewBox="0 0 200 200"><use href="#wax-seal"/></svg>
+      </div>
+    </div>
+
+    <div class="open-hint">Tap the seal to open</div>
+  </div>
+
+  <!-- ============== MAIN INVITATION ============== -->
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="leaf-frame">
+        <svg class="leaf-tl" viewBox="0 0 240 500"><use href="#banana-leaf"/></svg>
+        <svg class="leaf-tr" viewBox="0 0 240 500"><use href="#banana-leaf"/></svg>
+        <svg class="leaf-bl" viewBox="0 0 240 500"><use href="#banana-leaf"/></svg>
+        <svg class="leaf-br" viewBox="0 0 240 500"><use href="#banana-leaf"/></svg>
+      </div>
+
+      <!-- Lottie peacock placeholders (will be loaded in Phase 2) -->
+      <div class="peacock peacock-l" id="peacockLeft"></div>
+      <div class="peacock peacock-r" id="peacockRight"></div>
+
+      <div class="arch-stage">
+        <svg class="arch-svg" viewBox="0 0 560 740" preserveAspectRatio="xMidYMid meet">
+          <path id="archPath" d="M40 740 L40 280 C40 130 180 30 280 30 C380 30 520 130 520 280 L520 740 Z"
+                fill="url(#lg-arch)" stroke="#b8893a" stroke-width="1.4"/>
+          <path d="M52 740 L52 282 C52 138 184 42 280 42 C376 42 508 138 508 282 L508 740"
+                fill="none" stroke="rgba(184,137,58,.4)" stroke-width=".8"/>
+        </svg>
+
+        <div class="arch-content">
+          <svg class="kolam" viewBox="0 0 60 60"><use href="#kolam"/></svg>
+          <div class="bless">శ్రీ గణేశాయ నమః</div>
+          <div class="together">Together with their families</div>
+
+          <div class="couple">
+            <div class="name" data-name="SRI RAMYA"></div>
+            <div class="amp">&amp;</div>
+            <div class="name" data-name="PAVAN CHOUDARY"></div>
+          </div>
+
+          <p class="invite-text">
+            cordially invite you to share in the joyous celebration<br>
+            of their wedding ceremony on
+          </p>
+
+          <div class="date-block">
+            27 <span class="pipe">|</span> AUGUST <span class="pipe">|</span> 2026
+          </div>
+          <div class="time-line">at 11:00 in the morning</div>
+          <div class="venue-line">
+            The Grand Celebration Hall<br>Rajahmundry · Andhra Pradesh
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-cue">
+        <span>scroll to continue</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="events" id="events">
+      <div class="section-head">
+        <div class="eyebrow">Sumuhurtha · Wedding Festivities</div>
+        <h2 class="s-title">Four Days of Celebration</h2>
+        <div class="s-rule">
+          <span class="ln"></span><span class="dot"></span><span class="ln"></span>
+        </div>
+      </div>
+
+      <div class="events-grid">
+        <article class="event">
+          <div class="evt-badge"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 12 Q12 6 16 12 Q12 18 8 12 Z"/></svg></div>
+          <h3 class="evt-name">Haldi</h3>
+          <div class="evt-divider"></div>
+          <div class="evt-line">25 August 2026 · 9:00 AM</div>
+          <div class="evt-venue">Rajahmundry, AP</div>
+        </article>
+
+        <article class="event">
+          <div class="evt-badge"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none"><path d="M12 4 L13.2 9 L18 9 L14 12 L15.2 17 L12 14 L8.8 17 L10 12 L6 9 L10.8 9 Z" fill="currentColor"/><path d="M5 20 Q12 17 19 20"/></svg></div>
+          <h3 class="evt-name">Mehendi &amp; Sangeet</h3>
+          <div class="evt-divider"></div>
+          <div class="evt-line">25 August 2026 · 6:00 PM</div>
+          <div class="evt-venue">Rajahmundry, AP</div>
+        </article>
+
+        <article class="event featured">
+          <div class="evt-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14 7 L19 7 L15 11 L17 16 L12 13 L7 16 L9 11 L5 7 L10 7 Z"/><rect x="4" y="18" width="16" height="2"/><rect x="6" y="20" width="12" height="2"/></svg></div>
+          <h3 class="evt-name">Wedding Ceremony</h3>
+          <div class="evt-divider"></div>
+          <div class="evt-line">27 August 2026 · 11:00 AM</div>
+          <div class="evt-venue">The Grand Celebration Hall<br>Rajahmundry, AP</div>
+        </article>
+
+        <article class="event">
+          <div class="evt-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 5 L19 5 L21 9 L3 9 Z"/><path d="M3 11 L21 11 L19 22 L5 22 Z" opacity=".85"/></svg></div>
+          <h3 class="evt-name">Reception</h3>
+          <div class="evt-divider"></div>
+          <div class="evt-line">29 August 2026 · 7:00 PM</div>
+          <div class="evt-venue">Deepthi Function Hall<br>Adoni</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="countdown" id="countdown">
+      <div class="section-head">
+        <div class="eyebrow">The Mahurat Approaches</div>
+        <h2 class="s-title">Counting Every Moment</h2>
+        <div class="s-rule">
+          <span class="ln"></span><span class="dot"></span><span class="ln"></span>
+        </div>
+      </div>
+
+      <div class="cd-grid">
+        <div class="cd-cell"><span class="cd-num" id="cdD">000</span><span class="cd-lbl">Days</span></div>
+        <div class="cd-cell"><span class="cd-num" id="cdH">00</span><span class="cd-lbl">Hours</span></div>
+        <div class="cd-cell"><span class="cd-num" id="cdM">00</span><span class="cd-lbl">Minutes</span></div>
+        <div class="cd-cell"><span class="cd-num" id="cdS">00</span><span class="cd-lbl">Seconds</span></div>
+      </div>
+
+      <p class="cd-msg">until two souls become one · 27 August 2026 · 11:00 AM</p>
+    </section>
+
+    <!-- MESSAGE -->
+    <section class="message" id="message">
+      <svg class="msg-leaf-l" viewBox="0 0 240 500"><use href="#banana-leaf"/></svg>
+      <svg class="msg-leaf-r" viewBox="0 0 240 500"><use href="#banana-leaf"/></svg>
+
+      <div class="msg-wrap">
+        <span class="qmark">&ldquo;</span>
+        <p class="msg-text">
+          We are beyond grateful to have you as part of our special day. Your presence turns this celebration into a lifelong memory. Come, eat, dance, and bless us as we begin our forever together.
+        </p>
+        <div class="s-rule" style="color:var(--gold);margin:20px auto">
+          <span class="ln"></span><span class="dot"></span><span class="ln"></span>
+        </div>
+        <div class="msg-sign">With love &amp; gratitude</div>
+        <div class="msg-sub">Ramya &amp; Pavan</div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="ftr-names">SRI&nbsp;RAMYA<span class="ftr-amp">&amp;</span>PAVAN&nbsp;CHOUDARY</div>
+      <div class="ftr-date">— 27 August 2026 · Rajahmundry —</div>
+      <div class="ftr-bless">శుభమస్తు · శుభమస్తు · శుభమస్తు</div>
+      <div class="ftr-tiny">Made with love · A Telugu Wedding Invitation</div>
+    </footer>
+
+  </main>
+
+  <!-- floating jasmine petals -->
+  <div class="petal-field" id="petalField" aria-hidden="true"></div>
+
+  <!-- Scripts -->
+  <script src="/scripts/envelope.js"></script>
+  <script src="/scripts/countdown.js"></script>
+  <script src="/scripts/animations.js"></script>
+  <script src="/scripts/main.js"></script>
+
+</body>
+</html>

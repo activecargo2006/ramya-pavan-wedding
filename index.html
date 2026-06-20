@@ -1,230 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-  <meta name="theme-color" content="#3a0e16">
-  <meta name="format-detection" content="telephone=no">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#f5ecd9" />
+<title>Sri Ramya &amp; Pavan Chowdary · 27 August 2026</title>
+<meta name="description" content="With the blessings of elders, we invite you to the wedding of Sri Ramya and Pavan Chowdary — 27 August 2026 at Cherukuri Gardens, Rajahmundry." />
 
-  <title>Sri Ramya & Pavan Chowdary · 27 August 2026</title>
-  <meta name="description" content="With the divine blessings of elders, we cordially invite you to the wedding of Sri Ramya & Vangalapati Pavan Chowdary. 27 August 2026, Rajahmundry.">
+<meta property="og:title" content="Sri Ramya &amp; Pavan Chowdary — 27 August 2026" />
+<meta property="og:description" content="Cherukuri Gardens · Rajahmundry · Muhurtham 11:47 AM" />
+<meta property="og:type" content="website" />
 
-  <!-- Open Graph for WhatsApp / social sharing -->
-  <meta property="og:title" content="Sri Ramya & Pavan Chowdary · Wedding Invitation">
-  <meta property="og:description" content="27 August 2026 · Cherukuri Gardens, Rajahmundry">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ramya-pavan-wedding.vercel.app">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Noto+Serif+Telugu:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Preconnect to font CDN for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Main stylesheet -->
-  <link rel="stylesheet" href="styles/main.css">
-
-  <!-- GSAP & ScrollTrigger via CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-  <!-- Lenis smooth scroll -->
-  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+<link rel="stylesheet" href="styles/main.css">
 </head>
-
 <body>
 
-  <!-- =========================================================
-       ACT 2 — THE HERO SCENE (MANDAP GARDEN)
-       7-layer parallax painted world with invitation card centerpiece
-       ========================================================= -->
-  <section class="hero" id="hero">
+<!-- ============================================================
+     1. COVER  —  Arch garland + corner-leaf hybrid
+     ============================================================ -->
+<section class="page cover" id="cover">
+  <img class="decor decor-arch-garland" src="assets/images/marigold-garland-3.png" alt="">
+  <img class="decor decor-leaf-tl"      src="assets/images/banana-leaf-2.png"     alt="">
+  <img class="decor decor-leaf-tr"      src="assets/images/banana-leaf-3.png"     alt="">
+  <img class="decor decor-gopuram"      src="assets/images/gopuram-silhouette.png" alt="">
+  <img class="decor decor-diya-bl flicker" src="assets/images/diya-brass.png"     alt="">
+  <img class="decor decor-peacock"      src="assets/images/peacock-right.png"     alt="">
+  <img class="decor decor-bougainvillea" src="assets/images/bougainvillea-pink.png" alt="">
 
-    <!-- ===== LAYER 1: SKY (CSS-only atmosphere) ===== -->
-    <div class="sky-layer">
-      <div class="css-cloud css-cloud-1"></div>
-      <div class="css-cloud css-cloud-2"></div>
-      <div class="css-cloud css-cloud-3"></div>
-      <div class="css-moon"></div>
-      <div class="css-light-rays"></div>
-    </div>
+  <div class="page-inner">
+    <img class="ganesha-cover" src="assets/images/ganesha-gold.png" alt="Ganesha">
+    <p class="invocation">॥ శ్రీ గణేశాయ నమః ॥</p>
+    <h2 class="subhalekha shimmer">శుభలేఖ</h2>
+    <p class="subhalekha-en">Subhalekha · Wedding Invitation</p>
 
-    <!-- ===== LAYER 2: DISTANT HORIZON ===== -->
-    <div class="horizon-layer">
-      <img class="gopuram-distant" src="assets/images/gopuram-silhouette.png" alt="" loading="eager">
-      <img class="small-temple small-temple-1" src="assets/images/small-temple.png" alt="" loading="lazy">
-      <img class="small-temple small-temple-2" src="assets/images/small-temple.png" alt="" loading="lazy">
-      <img class="river-godavari" src="assets/images/river-godavari.png" alt="" loading="lazy">
-    </div>
+    <h1 class="cover-names">
+      Sri Ramya
+      <span class="name-amp">&amp;</span>
+      Pavan Chowdary
+    </h1>
 
-    <!-- ===== LAYER 3: GARDEN BACKGROUND (trees) ===== -->
-    <div class="garden-bg-layer">
-      <img class="tree coconut-1" src="assets/images/coconut-tree-1.png" alt="" loading="eager">
-      <img class="tree coconut-2" src="assets/images/coconut-tree-2.png" alt="" loading="eager">
-      <img class="tree coconut-3" src="assets/images/coconut-tree-3.png" alt="" loading="lazy">
-      <img class="tree coconut-4" src="assets/images/coconut-tree-1.png" alt="" loading="lazy" style="transform:scaleX(-1);">
-      <img class="tree mango-tree" src="assets/images/mango-tree.png" alt="" loading="lazy">
-      <img class="tree neem-tree" src="assets/images/neem-tree.png" alt="" loading="lazy">
-      <img class="tree champa-tree" src="assets/images/champa-tree.png" alt="" loading="lazy">
-    </div>
+    <p class="cover-date">Thursday · 27 August 2026</p>
+    <p class="cover-venue">Cherukuri Gardens · Rajahmundry</p>
+  </div>
 
-    <!-- ===== LAYER 4: MID-GROUND BUSHES, VINES & FLOWERS ===== -->
-    <div class="midground-layer">
-      <!-- Hibiscus bushes -->
-      <img class="bush hibiscus-red-1" src="assets/images/hibiscus-bush-red.png" alt="" loading="lazy">
-      <img class="bush hibiscus-pink-1" src="assets/images/hibiscus-bush-pink.png" alt="" loading="lazy">
-      <img class="bush hibiscus-white-1" src="assets/images/hibiscus-bush-white.png" alt="" loading="lazy">
-      <img class="bush hibiscus-red-2" src="assets/images/hibiscus-bush-red.png" alt="" loading="lazy">
+  <a href="#invitation" class="scroll-hint">Scroll</a>
+</section>
 
-      <!-- Rose bushes -->
-      <img class="bush rose-bush-1" src="assets/images/rose-bush-red.png" alt="" loading="lazy">
-      <img class="bush rose-bush-2" src="assets/images/rose-bush-red.png" alt="" loading="lazy" style="transform:scaleX(-1);">
 
-      <!-- Marigold bushes -->
-      <img class="bush marigold-bush-1" src="assets/images/marigold-bush.png" alt="" loading="lazy">
-      <img class="bush marigold-bush-2" src="assets/images/marigold-bush.png" alt="" loading="lazy" style="transform:scaleX(-1);">
+<!-- ============================================================
+     2. INVITATION
+     ============================================================ -->
+<section class="page invitation" id="invitation">
+  <img class="decor decor-leaves-tr"   src="assets/images/banana-leaf-2.png"    alt="">
 
-      <!-- Tulasi pots at mandap entrance -->
-      <img class="bush tulasi-left" src="assets/images/tulasi-plant.png" alt="" loading="lazy">
-      <img class="bush tulasi-right" src="assets/images/tulasi-plant.png" alt="" loading="lazy">
+  <!-- Bell hangs from the top via a chain anchor -->
+  <span class="hangs hangs-bell">
+    <img src="assets/images/puja-bell.png" alt="">
+  </span>
 
-      <!-- Bougainvillea cascading -->
-      <img class="bougainvillea-1" src="assets/images/bougainvillea-pink.png" alt="" loading="lazy">
-      <img class="bougainvillea-2" src="assets/images/bougainvillea-pink.png" alt="" loading="lazy" style="transform:scaleX(-1);">
+  <img class="decor decor-lotus-bl"        src="assets/images/lotus-pink-bloom.png" alt="">
+  <img class="decor decor-diya-bl flicker" src="assets/images/diya-brass.png"       alt="">
+  <img class="decor decor-kalasham-bl"     src="assets/images/kalasham.png"         alt="">
 
-      <!-- Jasmine vines on pillars -->
-      <img class="jasmine-vine-left" src="assets/images/jasmine-vine.png" alt="" loading="lazy">
-      <img class="jasmine-vine-right" src="assets/images/jasmine-vine.png" alt="" loading="lazy" style="transform:scaleX(-1);">
+  <div class="page-inner">
+    <p class="eyebrow">With the blessings of elders</p>
+    <div class="divider divider-wide"></div>
 
-      <!-- Lotus pond elements -->
-      <img class="lotus-bloom lotus-1" src="assets/images/lotus-pink-bloom.png" alt="" loading="lazy">
-      <img class="lotus-bloom lotus-2" src="assets/images/lotus-pink-bloom.png" alt="" loading="lazy">
-      <img class="lotus-bloom lotus-3" src="assets/images/lotus-pink-bloom.png" alt="" loading="lazy">
-      <img class="lily-pad lily-1" src="assets/images/lily-pad.png" alt="" loading="lazy">
-      <img class="lily-pad lily-2" src="assets/images/lily-pad.png" alt="" loading="lazy">
-    </div>
+    <p class="invite-intro">
+      We joyfully request the honour of your presence<br>
+      at the auspicious wedding ceremony of our beloved children
+    </p>
 
-    <!-- ===== LAYER 5: MANDAP ARCHITECTURE ===== -->
-    <div class="mandap-layer">
-      <!-- Pillars flanking the invitation card -->
-      <img class="mandap-pillar mandap-pillar-left" src="assets/images/mandap-pillars.png" alt="" loading="eager">
-      <img class="mandap-pillar mandap-pillar-right" src="assets/images/mandap-pillars.png" alt="" loading="eager">
-
-      <!-- Mango toranams across the top -->
-      <img class="mango-toranam mango-toranam-left" src="assets/images/mango-toranam-left.png" alt="" loading="eager">
-      <img class="mango-toranam mango-toranam-right" src="assets/images/mango-toranam-left.png" alt="" loading="eager">
-
-      <!-- Marigold garlands -->
-      <img class="garland garland-1" src="assets/images/marigold-garland-1.png" alt="" loading="eager">
-      <img class="garland garland-2" src="assets/images/marigold-garland-2.png" alt="" loading="eager">
-      <img class="garland garland-3" src="assets/images/marigold-garland-3.png" alt="" loading="eager">
-
-      <!-- Jasmine garlands -->
-      <img class="jasmine-garland-1" src="assets/images/jasmine-garland-2.png" alt="" loading="lazy">
-      <img class="jasmine-garland-2" src="assets/images/jasmine-garland-2.png" alt="" loading="lazy">
-
-      <!-- Puja bells hanging from beams -->
-      <img class="puja-bell puja-bell-1" src="assets/images/puja-bell.png" alt="" loading="lazy">
-      <img class="puja-bell puja-bell-2" src="assets/images/puja-bell.png" alt="" loading="lazy">
-
-      <!-- Elephant statues at entrance -->
-      <img class="elephant-statue elephant-left" src="assets/images/elephant-statue-left.png" alt="" loading="eager">
-      <img class="elephant-statue elephant-right" src="assets/images/elephant-statue-left.png" alt="" loading="eager">
-    </div>
-
-    <!-- ===== LAYER 6: LIVING SCENE & RITUAL PROPS ===== -->
-    <div class="living-layer">
-      <!-- Kalasham — sacred pot, top center -->
-      <img class="kalasham" src="assets/images/kalasham.png" alt="" loading="eager">
-
-      <!-- Ganesha symbol above the arch -->
-      <img class="ganesha-symbol" src="assets/images/ganesha-gold.png" alt="" loading="eager">
-
-      <!-- Peacocks flanking the card -->
-      <img class="peacock peacock-left" src="assets/images/peacock-left.png" alt="" loading="eager">
-      <img class="peacock peacock-right" src="assets/images/peacock-left.png" alt="" loading="eager">
-
-      <!-- Brass diyas row — foreground floor -->
-      <img class="diya diya-1" src="assets/images/diya-brass.png" alt="" loading="lazy">
-      <img class="diya diya-2" src="assets/images/diya-brass.png" alt="" loading="lazy">
-      <img class="diya diya-3" src="assets/images/diya-brass.png" alt="" loading="lazy">
-      <img class="diya diya-4" src="assets/images/diya-brass.png" alt="" loading="lazy">
-      <img class="diya diya-5" src="assets/images/diya-brass.png" alt="" loading="lazy">
-      <img class="diya diya-6" src="assets/images/diya-brass.png" alt="" loading="lazy">
-      <img class="diya diya-7" src="assets/images/diya-brass.png" alt="" loading="lazy">
-      <img class="diya diya-8" src="assets/images/diya-brass.png" alt="" loading="lazy">
-      <img class="diya diya-9" src="assets/images/diya-brass.png" alt="" loading="lazy">
-    </div>
-
-    <!-- ===== LAYER 7: ATMOSPHERIC FOREGROUND ===== -->
-    <div class="foreground-layer" id="foregroundLayer">
-      <!-- Kolam patterns on the floor -->
-      <img class="kolam kolam-center" src="assets/images/kolam-flower.png" alt="" loading="lazy">
-      <img class="kolam kolam-left" src="assets/images/kolam-flower.png" alt="" loading="lazy">
-      <img class="kolam kolam-right" src="assets/images/kolam-flower.png" alt="" loading="lazy">
-
-      <!-- Incense smoke -->
-      <img class="incense-smoke smoke-1" src="assets/images/incense-smoke.png" alt="" loading="lazy">
-      <img class="incense-smoke smoke-2" src="assets/images/incense-smoke.png" alt="" loading="lazy">
-
-      <!-- Falling petals & fireflies are dynamically injected by JS -->
-    </div>
-
-    <!-- ===== THE INVITATION CARD (CENTERPIECE) ===== -->
-    <article class="invitation-card" id="invitationCard">
-
-      <!-- Sanskrit invocation -->
-      <p class="invocation">॥ శ్రీ గణేశాయ నమః ॥</p>
-
-      <!-- Title -->
-      <h1 class="subhalekha-title">శుభలేఖ</h1>
-      <p class="subhalekha-en">Subhalekha · An Auspicious Invitation</p>
-
-      <hr class="card-divider">
-
-      <!-- Invitation introduction -->
-      <p class="invitation-intro">
-        With the divine blessings of the Almighty<br>
-        and with the love and good wishes of elders of both families<br>
-        we cordially invite you to bless the wedding of
+    <div class="person-block">
+      <p class="person-role">The Bride</p>
+      <h2 class="person-name">Sri Ramya</h2>
+      <p class="person-parents-label">Daughter of</p>
+      <p class="person-parents">
+        Sri Boppana Achyuta Ramayya<br>
+        &amp; Smt. Sirisha
       </p>
+    </div>
 
-      <!-- Couple's names -->
-      <div class="couple-names">
-        <!-- Bride name — each letter wrapped in span for letter-by-letter animation -->
-        <h2 class="bride-name">
-          <span>S</span><span>R</span><span>I</span><span>&nbsp;</span><span>R</span><span>A</span><span>M</span><span>Y</span><span>A</span>
-        </h2>
-        <p class="parent-line">
-          <em>daughter of</em><br>
-          Sri Boppana Achyuta Ramayya &amp; Smt. Sirisha
-        </p>
+    <div class="script-amp">&amp;</div>
 
-        <div class="ampersand">&amp;</div>
+    <div class="person-block">
+      <p class="person-role">The Groom</p>
+      <h2 class="person-name">Pavan Chowdary</h2>
+      <p class="person-parents-label">Son of</p>
+      <p class="person-parents">
+        Sri Deepthi Murali Krishna<br>
+        &amp; Smt. Aruna
+      </p>
+    </div>
+  </div>
+</section>
 
-        <!-- Groom name — letter by letter -->
-        <h2 class="groom-name">
-          <span>P</span><span>A</span><span>V</span><span>A</span><span>N</span><span>&nbsp;</span><span>C</span><span>H</span><span>O</span><span>W</span><span>D</span><span>A</span><span>R</span><span>Y</span>
-        </h2>
-        <p class="parent-line">
-          <em>son of</em><br>
-          Sri Deepthi Murali Krishna &amp; Smt. Aruna
-        </p>
+
+<!-- ============================================================
+     3. MUHURTHAM + COUNTDOWN
+     ============================================================ -->
+<section class="page muhurtham" id="muhurtham">
+  <!-- Hanging lamp suspended from top -->
+  <span class="hangs hangs-lamp">
+    <img src="assets/images/hanging-lamp.png" alt="">
+  </span>
+  <img class="decor decor-kalasham-bl" src="assets/images/kalasham-decorated.png" alt="">
+  <img class="decor decor-lotus-bl"    src="assets/images/lotus-white-bloom.png" alt="">
+
+  <div class="page-inner">
+    <p class="eyebrow">The Auspicious Hour</p>
+    <h2 class="muhurtham-title">Muhurtham</h2>
+    <div class="divider"></div>
+
+    <p class="muhurtham-time">11:47 AM</p>
+    <p class="muhurtham-date">Thursday · 27 August 2026</p>
+
+    <div class="countdown" id="countdown" aria-live="polite">
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-days">00</div>
+        <div class="countdown-label">Days</div>
       </div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-hours">00</div>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-mins">00</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-secs">00</div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
 
-      <hr class="card-divider">
+    <div class="programme">
+      <p class="programme-title">Wedding Day Ceremonies</p>
+      <ul class="programme-list">
+        <li>Snathakam</li>
+        <li>Kashi Yatra</li>
+        <li>Mangalasnanam</li>
+        <li class="is-highlight">Muhurtham</li>
+        <li>Talambralu</li>
+        <li>Aksharabhyasam</li>
+        <li>Reception</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-      <!-- Wedding date / time / venue -->
-      <p class="wedding-date">THURSDAY · 27 AUGUST 2026</p>
-      <p class="wedding-time">11:47 AM · MUHURTHAM</p>
-      <p class="wedding-venue">Cherukuri Gardens · Rajahmundry</p>
 
-    </article>
+<!-- ============================================================
+     4. VENUE
+     ============================================================ -->
+<section class="page venue" id="venue">
+  <img class="decor decor-gopuram"       src="assets/images/gopuram-detailed.png"  alt="">
+  <img class="decor decor-bougainvillea" src="assets/images/bougainvillea-pink.png" alt="">
 
-  </section>
+  <div class="page-inner">
+    <p class="eyebrow">The Celebration</p>
+    <h2 class="venue-name">Cherukuri Gardens</h2>
+    <p class="venue-city">Rajahmundry · Andhra Pradesh</p>
+    <div class="divider"></div>
 
-  <!-- =========================================================
-       SITE SCRIPTS
-       ========================================================= -->
-  <script src="scripts/animations.js"></script>
+    <p class="venue-address">
+      A heritage garden venue<br>
+      on the banks of the Godavari
+    </p>
 
+    <a class="btn-directions"
+       href="https://www.google.com/maps/search/?api=1&query=Cherukuri+Gardens+Rajahmundry"
+       target="_blank" rel="noopener">View Directions →</a>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     5. BLESSINGS / FOOTER
+     ============================================================ -->
+<section class="page blessings" id="blessings">
+  <img class="decor decor-garland-tl" src="assets/images/marigold-garland-1.png" alt="">
+  <img class="decor decor-garland-tr" src="assets/images/marigold-garland-1.png" alt="">
+
+  <div class="page-inner">
+    <p class="eyebrow">Awaiting Your Presence</p>
+    <div class="divider divider-wide"></div>
+
+    <p class="blessings-quote">
+      Your warm presence and heartfelt blessings<br>
+      would mean the world to us as we begin<br>
+      this beautiful new journey together.
+    </p>
+
+    <div class="blessings-parents">
+      <p>Boppana Achyuta Ramayya <span class="parent-amp">&amp;</span> Sirisha</p>
+      <p>Deepthi Murali Krishna <span class="parent-amp">&amp;</span> Aruna</p>
+    </div>
+
+    <img class="kolam-footer" src="assets/images/kolam-flower.png" alt="">
+
+    <p class="footer-credit">With Love · August 2026</p>
+  </div>
+</section>
+
+<script src="scripts/animations.js"></script>
 </body>
 </html>

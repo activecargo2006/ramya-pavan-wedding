@@ -1,915 +1,828 @@
 /* ============================================================
-   SRI RAMYA & PAVAN CHOWDARY — WEDDING INVITATION
-   Stage 2 · Hero Scene (Act 2 — Mandap Garden)
-   Mobile-first · Watercolour world · 7-layer parallax
+   SRI RAMYA & PAVAN CHOWDARY — Wedding Invitation
+   South Indian palette · hanging anchors · gentle motion
    ============================================================ */
 
-/* ============================================================
-   FONTS
-   ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Italianno&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;700&family=Noto+Serif+Telugu:wght@400;600;700&display=swap');
-
-/* ============================================================
-   CSS CUSTOM PROPERTIES — Color & Spacing System
-   ============================================================ */
+/* ---------- Tokens (light SI palette · pinks + peacock) ---------- */
 :root {
-  /* Watercolour palette */
-  --olive-deep: #1f2a10;
-  --olive: #3a4a1f;
-  --olive-light: #5c7028;
-  --cream: #fbf3df;
-  --cream-deep: #ebdfc1;
-  --cream-warm: #f5e8c3;
-  --gold: #b8893a;
-  --gold-light: #d4a445;
-  --gold-deep: #7a5618;
-  --gold-bright: #e6b75d;
-  --maroon: #5e1a26;
-  --maroon-deep: #3a0e16;
-  --maroon-soft: #7a3540;
-  --ink: #2c2618;
-  --ink-soft: #5c4f33;
+  /* Paper / base — always light */
+  --cream:        #fbf3df;
+  --cream-soft:   #fefaeb;
+  --cream-deep:   #f0e0b0;
+  --white:        #fefcf6;
 
-  /* Sky palette for hero background */
-  --sky-top: #f4d4b5;
-  --sky-mid: #e8b88c;
-  --sky-low: #c97c5f;
-  --sky-horizon: #8b3a3a;
-  --sky-dusk: #4a1f2e;
+  /* Light pinks (Pinterest references — soft blush palette) */
+  --pink-mist:    #fdeef0;     /* lightest wash */
+  --pink-soft:    #f9d5d8;
+  --pink:         #e8a3b0;     /* rose */
+  --pink-deep:    #c97d8e;
+  --blush:        #fde8e4;     /* peach blush */
+  --coral:        #e8868a;
 
-  /* Spacing scale */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2.5rem;
-  --space-xl: 4rem;
-  --space-2xl: 6rem;
+  /* Peacock palette */
+  --peacock-blue: #1c5b7a;     /* deep peacock blue (accent text only) */
+  --peacock-teal: #2a7d8f;     /* teal-mid */
+  --peacock-aqua: #6fb3b8;     /* lighter peacock */
+  --peacock-green:#2d6a4f;     /* feather green */
 
-  /* Z-index layers (7-layer system) */
-  --z-sky: 1;
-  --z-horizon: 10;
-  --z-garden-bg: 20;
-  --z-midground: 30;
-  --z-mandap: 40;
-  --z-living: 50;
-  --z-foreground: 60;
-  --z-card: 70;
-  --z-ui: 100;
-  --z-overlay: 200;
+  /* Golds */
+  --gold:         #d4a017;
+  --gold-deep:    #b8860b;
+  --gold-light:   #e8c547;
+  --turmeric:     #e8b923;
+
+  /* Maroons (use for text/accent ONLY, never as background) */
+  --maroon:       #7c1a2a;
+  --maroon-deep:  #5a0f1f;
+  --kumkum:       #c8102e;
+  --kumkum-soft:  #d63a52;
+
+  /* Oranges (sparingly) */
+  --saffron:      #ff8c1a;
+  --saffron-soft: #ffb066;
+
+  /* Ink */
+  --ink:          #2d1810;
+  --ink-soft:     #5e3f25;
+
+  /* Fonts */
+  --serif:        'Cormorant Garamond', 'Garamond', 'Times New Roman', serif;
+  --serif-sc:     'Cormorant SC', 'Cormorant Garamond', serif;
+  --display:      'Playfair Display', 'Cormorant Garamond', serif;
+  --telugu:       'Noto Serif Telugu', 'Cormorant Garamond', serif;
+
+  --max-content:  640px;
 }
 
-/* ============================================================
-   RESET & BASE
-   ============================================================ */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--serif);
   color: var(--ink);
   background: var(--cream);
-  overflow-x: hidden;
   line-height: 1.6;
+  font-size: 17px;
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; pointer-events: none; }
+a { color: var(--maroon); text-decoration: none; transition: color .25s ease; }
+a:hover { color: var(--kumkum); }
+
+/* ---------- Paper texture (warm cream + the lightest pink wash) ---------- */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse at top, rgba(232,134,138,0.04), transparent 55%),
+    radial-gradient(ellipse at bottom, rgba(111,179,184,0.04), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
 }
 
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-/* ============================================================
-   ACT 2 — HERO SCENE CONTAINER
-   ============================================================ */
-.hero {
+/* ---------- Section base ---------- */
+.page {
   position: relative;
-  width: 100%;
   min-height: 100vh;
-  min-height: 100svh; /* small viewport on mobile */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 1.5rem;
   overflow: hidden;
-  background: linear-gradient(
-    to bottom,
-    var(--sky-top) 0%,
-    var(--sky-mid) 25%,
-    var(--sky-low) 45%,
-    var(--sky-horizon) 65%,
-    var(--sky-dusk) 100%
-  );
+  isolation: isolate;
 }
-
-/* On larger screens, hero takes more dramatic space */
-@media (min-width: 768px) {
-  .hero {
-    min-height: 110vh;
-  }
-}
-
-/* ============================================================
-   LAYER 1 — SKY (clouds, birds, moon, sky lanterns)
-   ============================================================ */
-.sky-layer {
-  position: absolute;
-  inset: 0;
-  z-index: var(--z-sky);
-  pointer-events: none;
-}
-
-.cloud {
-  position: absolute;
-  opacity: 0.6;
-  filter: blur(0.5px);
-}
-.cloud-1 { top: 8%; left: -5%; width: 35%; }
-.cloud-2 { top: 15%; right: -3%; width: 28%; }
-.cloud-3 { top: 22%; left: 35%; width: 22%; opacity: 0.45; }
-
-.crescent-moon {
-  position: absolute;
-  top: 6%;
-  right: 12%;
-  width: 8%;
-  max-width: 60px;
-  opacity: 0.85;
-}
-
-.birds-flock {
-  position: absolute;
-  top: 18%;
-  left: 25%;
-  width: 18%;
-  opacity: 0.7;
-}
-
-.sky-lantern {
-  position: absolute;
-  width: 4%;
-  max-width: 30px;
-  opacity: 0.85;
-}
-.lantern-1 { top: 35%; left: 18%; }
-.lantern-2 { top: 28%; left: 65%; }
-.lantern-3 { top: 42%; left: 78%; }
-
-/* ============================================================
-   LAYER 2 — DISTANT HORIZON (gopuram, river, small temples)
-   ============================================================ */
-.horizon-layer {
-  position: absolute;
-  bottom: 35%;
-  left: 0;
-  right: 0;
-  z-index: var(--z-horizon);
-  pointer-events: none;
-}
-
-.gopuram-distant {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%;
-  max-width: 500px;
-  opacity: 0.85;
-  filter: brightness(0.85);
-}
-
-.small-temple {
-  position: absolute;
-  bottom: -5%;
-  width: 12%;
-  opacity: 0.75;
-}
-.small-temple-1 { left: 15%; }
-.small-temple-2 { right: 15%; }
-
-.river-godavari {
-  position: absolute;
-  bottom: -10%;
-  left: 0;
-  right: 0;
+.page-inner {
+  position: relative;
+  z-index: 3;
+  max-width: var(--max-content);
   width: 100%;
-  opacity: 0.55;
-}
-
-/* ============================================================
-   LAYER 3 — GARDEN BACKGROUND (palms, trees)
-   ============================================================ */
-.garden-bg-layer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 70%;
-  z-index: var(--z-garden-bg);
-  pointer-events: none;
-}
-
-.tree {
-  position: absolute;
-  bottom: 0;
-  transform-origin: bottom center;
-}
-
-/* Coconut palms — back layer */
-.coconut-1 { left: 2%; bottom: 5%; width: 18%; max-width: 180px; opacity: 0.88; }
-.coconut-2 { right: 3%; bottom: 8%; width: 16%; max-width: 160px; opacity: 0.85; }
-.coconut-3 { left: 22%; bottom: 12%; width: 12%; max-width: 130px; opacity: 0.75; }
-.coconut-4 { right: 28%; bottom: 10%; width: 14%; max-width: 140px; opacity: 0.8; }
-
-/* Mango & other trees */
-.mango-tree { left: 8%; bottom: 3%; width: 16%; max-width: 170px; opacity: 0.85; }
-.neem-tree { right: 12%; bottom: 4%; width: 14%; max-width: 150px; opacity: 0.82; }
-.champa-tree { left: 35%; bottom: 8%; width: 10%; max-width: 120px; opacity: 0.78; }
-
-/* ============================================================
-   LAYER 4 — MID-GROUND BUSHES, VINES & FLOWERS
-   ============================================================ */
-.midground-layer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 45%;
-  z-index: var(--z-midground);
-  pointer-events: none;
-}
-
-.bush {
-  position: absolute;
-  bottom: 0;
-  transform-origin: bottom center;
-}
-
-/* Hibiscus bushes scattered along the floor */
-.hibiscus-red-1 { left: 4%; bottom: 3%; width: 11%; max-width: 110px; }
-.hibiscus-pink-1 { right: 6%; bottom: 4%; width: 10%; max-width: 100px; }
-.hibiscus-white-1 { left: 25%; bottom: 2%; width: 9%; max-width: 95px; }
-.hibiscus-red-2 { right: 25%; bottom: 3%; width: 9%; max-width: 95px; }
-
-/* Rose bushes */
-.rose-bush-1 { left: 14%; bottom: 5%; width: 9%; max-width: 95px; }
-.rose-bush-2 { right: 15%; bottom: 6%; width: 8%; max-width: 90px; }
-
-/* Marigold bushes — foreground florals */
-.marigold-bush-1 { left: 32%; bottom: 1%; width: 8%; max-width: 80px; }
-.marigold-bush-2 { right: 32%; bottom: 1%; width: 8%; max-width: 80px; }
-
-/* Tulasi at mandap entrance */
-.tulasi-left { left: 18%; bottom: 8%; width: 7%; max-width: 75px; }
-.tulasi-right { right: 18%; bottom: 8%; width: 7%; max-width: 75px; }
-
-/* Bougainvillea cascading from upper sides */
-.bougainvillea-1 {
-  position: absolute;
-  top: 15%;
-  left: -2%;
-  width: 18%;
-  max-width: 200px;
-  transform-origin: top left;
-}
-.bougainvillea-2 {
-  position: absolute;
-  top: 18%;
-  right: -2%;
-  width: 16%;
-  max-width: 180px;
-  transform-origin: top right;
-}
-
-/* Jasmine vines on pillars */
-.jasmine-vine-left {
-  position: absolute;
-  bottom: 12%;
-  left: 12%;
-  width: 6%;
-  max-width: 70px;
-  transform-origin: bottom center;
-}
-.jasmine-vine-right {
-  position: absolute;
-  bottom: 12%;
-  right: 12%;
-  width: 6%;
-  max-width: 70px;
-  transform-origin: bottom center;
-}
-
-/* Lotus pond elements (foreground bottom corners) */
-.lotus-bloom {
-  position: absolute;
-  bottom: 0;
-  width: 6%;
-  max-width: 60px;
-  opacity: 0.95;
-}
-.lotus-1 { left: 8%; bottom: 1%; }
-.lotus-2 { left: 12%; bottom: 0%; width: 5%; }
-.lotus-3 { right: 8%; bottom: 1%; }
-
-.lily-pad {
-  position: absolute;
-  bottom: 0;
-  width: 7%;
-  max-width: 75px;
-  opacity: 0.85;
-}
-.lily-1 { left: 5%; bottom: 0%; }
-.lily-2 { right: 5%; bottom: 0%; }
-
-/* ============================================================
-   LAYER 5 — MANDAP ARCHITECTURE
-   ============================================================ */
-.mandap-layer {
-  position: absolute;
-  inset: 0;
-  z-index: var(--z-mandap);
-  pointer-events: none;
-}
-
-/* Mandap pillars flanking the invitation card */
-.mandap-pillar {
-  position: absolute;
-  bottom: 5%;
-  height: 65%;
-}
-.mandap-pillar-left { left: 8%; }
-.mandap-pillar-right { right: 8%; transform: scaleX(-1); }
-
-/* Mango toranams across the top */
-.mango-toranam {
-  position: absolute;
-  top: 8%;
-  width: 32%;
-  max-width: 320px;
-}
-.mango-toranam-left { left: 2%; }
-.mango-toranam-right { right: 2%; transform: scaleX(-1); }
-
-/* Marigold garlands hanging beneath toranams */
-.garland {
-  position: absolute;
-  transform-origin: top center;
-}
-.garland-1 {
-  top: 14%;
-  left: 12%;
-  width: 22%;
-  max-width: 250px;
-}
-.garland-2 {
-  top: 18%;
-  right: 12%;
-  width: 20%;
-  max-width: 230px;
-}
-.garland-3 {
-  top: 12%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 28%;
-  max-width: 320px;
-}
-
-/* Jasmine garlands — lighter, lower */
-.jasmine-garland-1 {
-  position: absolute;
-  top: 22%;
-  left: 18%;
-  width: 18%;
-  max-width: 200px;
-  transform-origin: top center;
-  opacity: 0.92;
-}
-.jasmine-garland-2 {
-  position: absolute;
-  top: 24%;
-  right: 18%;
-  width: 18%;
-  max-width: 200px;
-  transform-origin: top center;
-  opacity: 0.92;
-}
-
-/* Puja bells hanging from the mandap beams */
-.puja-bell {
-  position: absolute;
-  width: 5%;
-  max-width: 50px;
-  transform-origin: top center;
-  opacity: 0.95;
-}
-.puja-bell-1 { top: 16%; left: 32%; }
-.puja-bell-2 { top: 16%; right: 32%; }
-
-/* Decorated elephant statues at mandap entrance */
-.elephant-statue {
-  position: absolute;
-  bottom: 8%;
-  width: 13%;
-  max-width: 130px;
-  z-index: var(--z-mandap);
-}
-.elephant-left { left: 2%; }
-.elephant-right { right: 2%; transform: scaleX(-1); }
-
-/* ============================================================
-   LAYER 6 — LIVING SCENE & RITUAL PROPS
-   ============================================================ */
-.living-layer {
-  position: absolute;
-  inset: 0;
-  z-index: var(--z-living);
-  pointer-events: none;
-}
-
-/* Kalasham (sacred pot) — top center over arch */
-.kalasham {
-  position: absolute;
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 13%;
-  max-width: 110px;
-  z-index: var(--z-living);
-}
-
-/* Ganesha symbol above arch */
-.ganesha-symbol {
-  position: absolute;
-  top: 14%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 7%;
-  max-width: 60px;
-  opacity: 0.95;
-}
-
-/* Peacocks flanking the invitation card */
-.peacock {
-  position: absolute;
-  bottom: 18%;
-  width: 18%;
-  max-width: 180px;
-}
-.peacock-left {
-  left: 5%;
-}
-.peacock-right {
-  right: 5%;
-  transform: scaleX(-1);
-}
-
-/* Brass diyas — row across foreground floor */
-.diya {
-  position: absolute;
-  bottom: 1%;
-  width: 6%;
-  max-width: 55px;
-}
-.diya-1 { left: 8%; }
-.diya-2 { left: 20%; }
-.diya-3 { left: 32%; }
-.diya-4 { left: 44%; }
-.diya-5 { left: 50%; transform: translateX(-50%); }
-.diya-6 { right: 44%; }
-.diya-7 { right: 32%; }
-.diya-8 { right: 20%; }
-.diya-9 { right: 8%; }
-
-/* ============================================================
-   LAYER 7 — ATMOSPHERIC FOREGROUND
-   ============================================================ */
-.foreground-layer {
-  position: absolute;
-  inset: 0;
-  z-index: var(--z-foreground);
-  pointer-events: none;
-  overflow: hidden;
-}
-
-/* Kolam floor patterns */
-.kolam {
-  position: absolute;
-  bottom: 2%;
-  width: 14%;
-  max-width: 140px;
-  opacity: 0.7;
-}
-.kolam-center {
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 1%;
-  width: 18%;
-  max-width: 180px;
-}
-.kolam-left { left: 22%; }
-.kolam-right { right: 22%; }
-
-/* Falling petals — multiple instances created by JS */
-.petal {
-  position: absolute;
-  width: 1.5%;
-  max-width: 18px;
-  opacity: 0.8;
-  pointer-events: none;
-}
-
-/* Firefly lights — twinkling spots */
-.firefly {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 220, 120, 1) 0%, rgba(255, 200, 80, 0.5) 40%, rgba(255, 180, 60, 0) 70%);
-  box-shadow: 0 0 12px rgba(255, 220, 120, 0.8);
-  pointer-events: none;
-  opacity: 0;
-}
-
-/* Incense smoke wisp */
-.incense-smoke {
-  position: absolute;
-  bottom: 10%;
-  width: 8%;
-  max-width: 80px;
-  opacity: 0.3;
-}
-.smoke-1 { left: 25%; }
-.smoke-2 { right: 25%; }
-
-/* Light rays */
-.light-rays {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 60%;
-  opacity: 0.35;
-  pointer-events: none;
-  mix-blend-mode: screen;
-}
-
-/* ============================================================
-   THE INVITATION CARD (centerpiece)
-   ============================================================ */
-.invitation-card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: var(--z-card);
-  width: 88%;
-  max-width: 520px;
-  padding: var(--space-lg) var(--space-md);
-  background: rgba(251, 243, 223, 0.92);
-  border-radius: 8px 8px 200px 200px / 8px 8px 100px 100px;
-  border: 1px solid rgba(184, 137, 58, 0.4);
-  box-shadow:
-    0 0 0 1px rgba(184, 137, 58, 0.15),
-    0 20px 60px rgba(94, 26, 38, 0.25),
-    0 8px 25px rgba(94, 26, 38, 0.15);
   text-align: center;
-  backdrop-filter: blur(2px);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+.page-inner.is-visible { opacity: 1; transform: translateY(0); }
+
+.decor {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
 }
 
-/* Inner decorative border */
-.invitation-card::before {
+/* ============================================================
+   HANGING ANCHORS — chain extends from top edge of viewport
+   ============================================================ */
+.hangs {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hangs::before {
+  content: '';
+  width: 1.5px;
+  background: linear-gradient(to bottom,
+              transparent 0%,
+              rgba(184,134,11,0.35) 15%,
+              var(--gold-deep) 60%,
+              var(--gold) 100%);
+  flex-shrink: 0;
+  margin-bottom: -2px;
+}
+.hangs > img {
+  transform-origin: top center;
+  animation: hangSway 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Sway — gentle 2.5° each way */
+@keyframes hangSway {
+  0%, 100% { transform: rotate(-2.2deg); }
+  50%      { transform: rotate(2.2deg); }
+}
+
+/* Diya flicker */
+.flicker { animation: diyaFlicker 2.4s ease-in-out infinite; }
+@keyframes diyaFlicker {
+  0%, 100% { opacity: 0.92; transform: scale(1); filter: brightness(1); }
+  50%      { opacity: 1;    transform: scale(1.04); filter: brightness(1.12); }
+}
+
+/* Gold shimmer text */
+.shimmer {
+  background: linear-gradient(100deg,
+              var(--gold-deep) 0%, var(--gold) 40%,
+              var(--gold-light) 50%, var(--gold) 60%,
+              var(--gold-deep) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmerSlide 6s linear infinite;
+}
+@keyframes shimmerSlide {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Letter rise (for cover names) */
+.letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: letterRise 0.7s cubic-bezier(.2,.7,.2,1) forwards;
+}
+@keyframes letterRise {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Typography ---------- */
+.eyebrow {
+  font-family: var(--serif-sc);
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 0.78rem;
+  color: var(--gold-deep);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 1.5rem auto;
+  position: relative;
+}
+.divider::before, .divider::after {
   content: '';
   position: absolute;
-  inset: 8px;
-  border: 1px solid rgba(184, 137, 58, 0.5);
-  border-radius: 4px 4px 190px 190px / 4px 4px 90px 90px;
-  pointer-events: none;
+  top: 50%;
+  width: 5px; height: 5px;
+  background: var(--pink-deep);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 6px rgba(232,134,138,0.5);
 }
+.divider::before { left: -12px; }
+.divider::after  { right: -12px; }
+.divider-wide { width: 130px; margin: 2rem auto; }
 
-/* Card content typography */
-.invocation {
-  font-family: 'Noto Serif Telugu', serif;
-  font-size: 0.95rem;
+.script-amp {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 3.2rem;
   color: var(--maroon);
-  margin-bottom: 0.25rem;
-  letter-spacing: 1px;
+  line-height: 1;
+  margin: 1.25rem 0;
 }
 
-.subhalekha-title {
-  font-family: 'Noto Serif Telugu', serif;
-  font-size: 1.4rem;
-  color: var(--maroon-deep);
+/* ============================================================
+   1. COVER  —  Arch garland + corner-leaf hybrid
+   ============================================================ */
+.cover {
+  background:
+    radial-gradient(ellipse at 50% 22%, rgba(249,213,216,0.45) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 30%, var(--cream-soft) 0%, var(--cream) 70%),
+    var(--cream);
+}
+
+.cover .decor-arch-garland {
+  top: -8px;
+  left: 0; right: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 950px;
+  opacity: 0.95;
+  transform-origin: top center;
+  animation: hangSway 7s ease-in-out infinite;
+}
+
+.cover .decor-leaf-tl {
+  top: -2%;
+  left: -4%;
+  width: 22%;
+  max-width: 220px;
+  opacity: 0.92;
+  transform: rotate(-12deg);
+  z-index: 2;
+  transform-origin: top left;
+  animation: leafSway 6s ease-in-out infinite;
+}
+
+.cover .decor-leaf-tr {
+  top: 4%;
+  right: -3%;
+  width: 18%;
+  max-width: 180px;
+  opacity: 0.88;
+  transform: rotate(18deg);
+  z-index: 2;
+  transform-origin: top right;
+  animation: leafSwayR 6.5s ease-in-out infinite;
+}
+
+@keyframes leafSway  { 0%,100% { transform: rotate(-13deg);} 50% { transform: rotate(-9deg);} }
+@keyframes leafSwayR { 0%,100% { transform: rotate(20deg);}  50% { transform: rotate(16deg);} }
+
+.cover .decor-gopuram {
+  bottom: 0;
+  left: -3%;
+  width: 38%;
+  max-width: 380px;
+  opacity: 0.5;
+  filter: sepia(0.25) hue-rotate(-10deg);
+}
+
+.cover .decor-diya-bl {
+  bottom: 3%;
+  left: 18%;
+  width: 9%;
+  max-width: 90px;
+  opacity: 0.95;
+  z-index: 2;
+}
+
+.cover .decor-peacock {
+  bottom: 3%;
+  right: 1%;
+  width: 22%;
+  max-width: 220px;
+  opacity: 0.95;
+}
+
+.cover .decor-bougainvillea {
+  bottom: 2%;
+  right: 22%;
+  width: 12%;
+  max-width: 110px;
+  opacity: 0.85;
+  transform-origin: bottom center;
+  animation: bougainSway 7s ease-in-out infinite;
+}
+@keyframes bougainSway { 0%,100% { transform: rotate(-1.5deg);} 50% { transform: rotate(1.5deg);} }
+
+.cover .ganesha-cover {
+  width: 78px;
+  margin: 0 auto 1.2rem;
+  opacity: 0.96;
+  filter: drop-shadow(0 2px 6px rgba(184,134,11,0.25));
+}
+
+.invocation {
+  font-family: var(--telugu);
+  color: var(--maroon);
+  font-size: 1.15rem;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.subhalekha {
+  font-family: var(--telugu);
+  font-size: 2.4rem;
   font-weight: 600;
   margin-bottom: 0.4rem;
-  letter-spacing: 2px;
 }
 
 .subhalekha-en {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 0.8rem;
-  color: var(--gold-deep);
-  letter-spacing: 2px;
+  font-family: var(--serif-sc);
   text-transform: uppercase;
-  margin-bottom: var(--space-md);
-}
-
-.invitation-intro {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-  line-height: 1.5;
-  margin-bottom: var(--space-md);
-}
-
-.couple-names {
-  margin: var(--space-md) 0;
-}
-
-.bride-name, .groom-name {
-  font-family: 'Cinzel', serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--maroon-deep);
-  letter-spacing: 3px;
-  line-height: 1.2;
-  margin-bottom: 0.25rem;
-  /* Each letter wrapped in span by JS for letter-by-letter animation */
-}
-
-.parent-line {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  letter-spacing: 0.6em;
   font-size: 0.7rem;
   color: var(--ink-soft);
-  letter-spacing: 0.5px;
-  margin-bottom: var(--space-sm);
-  line-height: 1.4;
+  margin-bottom: 2rem;
 }
 
-.ampersand {
-  font-family: 'Italianno', cursive;
-  font-size: 2.6rem;
-  color: var(--gold);
-  line-height: 1;
-  margin: 0.2rem 0;
+.cover-names {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5.5vw, 3.3rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  margin: 1.5rem 0;
+}
+.cover-names .name-amp {
+  display: block;
+  font-style: italic;
+  color: var(--maroon);
+  font-size: 0.7em;
+  font-weight: 400;
+  margin: 0.4rem 0;
 }
 
-.wedding-date {
-  font-family: 'Cinzel', serif;
-  font-size: 0.85rem;
+.cover-date {
+  font-family: var(--serif-sc);
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  font-size: 0.95rem;
+  color: var(--maroon);
+  margin-top: 1.5rem;
+  font-weight: 500;
+}
+
+.cover-venue {
+  font-family: var(--serif-sc);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  margin-top: 0.5rem;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-family: var(--serif-sc);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.65rem;
+  color: var(--ink-soft);
+  opacity: 0.7;
+  animation: scrollHint 2.5s ease-in-out infinite;
+}
+.scroll-hint::after {
+  content: '';
+  display: block;
+  width: 1px; height: 24px;
+  background: var(--gold);
+  margin: 8px auto 0;
+}
+@keyframes scrollHint {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.7; }
+  50%      { transform: translateX(-50%) translateY(6px); opacity: 0.35; }
+}
+
+/* ============================================================
+   2. INVITATION
+   ============================================================ */
+.invitation {
+  background:
+    radial-gradient(ellipse at 10% 90%, rgba(249,213,216,0.4), transparent 55%),
+    radial-gradient(ellipse at 90% 10%, rgba(111,179,184,0.07), transparent 50%),
+    var(--cream);
+}
+
+.invitation .decor-leaves-tr {
+  top: -2%;
+  right: -5%;
+  width: 28%;
+  max-width: 260px;
+  opacity: 0.9;
+  transform: rotate(15deg);
+  transform-origin: top right;
+  animation: leafSwayR 7s ease-in-out infinite;
+}
+
+/* Bell hangs from top via chain anchor */
+.hangs.hangs-bell {
+  right: 9%;
+  width: 65px;
+}
+.hangs.hangs-bell::before { height: 130px; }
+.hangs.hangs-bell > img   { width: 100%; opacity: 0.92; }
+
+.invitation .decor-lotus-bl {
+  bottom: 4%;
+  left: 2%;
+  width: 14%;
+  max-width: 130px;
+  opacity: 0.95;
+}
+
+.invitation .decor-diya-bl {
+  bottom: 3%;
+  left: 16%;
+  width: 11%;
+  max-width: 100px;
+  opacity: 0.95;
+}
+
+.invitation .decor-kalasham-bl {
+  bottom: 6%;
+  left: 27%;
+  width: 13%;
+  max-width: 120px;
+  opacity: 0.95;
+}
+
+.invite-intro {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  max-width: 480px;
+  margin: 0 auto 2.5rem;
+}
+
+.person-block { margin: 2rem 0; }
+
+.person-role {
+  font-family: var(--serif-sc);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.72rem;
+  color: var(--gold-deep);
+  margin-bottom: 0.8rem;
+}
+
+.person-name {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 4.5vw, 2.7rem);
   font-weight: 500;
   color: var(--maroon);
-  letter-spacing: 2px;
-  margin-top: var(--space-md);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.6rem;
 }
 
-.wedding-time {
-  font-family: 'Cinzel', serif;
+.person-parents-label {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.2rem;
+}
+
+.person-parents {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+/* ============================================================
+   3. MUHURTHAM + COUNTDOWN + CEREMONY PROGRAMME
+   ============================================================ */
+.muhurtham {
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(232,163,176,0.18), transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(111,179,184,0.10), transparent 55%),
+    var(--cream);
+}
+
+/* Hanging lamp via chain anchor */
+.hangs.hangs-lamp {
+  right: 5%;
+  width: 18%;
+  max-width: 170px;
+}
+.hangs.hangs-lamp::before { height: 60px; }
+.hangs.hangs-lamp > img   { width: 100%; opacity: 0.95; }
+
+.muhurtham .decor-kalasham-bl {
+  bottom: 4%;
+  left: 4%;
+  width: 16%;
+  max-width: 150px;
+  opacity: 0.95;
+}
+
+.muhurtham .decor-lotus-bl {
+  bottom: 3%;
+  left: 22%;
+  width: 12%;
+  max-width: 110px;
+  opacity: 0.92;
+}
+
+.muhurtham-title {
+  font-family: var(--display);
+  font-size: clamp(2.4rem, 5vw, 3rem);
+  font-weight: 500;
+  color: var(--maroon);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.muhurtham-time {
+  font-family: var(--display);
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-style: italic;
+  color: var(--kumkum);
+  line-height: 1.1;
+  margin: 1rem 0;
+  text-shadow: 0 2px 12px rgba(200,16,46,0.15);
+}
+
+.muhurtham-date {
+  font-family: var(--serif-sc);
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+.countdown-unit {
+  min-width: 78px;
+  padding: 1rem 0.6rem;
+  border: 1px solid rgba(212,160,23,0.4);
+  background: linear-gradient(to bottom, rgba(255,255,255,0.55), rgba(254,250,235,0.35));
+  border-radius: 3px;
+  box-shadow: 0 4px 12px rgba(184,134,11,0.07);
+}
+.countdown-num {
+  font-family: var(--display);
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: var(--maroon);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.countdown-label {
+  font-family: var(--serif-sc);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.65rem;
+  color: var(--gold-deep);
+  margin-top: 0.5rem;
+}
+
+.programme {
+  margin-top: 3rem;
+}
+.programme-title {
+  font-family: var(--serif-sc);
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
   font-size: 0.75rem;
   color: var(--gold-deep);
-  letter-spacing: 2.5px;
-  margin-top: 0.3rem;
+  margin-bottom: 1.25rem;
 }
-
-.wedding-venue {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 0.8rem;
-  color: var(--ink-soft);
-  margin-top: 0.4rem;
-  letter-spacing: 0.3px;
+.programme-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1.1rem;
+  max-width: 520px;
+  margin: 0 auto;
 }
-
-/* Card dividers */
-.card-divider {
-  width: 50%;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
-  margin: var(--space-sm) auto;
-  border: none;
+.programme-list li {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: var(--ink);
+  position: relative;
 }
-
-.divider-symbol {
-  display: inline-block;
+.programme-list li::after {
+  content: '·';
+  margin-left: 1.1rem;
   color: var(--gold);
-  font-size: 0.8rem;
-  margin: 0 4px;
+}
+.programme-list li:last-child::after { display: none; }
+.programme-list li.is-highlight {
+  font-family: var(--display);
+  font-style: italic;
+  color: var(--kumkum);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.92rem;
 }
 
 /* ============================================================
-   INITIAL STATES (for GSAP to animate FROM)
+   4. VENUE
    ============================================================ */
+.venue {
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(42,125,143,0.08), transparent 55%),
+    radial-gradient(ellipse at 80% 30%, rgba(249,213,216,0.30), transparent 60%),
+    var(--cream);
+}
 
-/* Names start invisible — JS animates letter-by-letter */
-.bride-name span,
-.groom-name span {
+.venue .decor-gopuram {
+  bottom: 0;
+  left: -3%;
+  width: 42%;
+  max-width: 380px;
+  opacity: 0.4;
+  filter: sepia(0.15);
+}
+
+.venue .decor-bougainvillea {
+  bottom: 5%;
+  right: 2%;
+  width: 20%;
+  max-width: 200px;
+  opacity: 0.88;
+  transform-origin: bottom right;
+  animation: bougainSway 7.5s ease-in-out infinite;
+}
+
+.venue-name {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 500;
+  color: var(--maroon);
+  letter-spacing: 0.04em;
+  margin: 1rem 0 0.4rem;
+}
+
+.venue-city {
+  font-family: var(--serif-sc);
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  font-size: 0.85rem;
+  color: var(--peacock-blue);
+  margin-bottom: 1.5rem;
+}
+
+.venue-address {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.btn-directions {
   display: inline-block;
-  opacity: 0;
+  font-family: var(--serif-sc);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.78rem;
+  color: var(--maroon);
+  padding: 0.9rem 2.2rem;
+  border: 1px solid var(--maroon);
+  border-radius: 2px;
+  background: transparent;
+  transition: all .3s ease;
 }
-
-/* Card elements that fade up after the names */
-.invocation,
-.subhalekha-title,
-.subhalekha-en,
-.invitation-intro,
-.parent-line,
-.ampersand,
-.wedding-date,
-.wedding-time,
-.wedding-venue,
-.card-divider {
-  opacity: 0;
-}
-
-/* Hero plants start invisible until orchestrated entry */
-.tree, .bush, .peacock, .kalasham, .ganesha-symbol,
-.garland, .jasmine-garland-1, .jasmine-garland-2,
-.mango-toranam, .mandap-pillar, .elephant-statue,
-.diya, .kolam, .puja-bell {
-  opacity: 0;
-}
-
-/* Card starts hidden, scales up dramatically */
-.invitation-card {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.92);
+.btn-directions:hover {
+  background: var(--maroon);
+  color: var(--cream-soft);
+  box-shadow: 0 6px 16px rgba(124,26,42,0.25);
 }
 
 /* ============================================================
-   MOBILE-FIRST TYPOGRAPHY ADJUSTMENTS
+   5. BLESSINGS / FOOTER
    ============================================================ */
-
-/* Tablets and small laptops */
-@media (min-width: 640px) {
-  .invitation-card {
-    padding: var(--space-xl) var(--space-lg);
-    max-width: 560px;
-  }
-  .subhalekha-title { font-size: 1.8rem; }
-  .bride-name, .groom-name { font-size: 1.7rem; }
-  .ampersand { font-size: 3.4rem; }
-  .invitation-intro { font-size: 0.95rem; }
-  .parent-line { font-size: 0.8rem; }
-  .wedding-date { font-size: 1rem; }
-  .wedding-time { font-size: 0.85rem; }
-  .wedding-venue { font-size: 0.9rem; }
+.blessings {
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(249,213,216,0.4), transparent 50%),
+    radial-gradient(ellipse at 50% 0%, rgba(111,179,184,0.06), transparent 50%),
+    var(--cream);
+  padding-bottom: 4rem;
 }
 
-/* Desktop */
-@media (min-width: 1024px) {
-  .invitation-card {
-    max-width: 620px;
-    padding: var(--space-2xl) var(--space-xl);
-  }
-  .subhalekha-title { font-size: 2rem; }
-  .bride-name, .groom-name { font-size: 2rem; letter-spacing: 4px; }
-  .ampersand { font-size: 4rem; }
-  .invitation-intro { font-size: 1rem; }
-  .parent-line { font-size: 0.85rem; }
-  .wedding-date { font-size: 1.15rem; letter-spacing: 3px; }
-  .wedding-time { font-size: 0.95rem; }
-  .wedding-venue { font-size: 1rem; }
+/* Both corner garlands hang from top edge via chain anchors */
+.blessings .decor-garland-tl,
+.blessings .decor-garland-tr {
+  top: -10px;
+  width: 28%;
+  max-width: 260px;
+  opacity: 0.88;
+  transform-origin: top center;
+  animation: hangSway 6.5s ease-in-out infinite;
+}
+.blessings .decor-garland-tl { left: 0; }
+.blessings .decor-garland-tr { right: 0; transform: scaleX(-1); animation-delay: -3s; }
+
+.blessings-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--ink);
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 2rem auto;
 }
 
-/* Wide desktop — more breathing room */
-@media (min-width: 1440px) {
-  .invitation-card {
-    max-width: 680px;
-  }
+.blessings-parents { margin: 2.5rem 0 1.5rem; }
+.blessings-parents p {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--ink);
+  line-height: 1.7;
+}
+.blessings-parents .parent-amp {
+  font-family: var(--display);
+  font-style: italic;
+  color: var(--maroon);
+  font-size: 1.2rem;
+}
+
+.kolam-footer {
+  width: 95px;
+  margin: 2.5rem auto 1rem;
+  opacity: 0.6;
+}
+
+.footer-credit {
+  font-family: var(--serif-sc);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.65rem;
+  color: var(--peacock-blue);
+  margin-top: 1.5rem;
+  opacity: 0.8;
 }
 
 /* ============================================================
-   MOBILE DENSITY ADJUSTMENTS — hide some assets on small screens
+   RESPONSIVE
    ============================================================ */
-@media (max-width: 640px) {
-  /* Reduce density on mobile for performance + visibility */
-  .coconut-3, .coconut-4,
-  .champa-tree, .neem-tree,
-  .hibiscus-white-1, .hibiscus-red-2,
-  .rose-bush-2,
-  .marigold-bush-2,
-  .lotus-3, .lily-2,
-  .diya-2, .diya-4, .diya-6, .diya-8,
-  .kolam-left, .kolam-right,
-  .cloud-3, .lantern-3,
-  .small-temple-2 {
-    display: none;
-  }
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .page { padding: 5rem 1.25rem; }
 
-  /* Adjust positioning for mobile-specific layout */
-  .peacock { width: 22%; }
-  .kalasham { width: 16%; }
+  .cover .decor-leaf-tl       { width: 30%; }
+  .cover .decor-leaf-tr       { width: 25%; }
+  .cover .decor-gopuram       { width: 50%; opacity: 0.35; }
+  .cover .decor-diya-bl       { width: 12%; left: 26%; }
+  .cover .decor-peacock       { width: 30%; }
+  .cover .decor-bougainvillea { width: 15%; right: 30%; }
+
+  .invitation .decor-leaves-tr   { width: 38%; }
+  .invitation .decor-lotus-bl    { width: 20%; }
+  .invitation .decor-diya-bl     { width: 15%; left: 22%; }
+  .invitation .decor-kalasham-bl { width: 18%; left: 38%; }
+  .hangs.hangs-bell              { width: 50px; right: 6%; }
+  .hangs.hangs-bell::before      { height: 90px; }
+
+  .hangs.hangs-lamp              { width: 24%; right: 4%; }
+  .muhurtham .decor-kalasham-bl  { width: 22%; }
+  .muhurtham .decor-lotus-bl     { width: 16%; left: 28%; }
+
+  .venue .decor-gopuram       { width: 55%; }
+  .venue .decor-bougainvillea { width: 28%; }
+
+  .blessings .decor-garland-tl,
+  .blessings .decor-garland-tr { width: 38%; }
+
+  .countdown { gap: 0.55rem; }
+  .countdown-unit { min-width: 64px; padding: 0.8rem 0.4rem; }
+  .countdown-num  { font-size: 1.6rem; }
+  .cover-names    { letter-spacing: 0.01em; }
 }
 
-/* ============================================================
-   ACCESSIBILITY: respect reduced motion preference
-   ============================================================ */
+@media (max-width: 420px) {
+  .countdown-unit { min-width: 56px; }
+  .countdown-num  { font-size: 1.4rem; }
+  .subhalekha     { font-size: 1.9rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-/* ============================================================
-   END OF STAGE 2 CSS
-   ============================================================ */
-
-/* ============================================================
-   CSS-ONLY SKY ATMOSPHERE (replaces missing PNG assets)
-   ============================================================ */
-
-/* Soft cloud blobs using radial gradients with blur */
-.css-cloud {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(40px);
-  opacity: 0.35;
-  pointer-events: none;
-  background: radial-gradient(ellipse at center,
-    rgba(255, 240, 220, 0.8) 0%,
-    rgba(255, 230, 200, 0.4) 40%,
-    rgba(255, 220, 180, 0) 70%);
-}
-.css-cloud-1 {
-  top: 6%;
-  left: -8%;
-  width: 45%;
-  height: 12%;
-}
-.css-cloud-2 {
-  top: 14%;
-  right: -5%;
-  width: 38%;
-  height: 10%;
-  opacity: 0.28;
-}
-.css-cloud-3 {
-  top: 20%;
-  left: 30%;
-  width: 28%;
-  height: 8%;
-  opacity: 0.22;
-}
-
-/* CSS-drawn crescent moon */
-.css-moon {
-  position: absolute;
-  top: 6%;
-  right: 12%;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: transparent;
-  box-shadow: -12px 8px 0 0 rgba(255, 240, 200, 0.85);
-  opacity: 0.85;
-  pointer-events: none;
-  filter: blur(0.5px);
-}
-@media (min-width: 768px) {
-  .css-moon {
-    width: 64px;
-    height: 64px;
-    box-shadow: -16px 10px 0 0 rgba(255, 240, 200, 0.85);
-  }
-}
-
-/* CSS golden light rays — radial cone from above */
-.css-light-rays {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 65%;
-  pointer-events: none;
-  background:
-    conic-gradient(from 170deg at 50% 0%,
-      transparent 0deg,
-      transparent 175deg,
-      rgba(255, 220, 150, 0.18) 180deg,
-      rgba(255, 230, 170, 0.25) 185deg,
-      rgba(255, 220, 150, 0.18) 190deg,
-      transparent 195deg,
-      transparent 360deg);
-  mix-blend-mode: screen;
-  opacity: 0.6;
-  filter: blur(2px);
-}
-
-/* Hide image-based sky elements that don't exist */
-.cloud, .crescent-moon, .birds-flock, .sky-lantern, .light-rays {
-  display: none !important;
+  .page-inner { opacity: 1; transform: none; }
 }

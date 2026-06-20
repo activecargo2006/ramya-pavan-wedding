@@ -20,16 +20,40 @@
 <body>
 
 <!-- ============================================================
-     1. COVER  —  Arch garland + corner-leaf hybrid
+     WELCOME OVERLAY (cinematic intro veil)
+     ============================================================ -->
+<div class="welcome-veil" id="welcomeVeil" aria-hidden="true">
+  <div class="veil-panel veil-left"></div>
+  <div class="veil-panel veil-right"></div>
+  <div class="veil-center">
+    <img src="assets/images/ganesha-gold.png" alt="" class="veil-ganesha">
+    <p class="veil-text">శుభలేఖ</p>
+    <div class="veil-spinner"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     1. COVER  —  Symmetric garden mandap
      ============================================================ -->
 <section class="page cover" id="cover">
+  <!-- Arch garland across the top -->
   <img class="decor decor-arch-garland" src="assets/images/marigold-garland-3.png" alt="">
-  <img class="decor decor-leaf-tl"      src="assets/images/banana-leaf-2.png"     alt="">
-  <img class="decor decor-leaf-tr"      src="assets/images/banana-leaf-3.png"     alt="">
+
+  <!-- LEFT side: cascading banana leaves -->
+  <img class="decor decor-leaf-tl"     src="assets/images/banana-leaf-2.png"     alt="">
+  <img class="decor decor-leaf-ml"     src="assets/images/banana-leaf-3.png"     alt="">
+  <img class="decor decor-plant-l"     src="assets/images/banana-plant-left.png" alt="">
+
+  <!-- RIGHT side: cascading banana leaves -->
+  <img class="decor decor-leaf-tr"     src="assets/images/banana-leaf-3.png"     alt="">
+  <img class="decor decor-leaf-mr"     src="assets/images/banana-leaf-2.png"     alt="">
+  <img class="decor decor-plant-r"     src="assets/images/banana-plant-right.png" alt="">
+
+  <!-- Bottom: gopuram backdrop, dual peacocks, diya -->
   <img class="decor decor-gopuram"      src="assets/images/gopuram-silhouette.png" alt="">
-  <img class="decor decor-diya-bl flicker" src="assets/images/diya-brass.png"     alt="">
-  <img class="decor decor-peacock"      src="assets/images/peacock-right.png"     alt="">
-  <img class="decor decor-bougainvillea" src="assets/images/bougainvillea-pink.png" alt="">
+  <img class="decor decor-peacock-l"    src="assets/images/peacock-left.png"     alt="">
+  <img class="decor decor-peacock-r"    src="assets/images/peacock-right.png"    alt="">
+  <img class="decor decor-diya-center flicker" src="assets/images/diya-brass.png" alt="">
 
   <div class="page-inner">
     <img class="ganesha-cover" src="assets/images/ganesha-gold.png" alt="Ganesha">

@@ -1,599 +1,915 @@
-/* ===========================================================
-   Sri Ramya & Pavan Choudary — Wedding Invitation
-   Phase 2 — Filled premium visuals: peacocks, palms, kalasham, garlands, diyas
-   =========================================================== */
+/* ============================================================
+   SRI RAMYA & PAVAN CHOWDARY — WEDDING INVITATION
+   Stage 2 · Hero Scene (Act 2 — Mandap Garden)
+   Mobile-first · Watercolour world · 7-layer parallax
+   ============================================================ */
 
+/* ============================================================
+   FONTS
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Italianno&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;700&family=Noto+Serif+Telugu:wght@400;600;700&display=swap');
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES — Color & Spacing System
+   ============================================================ */
 :root {
+  /* Watercolour palette */
   --olive-deep: #1f2a10;
   --olive: #3a4a1f;
-  --olive-mid: #4d6128;
-  --olive-soft: #6a8038;
-  --olive-light: #8aa055;
-  --leaf-dark: #2d3f15;
-  --leaf-mid: #506830;
-  --leaf-light: #8aa856;
-  --cream: #f6ecd6;
-  --cream-warm: #fbf3df;
+  --olive-light: #5c7028;
+  --cream: #fbf3df;
   --cream-deep: #ebdfc1;
+  --cream-warm: #f5e8c3;
   --gold: #b8893a;
   --gold-light: #d4a445;
-  --gold-soft: #e8c779;
-  --gold-deep: #8a6320;
-  --maroon: #6b1d2c;
+  --gold-deep: #7a5618;
+  --gold-bright: #e6b75d;
+  --maroon: #5e1a26;
   --maroon-deep: #3a0e16;
-  --banana: #e8c547;
-  --banana-deep: #c89a1e;
-  --jasmine: #fffdf2;
+  --maroon-soft: #7a3540;
   --ink: #2c2618;
   --ink-soft: #5c4f33;
+
+  /* Sky palette for hero background */
+  --sky-top: #f4d4b5;
+  --sky-mid: #e8b88c;
+  --sky-low: #c97c5f;
+  --sky-horizon: #8b3a3a;
+  --sky-dusk: #4a1f2e;
+
+  /* Spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  /* Z-index layers (7-layer system) */
+  --z-sky: 1;
+  --z-horizon: 10;
+  --z-garden-bg: 20;
+  --z-midground: 30;
+  --z-mandap: 40;
+  --z-living: 50;
+  --z-foreground: 60;
+  --z-card: 70;
+  --z-ui: 100;
+  --z-overlay: 200;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: auto; }
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--cream);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--ink);
+  background: var(--cream);
   overflow-x: hidden;
-  position: relative;
-  min-height: 100vh;
+  line-height: 1.6;
 }
 
-/* ============== Scroll progress & music button ============== */
-.progress-line {
-  position: fixed; top: 0; left: 0; height: 2px; width: 0%;
-  background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold-soft), var(--gold-light), transparent);
-  z-index: 9999;
-  box-shadow: 0 0 8px rgba(212, 164, 69, .6);
-  transition: width .15s ease-out;
-}
-.music-btn {
-  position: fixed; top: 22px; right: 22px;
-  width: 48px; height: 48px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--olive-mid), var(--olive-deep));
-  border: 1px solid rgba(212, 164, 69, .5);
-  color: var(--gold-soft);
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; z-index: 9998;
-  box-shadow: 0 6px 18px rgba(0,0,0,.25), inset 0 0 0 1px rgba(212,164,69,.15);
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-.music-btn:hover { transform: scale(1.06); }
-.music-btn svg { width: 18px; height: 18px; }
-.music-btn.playing { box-shadow: 0 0 24px rgba(212,164,69,.6), inset 0 0 0 1px rgba(212,164,69,.4); }
-
-/* ===== ENVELOPE OPENING ===== */
-#envelope-screen {
-  position: fixed; inset: 0; z-index: 9000;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  background: radial-gradient(ellipse at 50% 40%, #3a4a1f 0%, #1f2a10 55%, #0d130a 100%);
-  overflow: hidden;
-  perspective: 2000px;
-}
-#envelope-screen.opened { animation: scrnFade 1.6s ease 1.8s forwards; pointer-events: none; }
-@keyframes scrnFade { to { opacity: 0; visibility: hidden; } }
-
-.scene-glow {
-  position: absolute; width: 900px; height: 900px; border-radius: 50%;
-  left: 50%; top: 42%; transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(212,164,69,.18) 0%, transparent 60%);
-  filter: blur(40px);
-  animation: scnPulse 6s ease-in-out infinite;
-  pointer-events: none;
-}
-@keyframes scnPulse {
-  0%,100% { opacity: .6; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
-}
-
-.scn-leaf { position: absolute; opacity: .18; pointer-events: none; }
-.scn-leaf.tl { top: -60px; left: -60px; width: 340px; transform: rotate(35deg); }
-.scn-leaf.tr { top: -60px; right: -60px; width: 340px; transform: rotate(-35deg) scaleX(-1); }
-.scn-leaf.bl { bottom: -100px; left: -80px; width: 380px; transform: rotate(-30deg); }
-.scn-leaf.br { bottom: -100px; right: -80px; width: 380px; transform: rotate(30deg) scaleX(-1); }
-
-.intro-greeting { position: absolute; top: 6%; left: 0; right: 0; text-align: center; z-index: 5; }
-.intro-greeting .telugu {
-  font-family: 'Tiro Telugu', serif;
-  font-size: 30px; color: var(--gold-soft);
-  letter-spacing: 1px;
-  text-shadow: 0 0 18px rgba(212, 164, 69, .4);
-}
-.intro-greeting .latin {
+img {
   display: block;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 10px; letter-spacing: 7px;
-  font-weight: 300;
-  color: rgba(232, 199, 121, .7);
-  text-transform: uppercase;
-  margin-top: 10px;
+  max-width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-.envelope-wrap {
-  position: relative;
-  width: min(440px, 84vw);
-  height: min(290px, 55vw);
-  transform-style: preserve-3d;
-  transition: transform 1.6s cubic-bezier(.7, 0, .3, 1);
-  z-index: 10;
-}
-#envelope-screen.opened .envelope-wrap { transform: translateY(-40px) scale(.9); }
-
-.env-back {
-  position: absolute; inset: 0;
-  background: linear-gradient(155deg, #7d2434 0%, #5e1a26 50%, #3a0f17 100%);
-  border-radius: 4px;
-  box-shadow: 0 30px 80px -10px rgba(0,0,0,.65), inset 0 0 0 1px rgba(212, 164, 69, .35), inset 0 0 100px rgba(0,0,0,.35);
-}
-.env-back::before { content: ""; position: absolute; inset: 14px; border: 1px solid rgba(212, 164, 69, .4); border-radius: 2px; }
-.env-back::after { content: ""; position: absolute; inset: 22px; border: .5px dashed rgba(212, 164, 69, .25); border-radius: 2px; }
-
-.env-letter {
-  position: absolute; left: 7%; top: 13%; width: 86%; height: 74%;
-  background: linear-gradient(180deg, #fbf3df, #ebdfc1);
-  border-radius: 2px; z-index: 2;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 18px 14px; text-align: center;
-  border: 1px solid rgba(184, 137, 58, .3);
-  box-shadow: 0 4px 12px rgba(0,0,0,.3);
-  transition: transform 1.2s cubic-bezier(.5, 0, .2, 1) 1s;
-}
-.env-letter::before { content: ""; position: absolute; inset: 6px; border: .5px solid rgba(184, 137, 58, .5); border-radius: 1px; }
-#envelope-screen.opened .env-letter { transform: translateY(-200%) translateZ(80px); }
-.lt-tag { font-family: 'Tiro Telugu', serif; font-size: 14px; color: var(--maroon); letter-spacing: 1px; }
-.lt-rule { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 8px 0; }
-.lt-name { font-family: 'Cinzel', serif; font-weight: 500; font-size: 14px; letter-spacing: 6px; color: var(--maroon-deep); }
-.lt-amp { font-family: 'Italianno', cursive; font-size: 32px; color: var(--gold); line-height: 1; margin: 2px 0; }
-.lt-date { margin-top: 6px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 11px; letter-spacing: 3px; color: var(--ink-soft); text-transform: uppercase; }
-
-.env-front {
-  position: absolute; bottom: 0; left: 0; width: 100%; height: 55%;
-  background: linear-gradient(180deg, #6e2030 0%, #42121d 100%);
-  z-index: 6;
-  box-shadow: inset 0 4px 8px rgba(0,0,0,.3);
-}
-.env-front::before { content: ""; position: absolute; inset: 8px 14px 14px 14px; border: 1px solid rgba(212, 164, 69, .45); border-radius: 2px; }
-.env-front::after {
-  content: ""; position: absolute; left: 14px; right: 14px; top: 14px; height: 7px;
-  background-image: radial-gradient(ellipse 5px 7px at center, rgba(212, 164, 69, .65) 35%, transparent 60%);
-  background-size: 13px 7px; background-repeat: repeat-x;
-}
-
-.env-flap {
-  position: absolute; top: 0; left: 0; width: 100%; height: 62%;
-  background: linear-gradient(160deg, #892a3d 0%, #6a1d2c 60%, #4d1521 100%);
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  transform-origin: top center; transform: rotateX(0deg);
-  transition: transform 1.2s cubic-bezier(.65, .05, .35, 1) .5s;
-  z-index: 5;
-  box-shadow: inset 0 -2px 8px rgba(0,0,0,.4), 0 4px 10px rgba(0,0,0,.4);
-}
-.env-flap::before {
-  content: ""; position: absolute; inset: 14px 14px 0 14px;
-  border-top: 1px solid rgba(212, 164, 69, .4);
-  border-left: 1px solid rgba(212, 164, 69, .4);
-  border-right: 1px solid rgba(212, 164, 69, .4);
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-}
-#envelope-screen.opened .env-flap { transform: rotateX(-180deg); }
-
-.wax-stage { position: absolute; left: 50%; top: 50%; width: 130px; height: 130px; transform: translate(-50%, -50%); z-index: 11; cursor: pointer; }
-.wax-stage::before {
-  content: ""; position: absolute; inset: -30px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(212,164,69,.35), transparent 60%);
-  animation: wax-pulse 2.4s ease-in-out infinite; z-index: -1;
-}
-@keyframes wax-pulse { 0%,100% { opacity: .4; transform: scale(.85); } 50% { opacity: .85; transform: scale(1.15); } }
-
-.wax-half {
-  position: absolute; inset: 0;
-  transition: transform 1.1s cubic-bezier(.5, .05, .35, .95), opacity 1s ease .3s;
-}
-.wax-half.left {
-  clip-path: polygon(0 0, 100% 0, 52% 8%, 48% 18%, 53% 28%, 47% 40%, 52% 52%, 48% 64%, 53% 76%, 49% 88%, 52% 100%, 0 100%);
-  transform-origin: right center;
-}
-.wax-half.right {
-  clip-path: polygon(52% 8%, 100% 0, 100% 100%, 52% 100%, 49% 88%, 53% 76%, 48% 64%, 52% 52%, 47% 40%, 53% 28%, 48% 18%);
-  transform-origin: left center;
-}
-#envelope-screen.opened .wax-half.left { transform: translate(-90px, 80px) rotate(-55deg); opacity: 0; }
-#envelope-screen.opened .wax-half.right { transform: translate(90px, 80px) rotate(55deg); opacity: 0; }
-
-.open-hint {
-  position: absolute; bottom: 7%; left: 0; right: 0; text-align: center;
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  color: rgba(232, 199, 121, .85);
-  font-size: 18px; letter-spacing: 2px;
-  animation: hint-bob 2.4s ease-in-out infinite;
-  transition: opacity .4s; z-index: 5;
-}
-.open-hint::before, .open-hint::after { content: ""; display: inline-block; width: 30px; height: 1px; background: rgba(232, 199, 121, .5); vertical-align: middle; margin: 0 14px; }
-@keyframes hint-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-#envelope-screen.opened .open-hint { opacity: 0; }
-
-/* =========================================================
-   MAIN INVITATION
-   ========================================================= */
-#main {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1.4s ease 2.6s, transform 1.4s ease 2.6s;
-  position: relative;
-}
-#main.revealed { opacity: 1; transform: translateY(0); }
-
-section { position: relative; overflow: hidden; }
-
-/* ============== HERO ============== */
+/* ============================================================
+   ACT 2 — HERO SCENE CONTAINER
+   ============================================================ */
 .hero {
-  min-height: 100vh;
-  background:
-    radial-gradient(ellipse at 50% 100%, #4d6128 0%, transparent 60%),
-    radial-gradient(ellipse at top, #3a4a1f 0%, #2a3614 60%, #1c2410 100%);
-  display: flex; align-items: center; justify-content: center;
-  padding: 60px 16px;
   position: relative;
-}
-.hero::before {
-  content: ""; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at center, transparent 30%, rgba(15,20,8,.6) 100%);
-  pointer-events: none; z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh; /* small viewport on mobile */
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom,
+    var(--sky-top) 0%,
+    var(--sky-mid) 25%,
+    var(--sky-low) 45%,
+    var(--sky-horizon) 65%,
+    var(--sky-dusk) 100%
+  );
 }
 
-/* Coconut palm trees in background */
-.palm-back { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-.palm { position: absolute; opacity: .85; }
-.palm-1 { top: -30px; left: -50px; width: 280px; transform: rotate(-12deg); filter: brightness(.7); }
-.palm-2 { top: 60px; left: 8%; width: 220px; transform: rotate(8deg); filter: brightness(.85); opacity: .7; }
-.palm-3 { top: -30px; right: -50px; width: 280px; transform: rotate(12deg) scaleX(-1); filter: brightness(.7); }
-.palm-4 { top: 60px; right: 8%; width: 220px; transform: rotate(-8deg) scaleX(-1); filter: brightness(.85); opacity: .7; }
-
-@keyframes palm-sway {
-  0%,100% { transform: rotate(-12deg) translateY(0); }
-  50% { transform: rotate(-9deg) translateY(-4px); }
+/* On larger screens, hero takes more dramatic space */
+@media (min-width: 768px) {
+  .hero {
+    min-height: 110vh;
+  }
 }
-@keyframes palm-sway-r {
-  0%,100% { transform: rotate(12deg) scaleX(-1) translateY(0); }
-  50% { transform: rotate(9deg) scaleX(-1) translateY(-4px); }
-}
-.palm-1 { animation: palm-sway 8s ease-in-out infinite; }
-.palm-3 { animation: palm-sway-r 8s ease-in-out infinite; animation-delay: -4s; }
 
-/* Foreground banana leaves */
-.leaf-frame > * { position: absolute; pointer-events: none; z-index: 3; }
-.leaf-tl { top: -40px; left: -30px; width: 320px; transform: rotate(20deg); transform-origin: top left; }
-.leaf-tl-2 { top: 30px; left: -90px; width: 220px; transform: rotate(70deg); opacity: .8; }
-.leaf-tr { top: -40px; right: -30px; width: 320px; transform: rotate(-20deg) scaleX(-1); transform-origin: top right; }
-.leaf-tr-2 { top: 30px; right: -90px; width: 220px; transform: rotate(-70deg) scaleX(-1); opacity: .8; }
-.leaf-bl { bottom: -60px; left: -50px; width: 280px; transform: rotate(-30deg); }
-.leaf-bl-2 { bottom: 80px; left: -100px; width: 200px; transform: rotate(30deg); opacity: .75; }
-.leaf-br { bottom: -60px; right: -50px; width: 280px; transform: rotate(30deg) scaleX(-1); }
-.leaf-br-2 { bottom: 80px; right: -100px; width: 200px; transform: rotate(-30deg) scaleX(-1); opacity: .75; }
-
-@keyframes sway-l { 0%,100% { transform: rotate(20deg); } 50% { transform: rotate(24deg); } }
-@keyframes sway-r { 0%,100% { transform: rotate(-20deg) scaleX(-1); } 50% { transform: rotate(-24deg) scaleX(-1); } }
-.leaf-tl { animation: sway-l 7s ease-in-out infinite; }
-.leaf-tr { animation: sway-r 7s ease-in-out infinite; }
-
-/* ============= MARIGOLD GARLAND ============= */
-.garland {
-  position: absolute; top: 0; left: 0; right: 0; height: 130px;
-  z-index: 4; pointer-events: none;
-  display: flex; justify-content: center; align-items: flex-start;
-}
-.garland .strand {
+/* ============================================================
+   LAYER 1 — SKY (clouds, birds, moon, sky lanterns)
+   ============================================================ */
+.sky-layer {
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  inset: 0;
+  z-index: var(--z-sky);
   pointer-events: none;
+}
+
+.cloud {
+  position: absolute;
+  opacity: 0.6;
+  filter: blur(0.5px);
+}
+.cloud-1 { top: 8%; left: -5%; width: 35%; }
+.cloud-2 { top: 15%; right: -3%; width: 28%; }
+.cloud-3 { top: 22%; left: 35%; width: 22%; opacity: 0.45; }
+
+.crescent-moon {
+  position: absolute;
+  top: 6%;
+  right: 12%;
+  width: 8%;
+  max-width: 60px;
+  opacity: 0.85;
+}
+
+.birds-flock {
+  position: absolute;
+  top: 18%;
+  left: 25%;
+  width: 18%;
+  opacity: 0.7;
+}
+
+.sky-lantern {
+  position: absolute;
+  width: 4%;
+  max-width: 30px;
+  opacity: 0.85;
+}
+.lantern-1 { top: 35%; left: 18%; }
+.lantern-2 { top: 28%; left: 65%; }
+.lantern-3 { top: 42%; left: 78%; }
+
+/* ============================================================
+   LAYER 2 — DISTANT HORIZON (gopuram, river, small temples)
+   ============================================================ */
+.horizon-layer {
+  position: absolute;
+  bottom: 35%;
+  left: 0;
+  right: 0;
+  z-index: var(--z-horizon);
+  pointer-events: none;
+}
+
+.gopuram-distant {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  max-width: 500px;
+  opacity: 0.85;
+  filter: brightness(0.85);
+}
+
+.small-temple {
+  position: absolute;
+  bottom: -5%;
+  width: 12%;
+  opacity: 0.75;
+}
+.small-temple-1 { left: 15%; }
+.small-temple-2 { right: 15%; }
+
+.river-godavari {
+  position: absolute;
+  bottom: -10%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  opacity: 0.55;
+}
+
+/* ============================================================
+   LAYER 3 — GARDEN BACKGROUND (palms, trees)
+   ============================================================ */
+.garden-bg-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70%;
+  z-index: var(--z-garden-bg);
+  pointer-events: none;
+}
+
+.tree {
+  position: absolute;
+  bottom: 0;
+  transform-origin: bottom center;
+}
+
+/* Coconut palms — back layer */
+.coconut-1 { left: 2%; bottom: 5%; width: 18%; max-width: 180px; opacity: 0.88; }
+.coconut-2 { right: 3%; bottom: 8%; width: 16%; max-width: 160px; opacity: 0.85; }
+.coconut-3 { left: 22%; bottom: 12%; width: 12%; max-width: 130px; opacity: 0.75; }
+.coconut-4 { right: 28%; bottom: 10%; width: 14%; max-width: 140px; opacity: 0.8; }
+
+/* Mango & other trees */
+.mango-tree { left: 8%; bottom: 3%; width: 16%; max-width: 170px; opacity: 0.85; }
+.neem-tree { right: 12%; bottom: 4%; width: 14%; max-width: 150px; opacity: 0.82; }
+.champa-tree { left: 35%; bottom: 8%; width: 10%; max-width: 120px; opacity: 0.78; }
+
+/* ============================================================
+   LAYER 4 — MID-GROUND BUSHES, VINES & FLOWERS
+   ============================================================ */
+.midground-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  z-index: var(--z-midground);
+  pointer-events: none;
+}
+
+.bush {
+  position: absolute;
+  bottom: 0;
+  transform-origin: bottom center;
+}
+
+/* Hibiscus bushes scattered along the floor */
+.hibiscus-red-1 { left: 4%; bottom: 3%; width: 11%; max-width: 110px; }
+.hibiscus-pink-1 { right: 6%; bottom: 4%; width: 10%; max-width: 100px; }
+.hibiscus-white-1 { left: 25%; bottom: 2%; width: 9%; max-width: 95px; }
+.hibiscus-red-2 { right: 25%; bottom: 3%; width: 9%; max-width: 95px; }
+
+/* Rose bushes */
+.rose-bush-1 { left: 14%; bottom: 5%; width: 9%; max-width: 95px; }
+.rose-bush-2 { right: 15%; bottom: 6%; width: 8%; max-width: 90px; }
+
+/* Marigold bushes — foreground florals */
+.marigold-bush-1 { left: 32%; bottom: 1%; width: 8%; max-width: 80px; }
+.marigold-bush-2 { right: 32%; bottom: 1%; width: 8%; max-width: 80px; }
+
+/* Tulasi at mandap entrance */
+.tulasi-left { left: 18%; bottom: 8%; width: 7%; max-width: 75px; }
+.tulasi-right { right: 18%; bottom: 8%; width: 7%; max-width: 75px; }
+
+/* Bougainvillea cascading from upper sides */
+.bougainvillea-1 {
+  position: absolute;
+  top: 15%;
+  left: -2%;
+  width: 18%;
+  max-width: 200px;
+  transform-origin: top left;
+}
+.bougainvillea-2 {
+  position: absolute;
+  top: 18%;
+  right: -2%;
+  width: 16%;
+  max-width: 180px;
+  transform-origin: top right;
+}
+
+/* Jasmine vines on pillars */
+.jasmine-vine-left {
+  position: absolute;
+  bottom: 12%;
+  left: 12%;
+  width: 6%;
+  max-width: 70px;
+  transform-origin: bottom center;
+}
+.jasmine-vine-right {
+  position: absolute;
+  bottom: 12%;
+  right: 12%;
+  width: 6%;
+  max-width: 70px;
+  transform-origin: bottom center;
+}
+
+/* Lotus pond elements (foreground bottom corners) */
+.lotus-bloom {
+  position: absolute;
+  bottom: 0;
+  width: 6%;
+  max-width: 60px;
+  opacity: 0.95;
+}
+.lotus-1 { left: 8%; bottom: 1%; }
+.lotus-2 { left: 12%; bottom: 0%; width: 5%; }
+.lotus-3 { right: 8%; bottom: 1%; }
+
+.lily-pad {
+  position: absolute;
+  bottom: 0;
+  width: 7%;
+  max-width: 75px;
+  opacity: 0.85;
+}
+.lily-1 { left: 5%; bottom: 0%; }
+.lily-2 { right: 5%; bottom: 0%; }
+
+/* ============================================================
+   LAYER 5 — MANDAP ARCHITECTURE
+   ============================================================ */
+.mandap-layer {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-mandap);
+  pointer-events: none;
+}
+
+/* Mandap pillars flanking the invitation card */
+.mandap-pillar {
+  position: absolute;
+  bottom: 5%;
+  height: 65%;
+}
+.mandap-pillar-left { left: 8%; }
+.mandap-pillar-right { right: 8%; transform: scaleX(-1); }
+
+/* Mango toranams across the top */
+.mango-toranam {
+  position: absolute;
+  top: 8%;
+  width: 32%;
+  max-width: 320px;
+}
+.mango-toranam-left { left: 2%; }
+.mango-toranam-right { right: 2%; transform: scaleX(-1); }
+
+/* Marigold garlands hanging beneath toranams */
+.garland {
+  position: absolute;
   transform-origin: top center;
 }
-.garland .marigold-bloom {
-  width: 32px; height: 32px;
-  margin: 0 -3px;
-  filter: drop-shadow(0 2px 3px rgba(0,0,0,.3));
-  animation: bloom-bob 3s ease-in-out infinite;
+.garland-1 {
+  top: 14%;
+  left: 12%;
+  width: 22%;
+  max-width: 250px;
 }
-.garland .marigold-bloom:nth-child(odd) { animation-delay: -1.5s; }
-@keyframes bloom-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(2px); } }
+.garland-2 {
+  top: 18%;
+  right: 12%;
+  width: 20%;
+  max-width: 230px;
+}
+.garland-3 {
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28%;
+  max-width: 320px;
+}
 
-/* ============= PEACOCKS FLANKING ARCH ============= */
-.peacock {
+/* Jasmine garlands — lighter, lower */
+.jasmine-garland-1 {
   position: absolute;
-  width: 280px; height: 380px;
-  z-index: 4;
-  pointer-events: none;
-  filter: drop-shadow(0 10px 30px rgba(0,0,0,.5));
+  top: 22%;
+  left: 18%;
+  width: 18%;
+  max-width: 200px;
+  transform-origin: top center;
+  opacity: 0.92;
 }
-.peacock-l { bottom: 40px; left: 4%; transform: rotate(-6deg); }
-.peacock-r { bottom: 40px; right: 4%; transform: scaleX(-1) rotate(-6deg); }
-
-/* gentle peacock idle animation */
-@keyframes peacock-idle-l {
-  0%,100% { transform: rotate(-6deg) translateY(0); }
-  50% { transform: rotate(-4deg) translateY(-3px); }
-}
-@keyframes peacock-idle-r {
-  0%,100% { transform: scaleX(-1) rotate(-6deg) translateY(0); }
-  50% { transform: scaleX(-1) rotate(-4deg) translateY(-3px); }
-}
-.peacock-l { animation: peacock-idle-l 5s ease-in-out infinite; }
-.peacock-r { animation: peacock-idle-r 5s ease-in-out infinite; animation-delay: -2.5s; }
-
-/* peacock tail glimmer (subtle) */
-.peacock .pk-tail {
-  filter: drop-shadow(0 0 8px rgba(30, 110, 138, .4));
-}
-
-/* ============= DIYAS ============= */
-.diya {
+.jasmine-garland-2 {
   position: absolute;
-  width: 100px; height: 100px;
-  z-index: 5;
+  top: 24%;
+  right: 18%;
+  width: 18%;
+  max-width: 200px;
+  transform-origin: top center;
+  opacity: 0.92;
+}
+
+/* Puja bells hanging from the mandap beams */
+.puja-bell {
+  position: absolute;
+  width: 5%;
+  max-width: 50px;
+  transform-origin: top center;
+  opacity: 0.95;
+}
+.puja-bell-1 { top: 16%; left: 32%; }
+.puja-bell-2 { top: 16%; right: 32%; }
+
+/* Decorated elephant statues at mandap entrance */
+.elephant-statue {
+  position: absolute;
+  bottom: 8%;
+  width: 13%;
+  max-width: 130px;
+  z-index: var(--z-mandap);
+}
+.elephant-left { left: 2%; }
+.elephant-right { right: 2%; transform: scaleX(-1); }
+
+/* ============================================================
+   LAYER 6 — LIVING SCENE & RITUAL PROPS
+   ============================================================ */
+.living-layer {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-living);
   pointer-events: none;
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,.4));
-}
-.diya-l { bottom: 30px; left: 18%; }
-.diya-r { bottom: 30px; right: 18%; }
-
-/* flame flicker */
-.diya-flame {
-  transform-origin: 52px 38px;
-  animation: flame-flicker 1.4s ease-in-out infinite;
-}
-@keyframes flame-flicker {
-  0% { transform: scale(1, 1) skewX(0deg); }
-  20% { transform: scale(.97, 1.05) skewX(-2deg); }
-  40% { transform: scale(1.03, .98) skewX(1.5deg); }
-  60% { transform: scale(.98, 1.04) skewX(-1deg); }
-  80% { transform: scale(1.02, .97) skewX(2deg); }
-  100% { transform: scale(1, 1) skewX(0deg); }
 }
 
-/* ============= ARCH ============= */
-.arch-stage {
-  position: relative;
-  width: min(560px, 92vw);
-  z-index: 6;
-  filter: drop-shadow(0 30px 60px rgba(0,0,0,.5));
-  margin-top: 40px;
-}
-
+/* Kalasham (sacred pot) — top center over arch */
 .kalasham {
   position: absolute;
-  top: -110px; left: 50%;
-  width: 110px;
+  top: 5%;
+  left: 50%;
   transform: translateX(-50%);
-  z-index: 8;
-  filter: drop-shadow(0 8px 16px rgba(0,0,0,.4));
+  width: 13%;
+  max-width: 110px;
+  z-index: var(--z-living);
 }
 
-.arch-svg { width: 100%; height: auto; display: block; }
-
-.arch-content {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column; align-items: center;
-  padding: 9% 11% 7%;
-  text-align: center;
-}
-
-.kolam { width: 50px; height: 50px; margin-bottom: 14px; }
-
-.bless { font-family: 'Tiro Telugu', serif; font-size: 18px; color: var(--maroon); letter-spacing: .5px; margin-bottom: 8px; }
-.together { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--ink-soft); margin-bottom: 24px; }
-
-.couple { display: flex; flex-direction: column; align-items: center; margin: 8px 0 18px; width: 100%; }
-.name {
-  font-family: 'Cinzel', serif; font-weight: 500;
-  font-size: clamp(28px, 5.4vw, 46px);
-  letter-spacing: .18em;
-  color: var(--maroon-deep);
-  line-height: 1;
-}
-.name .ltr { display: inline-block; opacity: 0; transform: translateY(20px); }
-
-.amp {
-  font-family: 'Italianno', cursive;
-  font-size: clamp(50px, 8vw, 72px);
-  color: var(--gold);
-  line-height: 1; margin: 6px 0 4px;
-  position: relative;
-}
-.amp::before, .amp::after { content: ""; position: absolute; top: 55%; width: 36px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
-.amp::before { right: calc(100% + 14px); }
-.amp::after { left: calc(100% + 14px); background: linear-gradient(90deg, var(--gold), transparent); }
-
-.invite-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; color: var(--ink-soft); line-height: 1.6; margin: 18px 0 14px; max-width: 380px; }
-.date-block { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: .3em; color: var(--maroon-deep); margin-top: 8px; }
-.date-block .pipe { color: var(--gold); margin: 0 8px; }
-.time-line { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--ink-soft); margin-top: 8px; }
-.venue-line { font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: .18em; color: var(--maroon); text-transform: uppercase; margin-top: 14px; font-weight: 400; }
-
-.scroll-cue {
-  position: absolute; bottom: 20px; left: 50%;
-  transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  color: rgba(245, 236, 214, .65);
-  font-size: 10px; letter-spacing: .4em;
-  text-transform: uppercase;
-  z-index: 7;
-  animation: cue-bounce 2.5s ease-in-out infinite;
-}
-.scroll-cue svg { width: 16px; height: 16px; }
-@keyframes cue-bounce { 0%,100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
-
-/* Section heads */
-.section-head { text-align: center; margin-bottom: 60px; position: relative; z-index: 2; }
-.eyebrow { font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: .5em; text-transform: uppercase; color: var(--gold-deep); font-weight: 500; }
-.s-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: clamp(34px, 5vw, 50px); color: var(--maroon-deep); margin-top: 14px; line-height: 1.1; }
-.s-rule { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 18px; color: var(--gold); }
-.s-rule .ln { height: 1px; width: 60px; background: linear-gradient(90deg, transparent, currentColor, transparent); }
-.s-rule .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-
-/* ============== EVENTS ============== */
-.events { background: radial-gradient(ellipse at top, #fbf3df, #f0e5c5); padding: 120px 16px 100px; }
-.events::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, transparent, var(--gold-light), transparent); }
-.events-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
-
-.event {
-  position: relative; text-align: center;
-  padding: 50px 22px 36px;
-  background: linear-gradient(180deg, var(--cream-warm) 0%, var(--cream) 100%);
-  clip-path: polygon(0 60px, 15% 18px, 30% 4px, 50% 0, 70% 4px, 85% 18px, 100% 60px, 100% 100%, 0 100%);
-  box-shadow: 0 18px 40px -16px rgba(60, 40, 10, .18);
-  transition: transform .6s cubic-bezier(.2, .7, .2, 1);
-}
-.event::before { content: ""; position: absolute; left: 14px; right: 14px; top: 54px; bottom: 14px; border: 1px solid rgba(184, 137, 58, .35); pointer-events: none; }
-.event::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 62px; background: linear-gradient(180deg, rgba(184, 137, 58, .12), transparent); }
-.event:hover { transform: translateY(-6px); }
-
-.evt-badge { width: 50px; height: 50px; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, #7e2333, #4a131e); box-shadow: 0 6px 16px rgba(94, 26, 38, .3), inset 0 0 0 1px rgba(212, 164, 69, .5); position: relative; z-index: 2; }
-.evt-badge svg { width: 24px; height: 24px; fill: var(--gold-soft); }
-.evt-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 600; font-size: 24px; color: var(--maroon-deep); margin-bottom: 10px; position: relative; z-index: 2; }
-.evt-divider { width: 36px; height: 1px; background: var(--gold); margin: 8px auto 14px; position: relative; }
-.evt-divider::after { content: ""; position: absolute; left: 50%; top: 50%; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); transform: translate(-50%, -50%); box-shadow: 0 0 0 2px var(--cream); }
-.evt-line { font-size: 13px; color: var(--ink-soft); margin: 6px 0; letter-spacing: .05em; }
-.evt-venue { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; color: var(--olive-mid); margin-top: 12px; line-height: 1.5; }
-
-.event.featured { background: linear-gradient(180deg, #fff8e2, #f5e7c0); box-shadow: 0 22px 50px -16px rgba(184, 137, 58, .35); }
-.event.featured .evt-badge { background: linear-gradient(135deg, #d4a445, #8a6320); }
-.event.featured::before { border-color: rgba(184, 137, 58, .6); }
-
-/* ============== COUNTDOWN ============== */
-.countdown {
-  background: radial-gradient(ellipse at center, #3a4a1f 0%, #1f2a10 100%);
-  color: var(--cream);
-  padding: 120px 16px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* warm diya glows in dark countdown */
-.cd-glow {
-  position: absolute; border-radius: 50%;
-  filter: blur(60px);
-  pointer-events: none;
-}
-.cd-glow-1 { width: 400px; height: 400px; left: -100px; top: 10%; background: radial-gradient(circle, rgba(255, 184, 74, .3), transparent 60%); animation: glow-pulse-1 5s ease-in-out infinite; }
-.cd-glow-2 { width: 300px; height: 300px; right: -60px; bottom: 20%; background: radial-gradient(circle, rgba(232, 115, 42, .25), transparent 60%); animation: glow-pulse-2 7s ease-in-out infinite; }
-.cd-glow-3 { width: 250px; height: 250px; left: 40%; top: 50%; background: radial-gradient(circle, rgba(212, 164, 69, .2), transparent 60%); animation: glow-pulse-1 9s ease-in-out infinite; }
-@keyframes glow-pulse-1 { 0%,100% { opacity: .4; transform: scale(1); } 50% { opacity: .8; transform: scale(1.1); } }
-@keyframes glow-pulse-2 { 0%,100% { opacity: .3; transform: scale(1); } 50% { opacity: .7; transform: scale(1.15); } }
-
-.countdown .eyebrow { color: var(--gold-soft); }
-.countdown .s-title { color: var(--cream-warm); }
-.countdown .s-rule { color: var(--gold-soft); }
-
-.cd-grid { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; position: relative; z-index: 2; }
-.cd-cell { position: relative; padding: 30px 8px 22px; background: linear-gradient(160deg, rgba(245, 236, 214, .08), rgba(245, 236, 214, .02)); border: 1px solid rgba(212, 164, 69, .4); border-radius: 2px; text-align: center; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); overflow: hidden; }
-.cd-cell::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-soft), transparent); }
-.cd-cell::after { content: ""; position: absolute; inset: 5px; border: .5px solid rgba(212, 164, 69, .18); pointer-events: none; }
-.cd-num { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(36px, 6vw, 54px); line-height: 1; color: var(--gold-soft); display: block; font-variant-numeric: tabular-nums; text-shadow: 0 2px 12px rgba(212, 164, 69, .3); }
-.cd-lbl { font-family: 'DM Sans', sans-serif; font-size: 9px; letter-spacing: .4em; text-transform: uppercase; color: rgba(245, 236, 214, .6); margin-top: 10px; display: block; font-weight: 300; }
-.cd-msg { text-align: center; margin-top: 32px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--gold-soft); position: relative; z-index: 2; }
-
-/* ============== MESSAGE ============== */
-.message { background: radial-gradient(ellipse at top, #fbf3df, #f0e5c5); padding: 130px 16px 110px; position: relative; }
-
-.msg-marigold-tl, .msg-marigold-br {
+/* Ganesha symbol above arch */
+.ganesha-symbol {
   position: absolute;
-  display: flex;
-  z-index: 1;
+  top: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7%;
+  max-width: 60px;
+  opacity: 0.95;
 }
-.msg-marigold-tl { top: 30px; left: 30px; }
-.msg-marigold-tl svg { width: 56px; height: 56px; margin-right: -10px; filter: drop-shadow(0 3px 6px rgba(0,0,0,.2)); }
-.msg-marigold-tl svg:nth-child(2) { transform: translateY(20px); }
-.msg-marigold-tl svg:nth-child(3) { transform: translateY(-10px); }
-.msg-marigold-br { bottom: 30px; right: 30px; }
-.msg-marigold-br svg { width: 56px; height: 56px; margin-right: -10px; filter: drop-shadow(0 3px 6px rgba(0,0,0,.2)); }
-.msg-marigold-br svg:nth-child(2) { transform: translateY(15px); }
-.msg-marigold-br svg:nth-child(3) { transform: translateY(-15px); }
 
-.msg-wrap { max-width: 680px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
-.qmark { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 80px; color: var(--gold); line-height: .4; display: block; }
-.msg-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(20px, 2.6vw, 26px); line-height: 1.7; color: var(--maroon-deep); margin: 30px 0; font-weight: 500; }
-.msg-sign { font-family: 'Italianno', cursive; font-size: 48px; color: var(--maroon); margin-top: 20px; line-height: 1; }
-.msg-sub { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .5em; color: var(--gold-deep); margin-top: 8px; text-transform: uppercase; }
+/* Peacocks flanking the invitation card */
+.peacock {
+  position: absolute;
+  bottom: 18%;
+  width: 18%;
+  max-width: 180px;
+}
+.peacock-left {
+  left: 5%;
+}
+.peacock-right {
+  right: 5%;
+  transform: scaleX(-1);
+}
 
-.msg-leaf-l, .msg-leaf-r { position: absolute; width: 140px; opacity: .3; z-index: 1; pointer-events: none; }
-.msg-leaf-l { top: -30px; left: -30px; transform: rotate(-30deg); }
-.msg-leaf-r { bottom: -30px; right: -30px; transform: rotate(150deg); }
+/* Brass diyas — row across foreground floor */
+.diya {
+  position: absolute;
+  bottom: 1%;
+  width: 6%;
+  max-width: 55px;
+}
+.diya-1 { left: 8%; }
+.diya-2 { left: 20%; }
+.diya-3 { left: 32%; }
+.diya-4 { left: 44%; }
+.diya-5 { left: 50%; transform: translateX(-50%); }
+.diya-6 { right: 44%; }
+.diya-7 { right: 32%; }
+.diya-8 { right: 20%; }
+.diya-9 { right: 8%; }
 
-/* ============== FOOTER ============== */
-.footer {
-  background: linear-gradient(180deg, #3a4a1f 0%, #1f2a10 100%);
-  padding: 80px 16px 50px;
-  text-align: center;
-  color: var(--cream);
-  position: relative;
+/* ============================================================
+   LAYER 7 — ATMOSPHERIC FOREGROUND
+   ============================================================ */
+.foreground-layer {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-foreground);
+  pointer-events: none;
   overflow: hidden;
 }
-.footer::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 24px; background-image: radial-gradient(ellipse 14px 24px at 50% 0%, #3a4a1f 50%, transparent 51%); background-size: 28px 24px; background-repeat: repeat-x; background-position: center top; transform: translateY(-100%); }
 
-.ftr-garland {
-  position: absolute; top: 18px; left: 0; right: 0; height: 50px;
-  display: flex; justify-content: center; align-items: flex-start;
+/* Kolam floor patterns */
+.kolam {
+  position: absolute;
+  bottom: 2%;
+  width: 14%;
+  max-width: 140px;
+  opacity: 0.7;
+}
+.kolam-center {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1%;
+  width: 18%;
+  max-width: 180px;
+}
+.kolam-left { left: 22%; }
+.kolam-right { right: 22%; }
+
+/* Falling petals — multiple instances created by JS */
+.petal {
+  position: absolute;
+  width: 1.5%;
+  max-width: 18px;
+  opacity: 0.8;
   pointer-events: none;
 }
-.ftr-names { font-family: 'Cinzel', serif; font-size: clamp(20px, 3.2vw, 28px); letter-spacing: .18em; font-weight: 500; color: var(--gold-soft); line-height: 1.4; margin-top: 30px; }
-.ftr-amp { font-family: 'Italianno', cursive; font-size: 42px; color: var(--gold); line-height: 1; display: block; margin: 6px 0; }
-.ftr-date { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; margin-top: 10px; color: rgba(245, 236, 214, .7); letter-spacing: .1em; }
-.ftr-bless { margin-top: 24px; font-family: 'Tiro Telugu', serif; font-size: 14px; color: rgba(232, 199, 121, .75); letter-spacing: 1px; }
-.ftr-tiny { margin-top: 30px; font-size: 9px; letter-spacing: .4em; color: rgba(245, 236, 214, .4); text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
 
-/* ============== Floating petals ============== */
-.petal-field { position: fixed; inset: 0; pointer-events: none; z-index: 50; overflow: hidden; }
-.petal-jasmine, .petal-marigold {
-  position: absolute; top: -30px;
-  animation: petal-fall linear infinite;
+/* Firefly lights — twinkling spots */
+.firefly {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 120, 1) 0%, rgba(255, 200, 80, 0.5) 40%, rgba(255, 180, 60, 0) 70%);
+  box-shadow: 0 0 12px rgba(255, 220, 120, 0.8);
+  pointer-events: none;
   opacity: 0;
 }
-@keyframes petal-fall {
-  0% { transform: translateY(-30px) rotate(0deg) translateX(0); opacity: 0; }
-  10% { opacity: .9; }
-  50% { transform: translateY(50vh) rotate(180deg) translateX(20px); }
-  90% { opacity: .9; }
-  100% { transform: translateY(105vh) rotate(360deg) translateX(-15px); opacity: 0; }
+
+/* Incense smoke wisp */
+.incense-smoke {
+  position: absolute;
+  bottom: 10%;
+  width: 8%;
+  max-width: 80px;
+  opacity: 0.3;
+}
+.smoke-1 { left: 25%; }
+.smoke-2 { right: 25%; }
+
+/* Light rays */
+.light-rays {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 60%;
+  opacity: 0.35;
+  pointer-events: none;
+  mix-blend-mode: screen;
 }
 
-/* ============== Responsive ============== */
-@media (max-width: 760px) {
-  .peacock { width: 160px; height: 220px; }
-  .peacock-l { left: -2%; bottom: 20px; }
-  .peacock-r { right: -2%; bottom: 20px; }
-  .palm-1, .palm-3 { width: 200px; }
-  .palm-2, .palm-4 { display: none; }
-  .diya { width: 70px; height: 70px; }
-  .diya-l { left: 40%; bottom: 6px; }
-  .diya-r { right: 40%; bottom: 6px; }
-  .kalasham { width: 80px; top: -80px; }
-  .leaf-tl, .leaf-tr { width: 220px; }
-  .leaf-tl-2, .leaf-tr-2 { display: none; }
-  .leaf-bl, .leaf-br { width: 200px; }
-  .leaf-bl-2, .leaf-br-2 { display: none; }
-  .arch-content { padding: 8% 9% 6%; }
-  .name { font-size: 26px; letter-spacing: .14em; }
-  .invite-text { font-size: 13px; }
-  .cd-grid { gap: 8px; }
-  .cd-cell { padding: 20px 4px 14px; }
-  .cd-lbl { font-size: 8px; letter-spacing: .2em; }
-  .events { padding: 90px 14px 70px; }
-  .countdown { padding: 90px 14px; }
-  .message { padding: 90px 14px; }
-  .msg-marigold-tl, .msg-marigold-br { display: none; }
-  .msg-text { font-size: 18px; }
-  .qmark { font-size: 60px; }
-  .msg-sign { font-size: 38px; }
-  .ftr-amp { font-size: 34px; }
-  .music-btn { width: 42px; height: 42px; top: 14px; right: 14px; }
-  .wax-stage { width: 100px; height: 100px; }
-  .garland { height: 100px; }
+/* ============================================================
+   THE INVITATION CARD (centerpiece)
+   ============================================================ */
+.invitation-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: var(--z-card);
+  width: 88%;
+  max-width: 520px;
+  padding: var(--space-lg) var(--space-md);
+  background: rgba(251, 243, 223, 0.92);
+  border-radius: 8px 8px 200px 200px / 8px 8px 100px 100px;
+  border: 1px solid rgba(184, 137, 58, 0.4);
+  box-shadow:
+    0 0 0 1px rgba(184, 137, 58, 0.15),
+    0 20px 60px rgba(94, 26, 38, 0.25),
+    0 8px 25px rgba(94, 26, 38, 0.15);
+  text-align: center;
+  backdrop-filter: blur(2px);
 }
-@media (max-width: 420px) {
-  .events-grid { gap: 18px; }
-  .peacock { width: 130px; height: 180px; }
-  .peacock-l { left: -8%; }
-  .peacock-r { right: -8%; }
+
+/* Inner decorative border */
+.invitation-card::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(184, 137, 58, 0.5);
+  border-radius: 4px 4px 190px 190px / 4px 4px 90px 90px;
+  pointer-events: none;
+}
+
+/* Card content typography */
+.invocation {
+  font-family: 'Noto Serif Telugu', serif;
+  font-size: 0.95rem;
+  color: var(--maroon);
+  margin-bottom: 0.25rem;
+  letter-spacing: 1px;
+}
+
+.subhalekha-title {
+  font-family: 'Noto Serif Telugu', serif;
+  font-size: 1.4rem;
+  color: var(--maroon-deep);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  letter-spacing: 2px;
+}
+
+.subhalekha-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--gold-deep);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+
+.invitation-intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin-bottom: var(--space-md);
+}
+
+.couple-names {
+  margin: var(--space-md) 0;
+}
+
+.bride-name, .groom-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--maroon-deep);
+  letter-spacing: 3px;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+  /* Each letter wrapped in span by JS for letter-by-letter animation */
+}
+
+.parent-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.5px;
+  margin-bottom: var(--space-sm);
+  line-height: 1.4;
+}
+
+.ampersand {
+  font-family: 'Italianno', cursive;
+  font-size: 2.6rem;
+  color: var(--gold);
+  line-height: 1;
+  margin: 0.2rem 0;
+}
+
+.wedding-date {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--maroon);
+  letter-spacing: 2px;
+  margin-top: var(--space-md);
+}
+
+.wedding-time {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  color: var(--gold-deep);
+  letter-spacing: 2.5px;
+  margin-top: 0.3rem;
+}
+
+.wedding-venue {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-top: 0.4rem;
+  letter-spacing: 0.3px;
+}
+
+/* Card dividers */
+.card-divider {
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: var(--space-sm) auto;
+  border: none;
+}
+
+.divider-symbol {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 0.8rem;
+  margin: 0 4px;
+}
+
+/* ============================================================
+   INITIAL STATES (for GSAP to animate FROM)
+   ============================================================ */
+
+/* Names start invisible — JS animates letter-by-letter */
+.bride-name span,
+.groom-name span {
+  display: inline-block;
+  opacity: 0;
+}
+
+/* Card elements that fade up after the names */
+.invocation,
+.subhalekha-title,
+.subhalekha-en,
+.invitation-intro,
+.parent-line,
+.ampersand,
+.wedding-date,
+.wedding-time,
+.wedding-venue,
+.card-divider {
+  opacity: 0;
+}
+
+/* Hero plants start invisible until orchestrated entry */
+.tree, .bush, .peacock, .kalasham, .ganesha-symbol,
+.garland, .jasmine-garland-1, .jasmine-garland-2,
+.mango-toranam, .mandap-pillar, .elephant-statue,
+.diya, .kolam, .puja-bell {
+  opacity: 0;
+}
+
+/* Card starts hidden, scales up dramatically */
+.invitation-card {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.92);
+}
+
+/* ============================================================
+   MOBILE-FIRST TYPOGRAPHY ADJUSTMENTS
+   ============================================================ */
+
+/* Tablets and small laptops */
+@media (min-width: 640px) {
+  .invitation-card {
+    padding: var(--space-xl) var(--space-lg);
+    max-width: 560px;
+  }
+  .subhalekha-title { font-size: 1.8rem; }
+  .bride-name, .groom-name { font-size: 1.7rem; }
+  .ampersand { font-size: 3.4rem; }
+  .invitation-intro { font-size: 0.95rem; }
+  .parent-line { font-size: 0.8rem; }
+  .wedding-date { font-size: 1rem; }
+  .wedding-time { font-size: 0.85rem; }
+  .wedding-venue { font-size: 0.9rem; }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .invitation-card {
+    max-width: 620px;
+    padding: var(--space-2xl) var(--space-xl);
+  }
+  .subhalekha-title { font-size: 2rem; }
+  .bride-name, .groom-name { font-size: 2rem; letter-spacing: 4px; }
+  .ampersand { font-size: 4rem; }
+  .invitation-intro { font-size: 1rem; }
+  .parent-line { font-size: 0.85rem; }
+  .wedding-date { font-size: 1.15rem; letter-spacing: 3px; }
+  .wedding-time { font-size: 0.95rem; }
+  .wedding-venue { font-size: 1rem; }
+}
+
+/* Wide desktop — more breathing room */
+@media (min-width: 1440px) {
+  .invitation-card {
+    max-width: 680px;
+  }
+}
+
+/* ============================================================
+   MOBILE DENSITY ADJUSTMENTS — hide some assets on small screens
+   ============================================================ */
+@media (max-width: 640px) {
+  /* Reduce density on mobile for performance + visibility */
+  .coconut-3, .coconut-4,
+  .champa-tree, .neem-tree,
+  .hibiscus-white-1, .hibiscus-red-2,
+  .rose-bush-2,
+  .marigold-bush-2,
+  .lotus-3, .lily-2,
+  .diya-2, .diya-4, .diya-6, .diya-8,
+  .kolam-left, .kolam-right,
+  .cloud-3, .lantern-3,
+  .small-temple-2 {
+    display: none;
+  }
+
+  /* Adjust positioning for mobile-specific layout */
+  .peacock { width: 22%; }
+  .kalasham { width: 16%; }
+}
+
+/* ============================================================
+   ACCESSIBILITY: respect reduced motion preference
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   END OF STAGE 2 CSS
+   ============================================================ */
+
+/* ============================================================
+   CSS-ONLY SKY ATMOSPHERE (replaces missing PNG assets)
+   ============================================================ */
+
+/* Soft cloud blobs using radial gradients with blur */
+.css-cloud {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.35;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center,
+    rgba(255, 240, 220, 0.8) 0%,
+    rgba(255, 230, 200, 0.4) 40%,
+    rgba(255, 220, 180, 0) 70%);
+}
+.css-cloud-1 {
+  top: 6%;
+  left: -8%;
+  width: 45%;
+  height: 12%;
+}
+.css-cloud-2 {
+  top: 14%;
+  right: -5%;
+  width: 38%;
+  height: 10%;
+  opacity: 0.28;
+}
+.css-cloud-3 {
+  top: 20%;
+  left: 30%;
+  width: 28%;
+  height: 8%;
+  opacity: 0.22;
+}
+
+/* CSS-drawn crescent moon */
+.css-moon {
+  position: absolute;
+  top: 6%;
+  right: 12%;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: -12px 8px 0 0 rgba(255, 240, 200, 0.85);
+  opacity: 0.85;
+  pointer-events: none;
+  filter: blur(0.5px);
+}
+@media (min-width: 768px) {
+  .css-moon {
+    width: 64px;
+    height: 64px;
+    box-shadow: -16px 10px 0 0 rgba(255, 240, 200, 0.85);
+  }
+}
+
+/* CSS golden light rays — radial cone from above */
+.css-light-rays {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 65%;
+  pointer-events: none;
+  background:
+    conic-gradient(from 170deg at 50% 0%,
+      transparent 0deg,
+      transparent 175deg,
+      rgba(255, 220, 150, 0.18) 180deg,
+      rgba(255, 230, 170, 0.25) 185deg,
+      rgba(255, 220, 150, 0.18) 190deg,
+      transparent 195deg,
+      transparent 360deg);
+  mix-blend-mode: screen;
+  opacity: 0.6;
+  filter: blur(2px);
+}
+
+/* Hide image-based sky elements that don't exist */
+.cloud, .crescent-moon, .birds-flock, .sky-lantern, .light-rays {
+  display: none !important;
 }

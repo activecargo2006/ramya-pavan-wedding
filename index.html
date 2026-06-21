@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#f5ecd9" />
+<meta name="theme-color" content="#faf4e6" />
 <title>Sri Ramya &amp; Pavan Chowdary · 27 August 2026</title>
 <meta name="description" content="With the blessings of elders, we invite you to the wedding of Sri Ramya and Pavan Chowdary — 27 August 2026 at Cherukuri Gardens, Rajahmundry." />
 
@@ -13,139 +13,125 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Noto+Serif+Telugu:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Tangerine:wght@400;700&family=Noto+Serif+Telugu:wght@400;500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
 
 <!-- ============================================================
-     WELCOME OVERLAY (Daybreak — warm glow expands from center)
+     WELCOME OVERLAY — gold sunburst dissolves into the cover
      ============================================================ -->
 <div class="welcome-veil" id="welcomeVeil" aria-hidden="true">
-  <div class="veil-sky"></div>
-  <div class="veil-sun"></div>
+  <div class="veil-bg"></div>
+  <div class="veil-rays"></div>
   <div class="veil-center">
     <img src="assets/images/ganesha-gold.png" alt="" class="veil-ganesha">
     <p class="veil-text">శుభలేఖ</p>
-    <p class="veil-sub">Wedding Invitation</p>
+    <p class="veil-sub">Subhalekha</p>
   </div>
 </div>
 
 <!-- ============================================================
-     1. COVER  —  Full-bleed temple grove
+     1. COVER  —  Ivory paper, ornate gold corners, single thoranam
      ============================================================ -->
 <section class="page cover" id="cover">
-  <!-- Marigold garland pinned flush to the top edge.
-       Wrapped + overflow:hidden so we crop out the empty space the
-       2000x2000 asset has above the arch — otherwise the marigolds
-       render in the middle of the page, not at the top. -->
-  <div class="decor-top-garland-wrap">
+  <!-- Thoranam at very top — wrapped to crop empty asset header -->
+  <div class="thoranam">
     <img src="assets/images/marigold-garland-3.png" alt="">
   </div>
 
-  <!-- Massive temple silhouette filling the lower scene -->
-  <img class="decor decor-gopuram parallax-lg" src="assets/images/gopuram-silhouette.png" alt="">
-
-  <!-- LEFT edge: coconut tree + banana tree (mirrored on right with identical assets) -->
-  <img class="decor decor-coconut-l parallax-sm" src="assets/images/coconut-tree-3.png" alt="">
-  <img class="decor decor-banana-l  parallax"    src="assets/images/banana-tree-large.png" alt="">
-
-  <!-- RIGHT edge: exact mirror of left -->
-  <img class="decor decor-coconut-r parallax-sm" src="assets/images/coconut-tree-3.png" alt="">
-  <img class="decor decor-banana-r  parallax"    src="assets/images/banana-tree-large.png" alt="">
-
-  <!-- Foreground: peacocks + central diya -->
-  <img class="decor decor-peacock-l"    src="assets/images/peacock-left.png"  alt="">
-  <img class="decor decor-peacock-r"    src="assets/images/peacock-right.png" alt="">
-  <img class="decor decor-diya-center flicker" src="assets/images/diya-brass.png" alt="">
+  <!-- Four ornate gold corners frame the page -->
+  <img class="corner corner-tl" src="assets/images/ornate-corner-1.png" alt="">
+  <img class="corner corner-tr" src="assets/images/ornate-corner-1.png" alt="">
+  <img class="corner corner-bl" src="assets/images/ornate-corner-1.png" alt="">
+  <img class="corner corner-br" src="assets/images/ornate-corner-1.png" alt="">
 
   <div class="page-inner">
-    <img class="ganesha-cover" src="assets/images/ganesha-gold.png" alt="Ganesha">
+    <img class="ganesha" src="assets/images/ganesha-gold.png" alt="Ganesha">
     <p class="invocation">॥ శ్రీ గణేశాయ నమః ॥</p>
-    <h2 class="subhalekha shimmer">శుభలేఖ</h2>
-    <p class="subhalekha-en">Subhalekha · Wedding Invitation</p>
 
-    <h1 class="cover-names">
-      Sri Ramya
-      <span class="name-amp">&amp;</span>
-      Pavan Chowdary
+    <p class="eyebrow">Subhalekha · Wedding Invitation</p>
+
+    <h1 class="couple">
+      <span class="couple-name">Sri Ramya</span>
+      <span class="couple-amp">weds</span>
+      <span class="couple-name">Pavan Chowdary</span>
     </h1>
 
-    <p class="cover-date">Thursday · 27 August 2026</p>
-    <p class="cover-venue">Cherukuri Gardens · Rajahmundry</p>
+    <div class="cover-meta">
+      <p class="cover-date">Thursday · 27 August 2026</p>
+      <p class="cover-venue">Cherukuri Gardens · Rajahmundry</p>
+    </div>
+
+    <div class="cover-rule"><span class="leaf"></span></div>
   </div>
 
-  <a href="#invitation" class="scroll-hint">Scroll</a>
+  <a href="#invitation" class="scroll-hint" aria-label="Scroll to next section">
+    <span>scroll</span>
+  </a>
 </section>
 
 
 <!-- ============================================================
-     2. INVITATION
+     2. INVITATION  —  Soft paisley wash, formal request
      ============================================================ -->
 <section class="page invitation" id="invitation">
-  <img class="decor decor-leaves-tr"   src="assets/images/banana-leaf-2.png"    alt="">
-
-  <!-- Bell hangs from the top via a chain anchor -->
-  <span class="hangs hangs-bell">
-    <img src="assets/images/puja-bell.png" alt="">
-  </span>
-
-  <img class="decor decor-lotus-bl"        src="assets/images/lotus-pink-bloom.png" alt="">
-  <img class="decor decor-diya-bl flicker" src="assets/images/diya-brass.png"       alt="">
-  <img class="decor decor-kalasham-bl"     src="assets/images/kalasham.png"         alt="">
+  <img class="paisley paisley-top" src="assets/images/border-paisley.png" alt="">
 
   <div class="page-inner">
     <p class="eyebrow">With the blessings of elders</p>
-    <div class="divider divider-wide"></div>
+    <div class="rule"><span class="leaf"></span></div>
 
-    <p class="invite-intro">
-      We joyfully request the honour of your presence<br>
-      at the auspicious wedding ceremony of our beloved children
+    <p class="invite-intro reveal">
+      Together with our families,<br>
+      we joyfully request the honour of your presence<br>
+      at the auspicious wedding of our beloved children
     </p>
 
-    <div class="person-block reveal-left">
-      <p class="person-role">The Bride</p>
-      <h2 class="person-name">Sri Ramya</h2>
-      <p class="person-parents-label">Daughter of</p>
-      <p class="person-parents">
-        Sri Boppana Achyuta Ramayya<br>
-        &amp; Smt. Sirisha
-      </p>
-    </div>
+    <div class="couple-grid">
+      <article class="person reveal-left">
+        <p class="person-role">The Bride</p>
+        <h2 class="person-name">Sri Ramya</h2>
+        <p class="person-sub">Daughter of</p>
+        <p class="person-parents">
+          Sri Boppana Achyuta Ramayya<br>
+          &amp; Smt. Sirisha
+        </p>
+      </article>
 
-    <div class="script-amp reveal-scale">&amp;</div>
+      <div class="couple-divider reveal-scale" aria-hidden="true">
+        <span class="ampersand">&amp;</span>
+      </div>
 
-    <div class="person-block reveal-right">
-      <p class="person-role">The Groom</p>
-      <h2 class="person-name">Pavan Chowdary</h2>
-      <p class="person-parents-label">Son of</p>
-      <p class="person-parents">
-        Sri Deepthi Murali Krishna<br>
-        &amp; Smt. Aruna
-      </p>
+      <article class="person reveal-right">
+        <p class="person-role">The Groom</p>
+        <h2 class="person-name">Pavan Chowdary</h2>
+        <p class="person-sub">Son of</p>
+        <p class="person-parents">
+          Sri Deepthi Murali Krishna<br>
+          &amp; Smt. Aruna
+        </p>
+      </article>
     </div>
   </div>
+
+  <img class="paisley paisley-bottom" src="assets/images/border-paisley.png" alt="">
 </section>
 
 
 <!-- ============================================================
-     3. MUHURTHAM + COUNTDOWN
+     3. MUHURTHAM  —  Midnight + gold · time, countdown, programme
      ============================================================ -->
 <section class="page muhurtham" id="muhurtham">
-  <!-- Hanging lamp suspended from top -->
-  <span class="hangs hangs-lamp">
-    <img src="assets/images/hanging-lamp.png" alt="">
-  </span>
-  <img class="decor decor-kalasham-bl" src="assets/images/kalasham-decorated.png" alt="">
-  <img class="decor decor-lotus-bl"    src="assets/images/lotus-white-bloom.png" alt="">
+  <div class="starfield" aria-hidden="true"></div>
 
   <div class="page-inner">
-    <p class="eyebrow">The Auspicious Hour</p>
+    <p class="eyebrow eyebrow-dark">The Auspicious Hour</p>
     <h2 class="muhurtham-title">Muhurtham</h2>
-    <div class="divider"></div>
+    <div class="rule rule-dark"><span class="leaf"></span></div>
 
-    <p class="muhurtham-time">11:47 AM</p>
+    <p class="muhurtham-time reveal-scale">11 : 47 AM</p>
     <p class="muhurtham-date">Thursday · 27 August 2026</p>
 
     <div class="countdown reveal-stagger" id="countdown" aria-live="polite">
@@ -169,55 +155,69 @@
 
     <div class="programme reveal">
       <p class="programme-title">Wedding Day Ceremonies</p>
-      <ul class="programme-list reveal-stagger">
-        <li>Snathakam</li>
-        <li>Kashi Yatra</li>
-        <li>Mangalasnanam</li>
-        <li class="is-highlight">Muhurtham</li>
-        <li>Talambralu</li>
-        <li>Aksharabhyasam</li>
-        <li>Reception</li>
-      </ul>
+      <ol class="programme-list reveal-stagger">
+        <li><span class="prog-time">07:00 AM</span><span class="prog-name">Snathakam</span></li>
+        <li><span class="prog-time">08:30 AM</span><span class="prog-name">Kashi Yatra</span></li>
+        <li><span class="prog-time">10:00 AM</span><span class="prog-name">Mangalasnanam</span></li>
+        <li class="is-highlight"><span class="prog-time">11:47 AM</span><span class="prog-name">Muhurtham</span></li>
+        <li><span class="prog-time">12:45 PM</span><span class="prog-name">Talambralu</span></li>
+        <li><span class="prog-time">02:00 PM</span><span class="prog-name">Aksharabhyasam</span></li>
+        <li><span class="prog-time">07:00 PM</span><span class="prog-name">Reception</span></li>
+      </ol>
     </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     4. VENUE
+     4. VENUE  —  Warm peach, venue card with directions
      ============================================================ -->
 <section class="page venue" id="venue">
-  <img class="decor decor-gopuram       parallax-sm" src="assets/images/gopuram-detailed.png"  alt="">
-  <img class="decor decor-bougainvillea parallax"    src="assets/images/bougainvillea-pink.png" alt="">
+  <img class="venue-feather parallax-sm" src="assets/images/peacock-feather-single.png" alt="">
 
   <div class="page-inner">
     <p class="eyebrow">The Celebration</p>
-    <h2 class="venue-name reveal-scale">Cherukuri Gardens</h2>
-    <p class="venue-city">Rajahmundry · Andhra Pradesh</p>
-    <div class="divider"></div>
+    <div class="rule"><span class="leaf"></span></div>
 
-    <p class="venue-address reveal">
-      A heritage garden venue<br>
-      on the banks of the Godavari
-    </p>
+    <div class="venue-card reveal-scale">
+      <p class="venue-eyebrow">Save the Date</p>
+      <h2 class="venue-name">Cherukuri Gardens</h2>
+      <p class="venue-city">Rajahmundry · Andhra Pradesh</p>
 
-    <a class="btn-directions reveal"
-       href="https://www.google.com/maps/search/?api=1&query=Cherukuri+Gardens+Rajahmundry"
-       target="_blank" rel="noopener">View Directions →</a>
+      <div class="venue-meta">
+        <div class="venue-meta-item">
+          <p class="venue-meta-label">Date</p>
+          <p class="venue-meta-value">27 August 2026</p>
+        </div>
+        <div class="venue-meta-sep"></div>
+        <div class="venue-meta-item">
+          <p class="venue-meta-label">Muhurtham</p>
+          <p class="venue-meta-value">11:47 AM</p>
+        </div>
+      </div>
+
+      <p class="venue-address">
+        A heritage garden venue on the banks of the Godavari
+      </p>
+
+      <a class="btn-directions"
+         href="https://www.google.com/maps/search/?api=1&query=Cherukuri+Gardens+Rajahmundry"
+         target="_blank" rel="noopener">
+        <span>View Directions</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     5. BLESSINGS / FOOTER
+     5. BLESSINGS  —  Rose sunset, closing message
      ============================================================ -->
 <section class="page blessings" id="blessings">
-  <img class="decor decor-garland-tl" src="assets/images/marigold-garland-1.png" alt="">
-  <img class="decor decor-garland-tr" src="assets/images/marigold-garland-1.png" alt="">
-
   <div class="page-inner">
     <p class="eyebrow">Awaiting Your Presence</p>
-    <div class="divider divider-wide"></div>
+    <div class="rule"><span class="leaf"></span></div>
 
     <p class="blessings-quote reveal">
       Your warm presence and heartfelt blessings<br>
@@ -225,14 +225,21 @@
       this beautiful new journey together.
     </p>
 
-    <div class="blessings-parents reveal-stagger">
-      <p>Boppana Achyuta Ramayya <span class="parent-amp">&amp;</span> Sirisha</p>
-      <p>Deepthi Murali Krishna <span class="parent-amp">&amp;</span> Aruna</p>
+    <div class="signature reveal-stagger">
+      <div class="signature-line">
+        <p class="signature-couple">Boppana Achyuta Ramayya <span class="amp">&amp;</span> Sirisha</p>
+      </div>
+      <div class="signature-line">
+        <p class="signature-couple">Deepthi Murali Krishna <span class="amp">&amp;</span> Aruna</p>
+      </div>
     </div>
 
-    <img class="kolam-footer reveal-scale" src="assets/images/kolam-flower.png" alt="">
+    <p class="signoff">
+      <span class="signoff-script">With love,</span><br>
+      Ramya &amp; Pavan
+    </p>
 
-    <p class="footer-credit">With Love · August 2026</p>
+    <p class="footer-credit">27 August 2026 · Rajahmundry</p>
   </div>
 </section>
 

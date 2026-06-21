@@ -45,6 +45,36 @@
   --ink:          #2d1810;
   --ink-soft:     #5e3f25;
 
+  /* ===== Palette journey — alternating section backgrounds ===== */
+  /* Section 1 (cover): warm sunrise — already covered by --cream tones */
+
+  /* Section 2 (invitation): soft sage / pista wash */
+  --sage-mist:    #eef4ec;
+  --sage-soft:    #dde9d8;
+  --sage:         #b9d0b3;
+  --sage-ink:     #3a5a3f;
+
+  /* Section 3 (muhurtham): deep midnight velvet with gold */
+  --night:        #0f1d2c;
+  --night-soft:   #18324a;
+  --night-glow:   #244766;
+  --gold-on-dark: #f0c75e;
+  --cream-on-dark:#f7e9c5;
+
+  /* Section 4 (venue): warm peach / coral sunset */
+  --peach-mist:   #fdebd9;
+  --peach-soft:   #fbd9b4;
+  --peach:        #f5b682;
+  --terracotta:   #c0623c;
+
+  /* Section 5 (blessings): rose sunset closing */
+  --rose-mist:    #fde7e3;
+  --rose-soft:    #f7c8c4;
+  --rose:         #e29892;
+
+  /* Easing tokens for scroll reveals */
+  --ease-out-soft: cubic-bezier(.22,.65,.28,1);
+
   /* Fonts */
   --serif:        'Cormorant Garamond', 'Garamond', 'Times New Roman', serif;
   --serif-sc:     'Cormorant SC', 'Cormorant Garamond', serif;
@@ -196,10 +226,86 @@ body::before {
   width: 100%;
   text-align: center;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
+  transform: translateY(28px);
+  transition: opacity 1.1s var(--ease-out-soft), transform 1.1s var(--ease-out-soft);
 }
 .page-inner.is-visible { opacity: 1; transform: translateY(0); }
+
+/* ===== Scroll reveal utility classes ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1s var(--ease-out-soft), transform 1s var(--ease-out-soft);
+  will-change: opacity, transform;
+}
+.reveal.is-in { opacity: 1; transform: none; }
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition: opacity 1s var(--ease-out-soft), transform 1s var(--ease-out-soft);
+}
+.reveal-left.is-in { opacity: 1; transform: none; }
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(48px);
+  transition: opacity 1s var(--ease-out-soft), transform 1s var(--ease-out-soft);
+}
+.reveal-right.is-in { opacity: 1; transform: none; }
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 1.1s var(--ease-out-soft), transform 1.1s var(--ease-out-soft);
+}
+.reveal-scale.is-in { opacity: 1; transform: scale(1); }
+
+/* Staggered reveal: children of .reveal-stagger animate one after another */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .9s var(--ease-out-soft), transform .9s var(--ease-out-soft);
+}
+.reveal-stagger.is-in > *               { opacity: 1; transform: none; }
+.reveal-stagger.is-in > *:nth-child(1)  { transition-delay: .05s; }
+.reveal-stagger.is-in > *:nth-child(2)  { transition-delay: .18s; }
+.reveal-stagger.is-in > *:nth-child(3)  { transition-delay: .31s; }
+.reveal-stagger.is-in > *:nth-child(4)  { transition-delay: .44s; }
+.reveal-stagger.is-in > *:nth-child(5)  { transition-delay: .57s; }
+.reveal-stagger.is-in > *:nth-child(6)  { transition-delay: .70s; }
+.reveal-stagger.is-in > *:nth-child(7)  { transition-delay: .83s; }
+.reveal-stagger.is-in > *:nth-child(8)  { transition-delay: .96s; }
+
+/* Parallax host — JS writes --p (range roughly -1..1) and we translate */
+.parallax     { transform: translate3d(0, calc(var(--p, 0) * 60px), 0); transition: transform .1s linear; }
+.parallax-sm  { transform: translate3d(0, calc(var(--p, 0) * 30px), 0); transition: transform .1s linear; }
+.parallax-lg  { transform: translate3d(0, calc(var(--p, 0) * 110px), 0); transition: transform .1s linear; }
+
+/* Section ornamental divider — gold leaf rule */
+.section-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 1.4rem auto 1.8rem;
+  color: var(--gold-deep);
+}
+.section-rule::before,
+.section-rule::after {
+  content: '';
+  height: 1px;
+  width: 80px;
+  background: linear-gradient(to right, transparent, currentColor, transparent);
+  opacity: 0.55;
+}
+.section-rule .leaf {
+  width: 22px; height: 22px; display: inline-block;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2C7 6 5 11 5 14a7 7 0 0014 0c0-3-2-8-7-12zm0 4c3 3 5 6 5 8a5 5 0 01-10 0c0-2 2-5 5-8z'/></svg>") center/contain no-repeat;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2C7 6 5 11 5 14a7 7 0 0014 0c0-3-2-8-7-12zm0 4c3 3 5 6 5 8a5 5 0 01-10 0c0-2 2-5 5-8z'/></svg>") center/contain no-repeat;
+  opacity: 0.85;
+}
 
 .decor {
   position: absolute;
@@ -333,32 +439,32 @@ body::before {
 /* Cover gets extra vertical breathing room since trees fill the edges */
 .cover { padding: 5rem 2rem; min-height: 100vh; }
 
-/* ============== TOP: marigold garland — slim top banner only ============== */
-/* Crop to show just the top arch + hangs (not the long lotus strands) */
+/* ============== TOP: marigold thoranam arch — full natural shape ============== */
+/* Asset is a square arch with hanging lotus strands. Show full ratio so the
+   arch reads as a complete thoranam across the upper third of the cover. */
 .cover .decor-top-garland {
   position: absolute;
-  top: 0;
+  top: -30px;
   left: 50%;
-  width: min(92vw, 980px);
-  height: 230px;
-  object-fit: cover;
-  object-position: top center;
+  width: min(78vw, 860px);
+  height: auto;
   opacity: 0;
-  transform: translateX(-50%) translateY(-110%);
+  transform: translateX(-50%) translateY(-100%);
   transform-origin: top center;
   z-index: 5;
-  filter: drop-shadow(0 4px 12px rgba(184,134,11,0.2));
-  animation: garlandDrop 1.3s cubic-bezier(.2,.85,.3,1) 2.6s forwards,
-             garlandSway 8s ease-in-out 4.0s infinite;
+  filter: drop-shadow(0 6px 16px rgba(184,134,11,0.22));
+  animation: garlandDrop 1.4s cubic-bezier(.2,.85,.3,1) 2.6s forwards,
+             garlandSway 7s ease-in-out 4.0s infinite;
 }
 @keyframes garlandDrop {
-  0%   { opacity: 0; transform: translateX(-50%) translateY(-110%); }
-  70%  { opacity: 1; transform: translateX(-50%) translateY(6px); }
+  0%   { opacity: 0; transform: translateX(-50%) translateY(-100%); }
+  60%  { opacity: 1; transform: translateX(-50%) translateY(10px); }
+  85%  { opacity: 1; transform: translateX(-50%) translateY(-4px); }
   100% { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 @keyframes garlandSway {
-  0%,100% { transform: translateX(-50%) translateY(0) rotate(-0.3deg); }
-  50%     { transform: translateX(-50%) translateY(2px) rotate(0.3deg); }
+  0%,100% { transform: translateX(-50%) translateY(0) rotate(-0.35deg); }
+  50%     { transform: translateX(-50%) translateY(3px) rotate(0.35deg); }
 }
 
 /* ============== BACKDROP: gopuram silhouette as low temple skyline ============== */
@@ -381,21 +487,21 @@ body::before {
 .cover .decor-coconut-r {
   bottom: 0;
   width: auto;
-  height: 78vh;
-  max-height: 720px;
+  height: 84vh;
+  max-height: 780px;
   opacity: 0;
-  z-index: 1;
-  filter: saturate(0.9);
+  z-index: 2;
+  filter: saturate(0.92) brightness(0.97);
 }
 .cover .decor-coconut-l {
-  left: -2%;
+  left: -4%;
   transform-origin: bottom left;
   transform: translateY(40px);
   animation: treeRise 1.6s cubic-bezier(.2,.85,.3,1) 3.0s forwards,
              treeBreeze 9s ease-in-out 5s infinite;
 }
 .cover .decor-coconut-r {
-  right: -2%;
+  right: -4%;
   transform-origin: bottom right;
   transform: translateY(40px) scaleX(-1);
   animation: treeRiseR 1.6s cubic-bezier(.2,.85,.3,1) 3.0s forwards,
@@ -404,24 +510,24 @@ body::before {
 
 .cover .decor-banana-l,
 .cover .decor-banana-r {
-  bottom: -4%;
+  bottom: -3%;
   width: auto;
-  height: 42vh;
-  max-height: 400px;
+  height: 30vh;
+  max-height: 300px;
   opacity: 0;
-  z-index: 2;
-  filter: saturate(1) brightness(0.98);
+  z-index: 1;
+  filter: saturate(1.02) brightness(0.96);
 }
 .cover .decor-banana-l {
-  left: 3%;
-  transform-origin: bottom center;
+  left: -10%;
+  transform-origin: bottom left;
   transform: translateY(30px);
   animation: treeRise 1.4s cubic-bezier(.2,.85,.3,1) 3.4s forwards,
              plantSway 9s ease-in-out 5.2s infinite;
 }
 .cover .decor-banana-r {
-  right: 3%;
-  transform-origin: bottom center;
+  right: -10%;
+  transform-origin: bottom right;
   transform: translateY(30px) scaleX(-1);
   animation: treeRiseR 1.4s cubic-bezier(.2,.85,.3,1) 3.4s forwards,
              plantSwayR 9s ease-in-out 5.2s infinite;
@@ -615,9 +721,19 @@ body::before {
    ============================================================ */
 .invitation {
   background:
-    radial-gradient(ellipse at 10% 90%, rgba(249,213,216,0.4), transparent 55%),
-    radial-gradient(ellipse at 90% 10%, rgba(111,179,184,0.07), transparent 50%),
-    var(--cream);
+    radial-gradient(ellipse at 12% 88%, rgba(185,208,179,0.40), transparent 55%),
+    radial-gradient(ellipse at 88% 12%, rgba(232,201,71,0.10), transparent 55%),
+    linear-gradient(180deg, var(--sage-mist) 0%, var(--cream-soft) 65%, var(--sage-mist) 100%);
+}
+/* Smooth visual handoff from cover (cream) → invitation (sage) */
+.invitation::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, var(--cream-soft), transparent);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .invitation .decor-leaves-tr {
@@ -712,11 +828,55 @@ body::before {
 /* ============================================================
    3. MUHURTHAM + COUNTDOWN + CEREMONY PROGRAMME
    ============================================================ */
+/* Muhurtham — the auspicious-hour panel: deep midnight velvet with gold */
 .muhurtham {
   background:
-    radial-gradient(ellipse at 80% 20%, rgba(232,163,176,0.18), transparent 55%),
-    radial-gradient(ellipse at 20% 80%, rgba(111,179,184,0.10), transparent 55%),
-    var(--cream);
+    radial-gradient(ellipse at 50% 35%, rgba(240,199,94,0.10), transparent 55%),
+    radial-gradient(ellipse at 18% 82%, rgba(36,71,102,0.55), transparent 55%),
+    radial-gradient(ellipse at 82% 18%, rgba(124,26,42,0.22), transparent 55%),
+    linear-gradient(180deg, var(--night) 0%, var(--night-soft) 50%, var(--night) 100%);
+  color: var(--cream-on-dark);
+}
+.muhurtham::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, var(--sage-mist), transparent);
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+}
+.muhurtham::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to top, var(--peach-mist), transparent);
+  opacity: 0.18;
+  z-index: 0;
+  pointer-events: none;
+}
+/* Subtle starfield / kumkum dots in the night sky */
+.muhurtham .page-inner::before {
+  content: '';
+  position: absolute;
+  inset: -3rem;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 18%, rgba(240,199,94,0.7), transparent 60%),
+    radial-gradient(1px 1px   at 28% 9%,  rgba(247,233,197,0.5), transparent 60%),
+    radial-gradient(1.5px 1.5px at 70% 14%, rgba(240,199,94,0.6), transparent 60%),
+    radial-gradient(1px 1px   at 88% 22%, rgba(247,233,197,0.4), transparent 60%),
+    radial-gradient(1.5px 1.5px at 60% 6%,  rgba(240,199,94,0.5), transparent 60%),
+    radial-gradient(1px 1px   at 42% 26%, rgba(247,233,197,0.4), transparent 60%),
+    radial-gradient(2px 2px   at 18% 78%, rgba(240,199,94,0.4), transparent 60%),
+    radial-gradient(1px 1px   at 80% 84%, rgba(247,233,197,0.5), transparent 60%);
+  animation: starShimmer 8s ease-in-out infinite alternate;
+}
+@keyframes starShimmer {
+  0%   { opacity: 0.6; }
+  100% { opacity: 1.0; }
 }
 
 /* Hanging lamp via chain anchor */
@@ -744,23 +904,35 @@ body::before {
   opacity: 0.92;
 }
 
+.muhurtham .eyebrow {
+  color: var(--gold-on-dark);
+  text-shadow: 0 0 24px rgba(240,199,94,0.25);
+}
+
 .muhurtham-title {
   font-family: var(--display);
   font-size: clamp(2.4rem, 5vw, 3rem);
   font-weight: 500;
-  color: var(--maroon);
+  color: var(--cream-on-dark);
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
+  text-shadow: 0 2px 18px rgba(0,0,0,0.4);
 }
 
 .muhurtham-time {
   font-family: var(--display);
-  font-size: clamp(3rem, 8vw, 5rem);
+  font-size: clamp(3.2rem, 9vw, 5.4rem);
   font-style: italic;
-  color: var(--kumkum);
+  background: linear-gradient(100deg, var(--gold-deep) 0%, var(--gold-on-dark) 40%, #fff5d4 55%, var(--gold-on-dark) 65%, var(--gold-deep) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   line-height: 1.1;
   margin: 1rem 0;
-  text-shadow: 0 2px 12px rgba(200,16,46,0.15);
+  text-shadow: 0 2px 22px rgba(240,199,94,0.25);
+  animation: shimmerSlide 7s linear infinite;
 }
 
 .muhurtham-date {
@@ -768,9 +940,14 @@ body::before {
   text-transform: uppercase;
   letter-spacing: 0.35em;
   font-size: 0.95rem;
-  color: var(--ink);
+  color: var(--cream-on-dark);
+  opacity: 0.85;
   margin-bottom: 0.5rem;
 }
+
+.muhurtham .divider { background: linear-gradient(to right, transparent, var(--gold-on-dark), transparent); }
+.muhurtham .divider::before,
+.muhurtham .divider::after { background: var(--gold-on-dark); box-shadow: 0 0 8px rgba(240,199,94,0.5); }
 
 .countdown {
   display: flex;
@@ -780,28 +957,42 @@ body::before {
   flex-wrap: wrap;
 }
 .countdown-unit {
-  min-width: 78px;
-  padding: 1rem 0.6rem;
-  border: 1px solid rgba(212,160,23,0.4);
-  background: linear-gradient(to bottom, rgba(255,255,255,0.55), rgba(254,250,235,0.35));
-  border-radius: 3px;
-  box-shadow: 0 4px 12px rgba(184,134,11,0.07);
+  min-width: 84px;
+  padding: 1.1rem 0.7rem;
+  border: 1px solid rgba(240,199,94,0.55);
+  background:
+    linear-gradient(180deg, rgba(36,71,102,0.55) 0%, rgba(15,29,44,0.7) 100%);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 4px;
+  box-shadow:
+    inset 0 1px 0 rgba(240,199,94,0.15),
+    0 6px 18px rgba(0,0,0,0.4);
+  transition: transform .35s var(--ease-out-soft), box-shadow .35s var(--ease-out-soft);
+}
+.countdown-unit:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    inset 0 1px 0 rgba(240,199,94,0.25),
+    0 12px 24px rgba(0,0,0,0.45);
 }
 .countdown-num {
   font-family: var(--display);
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 500;
-  color: var(--maroon);
+  color: var(--gold-on-dark);
   line-height: 1;
   font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 18px rgba(240,199,94,0.4);
 }
 .countdown-label {
   font-family: var(--serif-sc);
   text-transform: uppercase;
   letter-spacing: 0.25em;
   font-size: 0.65rem;
-  color: var(--gold-deep);
-  margin-top: 0.5rem;
+  color: var(--cream-on-dark);
+  opacity: 0.75;
+  margin-top: 0.55rem;
 }
 
 .programme {
@@ -812,7 +1003,7 @@ body::before {
   text-transform: uppercase;
   letter-spacing: 0.4em;
   font-size: 0.75rem;
-  color: var(--gold-deep);
+  color: var(--gold-on-dark);
   margin-bottom: 1.25rem;
 }
 .programme-list {
@@ -820,29 +1011,32 @@ body::before {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.4rem 1.1rem;
+  gap: 0.5rem 1.2rem;
   max-width: 520px;
   margin: 0 auto;
 }
 .programme-list li {
   font-family: var(--serif);
-  font-size: 0.95rem;
-  color: var(--ink);
+  font-size: 0.98rem;
+  color: var(--cream-on-dark);
   position: relative;
+  opacity: 0.92;
 }
 .programme-list li::after {
   content: '·';
-  margin-left: 1.1rem;
-  color: var(--gold);
+  margin-left: 1.2rem;
+  color: var(--gold-on-dark);
+  opacity: 0.7;
 }
 .programme-list li:last-child::after { display: none; }
 .programme-list li.is-highlight {
   font-family: var(--display);
   font-style: italic;
-  color: var(--kumkum);
+  color: var(--gold-on-dark);
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
+  text-shadow: 0 0 16px rgba(240,199,94,0.4);
 }
 
 /* ============================================================
@@ -850,9 +1044,19 @@ body::before {
    ============================================================ */
 .venue {
   background:
-    radial-gradient(ellipse at 20% 80%, rgba(42,125,143,0.08), transparent 55%),
-    radial-gradient(ellipse at 80% 30%, rgba(249,213,216,0.30), transparent 60%),
-    var(--cream);
+    radial-gradient(ellipse at 18% 78%, rgba(45,106,79,0.14), transparent 55%),
+    radial-gradient(ellipse at 82% 22%, rgba(245,182,130,0.45), transparent 55%),
+    linear-gradient(180deg, var(--peach-mist) 0%, var(--cream-soft) 55%, var(--peach-soft) 100%);
+}
+.venue::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 140px;
+  background: linear-gradient(to bottom, var(--night), transparent);
+  opacity: 0.4;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .venue .decor-gopuram {
@@ -902,32 +1106,48 @@ body::before {
 }
 
 .btn-directions {
+  position: relative;
   display: inline-block;
   font-family: var(--serif-sc);
   text-transform: uppercase;
   letter-spacing: 0.3em;
   font-size: 0.78rem;
   color: var(--maroon);
-  padding: 0.9rem 2.2rem;
+  padding: 0.95rem 2.4rem;
   border: 1px solid var(--maroon);
   border-radius: 2px;
-  background: transparent;
-  transition: all .3s ease;
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  overflow: hidden;
+  transition: color .4s var(--ease-out-soft), border-color .4s, transform .35s var(--ease-out-soft), box-shadow .35s;
+  z-index: 0;
+}
+.btn-directions::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--maroon), var(--kumkum));
+  transform: translateY(100%);
+  transition: transform .45s var(--ease-out-soft);
+  z-index: -1;
 }
 .btn-directions:hover {
-  background: var(--maroon);
   color: var(--cream-soft);
-  box-shadow: 0 6px 16px rgba(124,26,42,0.25);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(124,26,42,0.28);
 }
+.btn-directions:hover::before { transform: translateY(0); }
 
 /* ============================================================
    5. BLESSINGS / FOOTER
    ============================================================ */
 .blessings {
   background:
-    radial-gradient(ellipse at 50% 100%, rgba(249,213,216,0.4), transparent 50%),
-    radial-gradient(ellipse at 50% 0%, rgba(111,179,184,0.06), transparent 50%),
-    var(--cream);
+    radial-gradient(ellipse at 50% 100%, rgba(226,152,146,0.45), transparent 55%),
+    radial-gradient(ellipse at 50% 0%,   rgba(247,200,196,0.45), transparent 50%),
+    linear-gradient(180deg, var(--rose-mist) 0%, var(--cream-soft) 55%, var(--rose-soft) 100%);
   padding-bottom: 4rem;
 }
 
@@ -992,17 +1212,17 @@ body::before {
   .page { padding: 5rem 1.25rem; }
 
   .cover                      { padding: 4.5rem 1rem; }
-  .cover .decor-coconut-l     { height: 90vh; left: -25%; }
-  .cover .decor-coconut-r     { height: 90vh; right: -25%; }
+  .cover .decor-coconut-l     { height: 80vh; left: -22%; }
+  .cover .decor-coconut-r     { height: 80vh; right: -22%; }
   .cover .decor-fronds-l      { width: 45%; top: -3%; left: -18%; }
   .cover .decor-fronds-r      { width: 45%; top: -3%; right: -18%; }
-  .cover .decor-banana-l      { height: 38vh; left: -8%; }
-  .cover .decor-banana-r      { height: 38vh; right: -8%; }
+  .cover .decor-banana-l      { height: 28vh; left: -16%; }
+  .cover .decor-banana-r      { height: 28vh; right: -16%; }
   .cover .decor-gopuram       { width: 180%; min-width: 0; opacity: 0.10; }
   .cover .decor-peacock-l     { width: 24%; left: 2%; bottom: 2%; }
   .cover .decor-peacock-r     { width: 24%; right: 2%; bottom: 2%; }
   .cover .decor-diya-center   { width: 64px; margin-left: -32px; }
-  .cover .decor-top-garland   { top: -16px; }
+  .cover .decor-top-garland   { top: -8px; width: 96vw; }
   .veil-text                  { font-size: 2rem; letter-spacing: 0.02em; }
   .veil-sub                   { font-size: 0.65rem; letter-spacing: 0.5em; text-indent: 0.5em; }
   .veil-ganesha               { width: 76px; }

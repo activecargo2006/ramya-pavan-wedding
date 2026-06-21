@@ -439,27 +439,40 @@ body::before {
 /* Cover gets extra vertical breathing room since trees fill the edges */
 .cover { padding: 5rem 2rem; min-height: 100vh; }
 
-/* ============== TOP: marigold thoranam arch — full natural shape ============== */
-/* Asset is a square arch with hanging lotus strands. Show full ratio so the
-   arch reads as a complete thoranam across the upper third of the cover. */
-.cover .decor-top-garland {
+/* ============== TOP: marigold thoranam arch — true top edge ============== */
+/* The asset (marigold-garland-3.png) is 2000x2000 with the visible arch
+   sitting around 18% from the top of the canvas. If we render the img
+   raw, that empty top padding pushes the visible marigolds into the
+   middle of the page. Solution: wrap + overflow:hidden, then pull the
+   image up so only the arch + lotus strands fall inside the wrapper. */
+.cover .decor-top-garland-wrap {
   position: absolute;
-  top: -30px;
+  top: 0;
   left: 50%;
-  width: min(78vw, 860px);
-  height: auto;
-  opacity: 0;
-  transform: translateX(-50%) translateY(-100%);
+  width: min(78vw, 880px);
+  height: 320px;          /* slim banner at very top */
+  transform: translateX(-50%) translateY(-110%);
   transform-origin: top center;
+  overflow: hidden;
+  pointer-events: none;
   z-index: 5;
+  opacity: 0;
   filter: drop-shadow(0 6px 16px rgba(184,134,11,0.22));
   animation: garlandDrop 1.4s cubic-bezier(.2,.85,.3,1) 2.6s forwards,
              garlandSway 7s ease-in-out 4.0s infinite;
 }
+.cover .decor-top-garland-wrap > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Pull the image up so the asset's transparent header is hidden
+     and the marigold arch sits at the very top of the wrapper. */
+  margin-top: -16%;
+}
 @keyframes garlandDrop {
-  0%   { opacity: 0; transform: translateX(-50%) translateY(-100%); }
-  60%  { opacity: 1; transform: translateX(-50%) translateY(10px); }
-  85%  { opacity: 1; transform: translateX(-50%) translateY(-4px); }
+  0%   { opacity: 0; transform: translateX(-50%) translateY(-110%); }
+  60%  { opacity: 1; transform: translateX(-50%) translateY(8px); }
+  85%  { opacity: 1; transform: translateX(-50%) translateY(-3px); }
   100% { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 @keyframes garlandSway {
@@ -1221,8 +1234,9 @@ body::before {
   .cover .decor-gopuram       { width: 180%; min-width: 0; opacity: 0.10; }
   .cover .decor-peacock-l     { width: 24%; left: 2%; bottom: 2%; }
   .cover .decor-peacock-r     { width: 24%; right: 2%; bottom: 2%; }
-  .cover .decor-diya-center   { width: 64px; margin-left: -32px; }
-  .cover .decor-top-garland   { top: -8px; width: 96vw; }
+  .cover .decor-diya-center      { width: 64px; margin-left: -32px; }
+  .cover .decor-top-garland-wrap { width: 96vw; height: 200px; }
+  .cover .decor-top-garland-wrap > img { margin-top: -14%; }
   .veil-text                  { font-size: 2rem; letter-spacing: 0.02em; }
   .veil-sub                   { font-size: 0.65rem; letter-spacing: 0.5em; text-indent: 0.5em; }
   .veil-ganesha               { width: 76px; }
@@ -1272,7 +1286,7 @@ body::before {
   .cover .cover-venue,
   .cover .ganesha-cover,
   .cover .scroll-hint,
-  .cover .decor-top-garland,
+  .cover .decor-top-garland-wrap,
   .cover .decor-coconut-l, .cover .decor-coconut-r,
   .cover .decor-fronds-l,  .cover .decor-fronds-r,
   .cover .decor-banana-l,  .cover .decor-banana-r,

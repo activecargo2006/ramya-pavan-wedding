@@ -36,8 +36,13 @@
      1. COVER  —  Full-bleed temple grove
      ============================================================ -->
 <section class="page cover" id="cover">
-  <!-- Marigold garland pinned flush to the top edge -->
-  <img class="decor decor-top-garland" src="assets/images/marigold-garland-3.png" alt="">
+  <!-- Marigold garland pinned flush to the top edge.
+       Wrapped + overflow:hidden so we crop out the empty space the
+       2000x2000 asset has above the arch — otherwise the marigolds
+       render in the middle of the page, not at the top. -->
+  <div class="decor-top-garland-wrap">
+    <img src="assets/images/marigold-garland-3.png" alt="">
+  </div>
 
   <!-- Massive temple silhouette filling the lower scene -->
   <img class="decor decor-gopuram parallax-lg" src="assets/images/gopuram-silhouette.png" alt="">

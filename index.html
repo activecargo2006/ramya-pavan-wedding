@@ -1,530 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#F4ECDB" />
-<title>Sri Ramya &amp; Vangalapati Pavan Chowdary · 27 August 2026</title>
-<meta name="description" content="With the blessings of our families, we joyfully invite you to the wedding of Sri Ramya and Vangalapati Pavan Chowdary — 24 to 30 August 2026 · Rajahmundry." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#F4ECDB">
 
-<meta property="og:title" content="Sri Ramya &amp; Pavan Chowdary — 27 August 2026" />
-<meta property="og:description" content="A five-day celebration · Rajahmundry · Muhurtham 11:47 AM · 27 August 2026" />
-<meta property="og:type" content="website" />
+  <title>Sri Ramya & Pavan Chowdary · 27 August 2026</title>
+  <meta name="description" content="With the divine blessings of elders, we cordially invite you to the wedding of Sri Ramya & Vangalapati Pavan Chowdary.">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Tangerine:wght@400;700&family=Noto+Serif+Telugu:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Sri Ramya & Pavan Chowdary · Wedding Invitation">
+  <meta property="og:description" content="27 August 2026 · Cherukuri Gardens, Rajahmundry">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ramya-pavan-wedding.vercel.app">
 
-<link rel="stylesheet" href="styles/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles/main.css">
 </head>
+
 <body>
 
-<a class="skip" href="#cover">Skip to content</a>
+  <!-- ============================================================
+       SECTION 1 — THE ENVELOPE
+       Tap the wax seal to open the invitation
+       ============================================================ -->
+  <section class="envelope-section" id="envelope">
 
-<!-- Scroll progress bar -->
-<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-
-<!-- Floating section nav (desktop) -->
-<nav class="nav-dots" aria-label="Page sections">
-  <a href="#cover"      data-target="cover"      aria-label="Cover"><span>Cover</span></a>
-  <a href="#invitation" data-target="invitation" aria-label="Invitation"><span>Invitation</span></a>
-  <a href="#muhurtham"  data-target="muhurtham"  aria-label="Muhurtham"><span>Muhurtham</span></a>
-  <a href="#events"     data-target="events"     aria-label="Ceremonies"><span>Ceremonies</span></a>
-  <a href="#blessings"  data-target="blessings"  aria-label="Blessings"><span>Blessings</span></a>
-</nav>
-
-<!-- Sticky countdown chip (appears after muhurtham scrolls past) -->
-<div class="countdown-chip" id="countdownChip" role="status" aria-live="polite">
-  <span class="cc-label">Muhurtham in</span>
-  <span class="cc-num" id="cc-days">00</span>
-  <span class="cc-label">d</span>
-  <span class="cc-num" id="cc-hours">00</span>
-  <span class="cc-label">h</span>
-  <span class="cc-num" id="cc-mins">00</span>
-  <span class="cc-label">m</span>
-  <button class="cc-close" id="ccClose" aria-label="Dismiss countdown">×</button>
-</div>
-
-<!-- Share floating action button -->
-<button class="share-fab" id="shareFab" aria-label="Share invitation">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-    <path d="m8.59 13.51 6.83 3.98"/><path d="m15.41 6.51-6.82 3.98"/>
-  </svg>
-</button>
-<div class="share-toast" id="shareToast">Link copied to clipboard</div>
-
-<!-- Global drifting petals overlay -->
-<div class="global-particles" id="globalParticles" aria-hidden="true"></div>
-
-
-<!-- ============================================================
-     WELCOME VEIL
-     ============================================================ -->
-<div class="welcome-veil" id="welcomeVeil" aria-hidden="true">
-  <div class="veil-bg"></div>
-  <div class="veil-rays"></div>
-  <img class="veil-conch" src="assets/images/conch-shankha.png" alt="">
-  <img class="veil-bell"  src="assets/images/puja-bell.png"     alt="">
-  <img class="veil-ember" src="assets/images/embers-particles.png" alt="">
-  <div class="veil-center">
-    <img src="assets/images/ganesha-gold.png" alt="" class="veil-ganesha">
-    <p class="veil-text">శుభలేఖ</p>
-    <p class="veil-sub">Subhalekha · Wedding Invitation</p>
-  </div>
-</div>
-
-
-<!-- ============================================================
-     1. COVER — editorial monogram, R & P, animated entrance
-     ============================================================ -->
-<section class="page cover" id="cover">
-  <div class="section-decor">
-    <!-- Outer coconut trees ONLY — clean editorial flank -->
-    <img class="tree-l anim-sway parallax-sm" src="assets/images/coconut-tree-1.png" alt="" loading="eager" decoding="async">
-    <img class="tree-r anim-sway parallax-sm" src="assets/images/coconut-tree-2.png" alt="" loading="eager" decoding="async">
-
-    <!-- 4 ornate corners (small, gold) -->
-    <img class="corner corner-tl" src="assets/images/ornate-corner-1.png" alt="" loading="eager" decoding="async">
-    <img class="corner corner-tr" src="assets/images/ornate-corner-1.png" alt="" loading="eager" decoding="async">
-    <img class="corner corner-bl" src="assets/images/ornate-corner-1.png" alt="" loading="lazy" decoding="async">
-    <img class="corner corner-br" src="assets/images/ornate-corner-1.png" alt="" loading="lazy" decoding="async">
-  </div>
-
-  <div class="page-inner cover-inner">
-    <p class="cover-eyebrow">
-      <span class="line"></span>
-      <span>శుభలేఖ · Subhalekha</span>
-      <span class="line"></span>
-    </p>
-
-    <h1 class="cover-monogram">
-      <span class="mono-letter mono-left">R</span>
-      <span class="mono-amp">&amp;</span>
-      <span class="mono-letter mono-right">P</span>
-    </h1>
-
-    <p class="cover-names">
-      <span>Sri Ramya</span>
-      <span class="cover-and">weds</span>
-      <span>Vangalapati Pavan Chowdary</span>
-    </p>
-
-    <p class="cover-date">27 · 08 · 2026</p>
-    <p class="cover-venue">Cherukuri Gardens · Rajahmundry</p>
-  </div>
-
-  <a href="#invitation" class="scroll-hint" aria-label="Scroll to next section">
-    <span>scroll</span>
-  </a>
-</section>
-
-
-<!-- ============================================================
-     2. INVITATION — sage paper, ganesha, parents, couple
-     ============================================================ -->
-<section class="page invitation" id="invitation">
-  <div class="section-decor">
-    <img class="paisley-top"    src="assets/images/border-paisley.png" alt="" loading="lazy" decoding="async">
-    <img class="paisley-bottom" src="assets/images/border-paisley.png" alt="" loading="lazy" decoding="async">
-
-    <!-- Peacocks natural pair -->
-    <img class="peacock-l" src="assets/images/peacock-left.png"  alt="" loading="lazy" decoding="async">
-    <img class="peacock-r" src="assets/images/peacock-right.png" alt="" loading="lazy" decoding="async">
-
-    <!-- Parijat flowers in 4 corners (small illustration accents) -->
-    <img class="parijat parijat-tl" src="assets/images/parijat-flower.png" alt="" loading="lazy" decoding="async">
-    <img class="parijat parijat-tr" src="assets/images/parijat-flower.png" alt="" loading="lazy" decoding="async">
-    <img class="parijat parijat-bl" src="assets/images/parijat-flower.png" alt="" loading="lazy" decoding="async">
-    <img class="parijat parijat-br" src="assets/images/parijat-flower.png" alt="" loading="lazy" decoding="async">
-  </div>
-
-  <div class="page-inner">
-    <div class="ganesha-block reveal-scale">
-      <img class="om-sym anim-pulse" src="assets/images/om-symbol.png" alt="Om">
-      <img class="ganesha-large anim-pulse" src="assets/images/ganesha-idol.png" alt="Ganesha">
-      <img class="swastika-sym anim-pulse" src="assets/images/swastika-symbol.png" alt="Swastika">
+    <!-- Decorative corner ornaments (CSS/SVG) -->
+    <div class="envelope-corner corner-tl">
+      <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="0.8" style="color: var(--gold-deep);">
+        <path d="M5 5 Q 5 45 45 45 M 5 5 L 30 5 M 5 5 L 5 30" stroke-linecap="round"/>
+        <circle cx="5" cy="5" r="2" fill="currentColor"/>
+      </svg>
     </div>
-    <p class="invocation reveal">॥ శ్రీ గణేశాయ నమః ॥</p>
-
-    <p class="eyebrow reveal">With the blessings of elders</p>
-    <div class="rule reveal"><span class="leaf"></span></div>
-
-    <p class="invite-intro reveal">
-      Together with our families,<br>
-      we joyfully request the honour of your presence<br>
-      at the wedding of our beloved children
-    </p>
-
-    <img class="lotus-div reveal" src="assets/images/lotus-divider.png" alt="" loading="lazy" decoding="async">
-
-    <div class="couple-grid">
-      <article class="person reveal-left">
-        <p class="person-role">The Bride</p>
-        <h2 class="person-name">Sri Ramya</h2>
-        <p class="person-sub">Daughter of</p>
-        <p class="person-parents">
-          Sri Boppana Achyuta Ramayya<br>
-          &amp; Smt. Sirisha
-        </p>
-      </article>
-
-      <div class="couple-divider reveal-scale" aria-hidden="true">
-        <img src="assets/images/lotus-divider-2.png" alt="">
-      </div>
-
-      <article class="person reveal-right">
-        <p class="person-role">The Groom</p>
-        <h2 class="person-name">Vangalapati Pavan Chowdary</h2>
-        <p class="person-sub">Son of</p>
-        <p class="person-parents">
-          Sri Deepthi Murali Krishna<br>
-          &amp; Smt. Aruna
-        </p>
-      </article>
+    <div class="envelope-corner corner-tr">
+      <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="0.8" style="color: var(--gold-deep);">
+        <path d="M5 5 Q 5 45 45 45 M 5 5 L 30 5 M 5 5 L 5 30" stroke-linecap="round"/>
+        <circle cx="5" cy="5" r="2" fill="currentColor"/>
+      </svg>
     </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     3. MUHURTHAM — midnight + gold, countdown
-     ============================================================ -->
-<section class="page muhurtham" id="muhurtham">
-  <div class="starfield" aria-hidden="true"></div>
-  <div class="section-decor">
-    <!-- Kalashams (inner) -->
-    <img class="kalasham-l" src="assets/images/kalasham-decorated.png" alt="" loading="lazy" decoding="async">
-    <img class="kalasham-r" src="assets/images/kalasham-decorated.png" alt="" loading="lazy" decoding="async">
-
-    <!-- Hanging lamps -->
-    <img class="lamp-l" src="assets/images/hanging-lamp.png" alt="" loading="lazy" decoding="async">
-    <img class="lamp-r" src="assets/images/hanging-lamp.png" alt="" loading="lazy" decoding="async">
-
-    <!-- Gold lotus above title -->
-    <img class="gold-lotus" src="assets/images/gold-lotus.png" alt="" loading="lazy" decoding="async">
-  </div>
-
-  <div class="page-inner">
-    <p class="eyebrow eyebrow-dark reveal">The Auspicious Hour</p>
-    <h2 class="muhurtham-title reveal-scale">Muhurtham</h2>
-    <div class="rule rule-dark reveal"><span class="leaf"></span></div>
-
-    <p class="muhurtham-time reveal-scale">11 : 47 AM</p>
-    <p class="muhurtham-date reveal">Thursday · 27 August 2026</p>
-
-    <div class="countdown reveal-stagger" id="countdown" aria-live="polite">
-      <div class="countdown-unit">
-        <div class="countdown-num" id="cd-days">00</div>
-        <div class="countdown-label">Days</div>
-      </div>
-      <div class="countdown-unit">
-        <div class="countdown-num" id="cd-hours">00</div>
-        <div class="countdown-label">Hours</div>
-      </div>
-      <div class="countdown-unit">
-        <div class="countdown-num" id="cd-mins">00</div>
-        <div class="countdown-label">Minutes</div>
-      </div>
-      <div class="countdown-unit">
-        <div class="countdown-num" id="cd-secs">00</div>
-        <div class="countdown-label">Seconds</div>
-      </div>
+    <div class="envelope-corner corner-bl">
+      <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="0.8" style="color: var(--gold-deep);">
+        <path d="M5 5 Q 5 45 45 45 M 5 5 L 30 5 M 5 5 L 5 30" stroke-linecap="round"/>
+        <circle cx="5" cy="5" r="2" fill="currentColor"/>
+      </svg>
+    </div>
+    <div class="envelope-corner corner-br">
+      <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="0.8" style="color: var(--gold-deep);">
+        <path d="M5 5 Q 5 45 45 45 M 5 5 L 30 5 M 5 5 L 5 30" stroke-linecap="round"/>
+        <circle cx="5" cy="5" r="2" fill="currentColor"/>
+      </svg>
     </div>
 
-    <p class="muhurtham-venue reveal">
-      <span class="mv-icon">◆</span>
-      Cherukuri Gardens · Rajahmundry
-    </p>
-  </div>
-</section>
+    <div class="envelope-inner">
 
-
-<!-- ============================================================
-     4. EVENTS — 6 cards across 5 days, full ritual asset use
-     ============================================================ -->
-<section class="page events" id="events">
-  <div class="section-decor">
-    <!-- Top marigold garlands -->
-    <img class="garland-tl" src="assets/images/marigold-garland-1.png" alt="" loading="lazy" decoding="async">
-    <img class="garland-tr" src="assets/images/marigold-garland-1.png" alt="" loading="lazy" decoding="async">
-
-    <!-- Outer coconut trees only — flat illustration -->
-    <img class="tree-outer-l anim-sway parallax-sm" src="assets/images/coconut-tree-3.png" alt="" loading="lazy" decoding="async">
-    <img class="tree-outer-r anim-sway parallax-sm" src="assets/images/coconut-tree-3.png" alt="" loading="lazy" decoding="async">
-  </div>
-
-  <div class="page-inner">
-    <p class="eyebrow reveal">Five Days of Celebration</p>
-    <h2 class="section-title reveal-scale">The Ceremonies</h2>
-    <div class="rule reveal"><span class="leaf"></span></div>
-
-    <ol class="timeline">
-      <!-- 1. Pelli Koduku (24 Aug morning) -->
-      <li class="timeline-item reveal-left">
-        <div class="ti-date">
-          <span class="ti-day">24</span>
-          <span class="ti-month">Aug</span>
-          <span class="ti-dow">Monday</span>
-        </div>
-        <div class="ti-card card-pelli">
-          <p class="ti-tag">Morning · 7:00 AM</p>
-          <h3 class="ti-title">Pelli Koduku</h3>
-          <p class="ti-sub">పెళ్ళి కొడుకు</p>
-          <div class="ti-icons">
-            <img src="assets/images/haldi-bowl.png" alt="Haldi" loading="lazy">
-            <img src="assets/images/haldi-pot.png" alt="Haldi pot" loading="lazy">
-            <img src="assets/images/brass-plate.png" alt="Brass plate" loading="lazy">
-          </div>
-          <p class="ti-meal">Followed by breakfast &amp; lunch</p>
-          <p class="ti-venue">Deepthi Murali Aruna Nilayam</p>
-          <div class="ti-actions">
-            <a class="ti-map" href="https://maps.app.goo.gl/v24yWbdtfHPjc5hW7" target="_blank" rel="noopener">
-              <span>View on Map</span>
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
-            </a>
-            <button class="ti-cal" data-cal data-title="Pelli Koduku" data-date="2026-08-24" data-time="07:00" data-venue="Deepthi Murali Aruna Nilayam, Rajahmundry" data-map="https://maps.app.goo.gl/v24yWbdtfHPjc5hW7">
-              <span>Add to Calendar</span>
-            </button>
-          </div>
-        </div>
-      </li>
-
-      <!-- 2. Mangalasnanam (24 Aug evening) -->
-      <li class="timeline-item reveal-right">
-        <div class="ti-date">
-          <span class="ti-day">24</span>
-          <span class="ti-month">Aug</span>
-          <span class="ti-dow">Monday</span>
-        </div>
-        <div class="ti-card card-mangala">
-          <p class="ti-tag">Evening</p>
-          <h3 class="ti-title">Mangalasnanam</h3>
-          <p class="ti-sub">మంగళస్నానం</p>
-          <div class="ti-icons">
-            <img src="assets/images/brass-pot-small.png"   alt="Brass pot" loading="lazy">
-            <img src="assets/images/diya-brass.png" alt="Brass diya" loading="lazy">
-            <img src="assets/images/diya-clay.png"  alt="Clay diya"  loading="lazy">
-          </div>
-          <p class="ti-meal">Followed by dinner</p>
-          <p class="ti-venue">Deepthi Murali Aruna Nilayam</p>
-          <div class="ti-actions">
-            <a class="ti-map" href="https://maps.app.goo.gl/v24yWbdtfHPjc5hW7" target="_blank" rel="noopener">
-              <span>View on Map</span>
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
-            </a>
-            <button class="ti-cal" data-cal data-title="Mangalasnanam" data-date="2026-08-24" data-time="18:00" data-venue="Deepthi Murali Aruna Nilayam, Rajahmundry" data-map="https://maps.app.goo.gl/v24yWbdtfHPjc5hW7">
-              <span>Add to Calendar</span>
-            </button>
-          </div>
-        </div>
-      </li>
-
-      <li class="timeline-divider" aria-hidden="true">
-        <img src="assets/images/lotus-divider.png" alt="">
-      </li>
-
-      <!-- 3. Sangeeth (26 Aug evening) -->
-      <li class="timeline-item reveal-left">
-        <div class="ti-date">
-          <span class="ti-day">26</span>
-          <span class="ti-month">Aug</span>
-          <span class="ti-dow">Wednesday</span>
-        </div>
-        <div class="ti-card card-sangeeth">
-          <img class="ti-string-lights" src="assets/images/flower-string-lights.png" alt="" loading="lazy" decoding="async">
-          <p class="ti-tag">Evening</p>
-          <h3 class="ti-title">Sangeeth</h3>
-          <p class="ti-sub">సంగీత్</p>
-          <div class="ti-icons">
-            <img src="assets/images/mehendi-pattern.png"  alt="Mehendi"   loading="lazy">
-            <img src="assets/images/hanging-lamp.png"     alt="Lamp"      loading="lazy">
-            <img src="assets/images/jasmine-vine.png"     alt="Jasmine"   loading="lazy">
-          </div>
-          <p class="ti-meal">Followed by dinner</p>
-          <p class="ti-venue">Venue to be announced</p>
-          <div class="ti-actions">
-            <button class="ti-cal" data-cal data-title="Sangeeth" data-date="2026-08-26" data-time="19:00" data-venue="Rajahmundry">
-              <span>Add to Calendar</span>
-            </button>
-          </div>
-        </div>
-      </li>
-
-      <!-- 4. MUHURTHAM (27 Aug 11:47 AM) — headline card -->
-      <li class="timeline-item reveal-right is-headline">
-        <div class="ti-date">
-          <span class="ti-day">27</span>
-          <span class="ti-month">Aug</span>
-          <span class="ti-dow">Thursday</span>
-        </div>
-        <div class="ti-card card-muhurtham">
-          <p class="ti-tag">11:47 AM · Muhurtham</p>
-          <h3 class="ti-title">Wedding Ceremony</h3>
-          <p class="ti-sub">వివాహ మహోత్సవం</p>
-          <div class="ti-icons">
-            <img src="assets/images/mangalsutra.png"     alt="Mangalsutra"    loading="lazy">
-            <img src="assets/images/varmala-pair.png"    alt="Varmala"        loading="lazy">
-            <img src="assets/images/kalyana-thread.png"  alt="Kalyana thread" loading="lazy">
-            <img src="assets/images/talambralu-bowl.png" alt="Talambralu"     loading="lazy">
-          </div>
-          <p class="ti-meal">Followed by breakfast &amp; lunch</p>
-          <p class="ti-venue">Cherukuri Gardens, Rajahmundry</p>
-          <div class="ti-actions">
-            <a class="ti-map" href="https://maps.app.goo.gl/XvqdjcsGu2KahxSC9" target="_blank" rel="noopener">
-              <span>View on Map</span>
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
-            </a>
-            <button class="ti-cal" data-cal data-title="Wedding Ceremony — Muhurtham" data-date="2026-08-27" data-time="11:47" data-venue="Cherukuri Gardens, Rajahmundry" data-map="https://maps.app.goo.gl/XvqdjcsGu2KahxSC9">
-              <span>Add to Calendar</span>
-            </button>
-          </div>
-        </div>
-      </li>
-
-      <li class="timeline-divider" aria-hidden="true">
-        <img src="assets/images/pink-floral-divider.png" alt="">
-      </li>
-
-      <!-- 5. Satyanarayana Vratham (29 Aug morning) -->
-      <li class="timeline-item reveal-left">
-        <div class="ti-date">
-          <span class="ti-day">29</span>
-          <span class="ti-month">Aug</span>
-          <span class="ti-dow">Saturday</span>
-        </div>
-        <div class="ti-card card-satya">
-          <p class="ti-tag">Morning</p>
-          <h3 class="ti-title">Satyanarayana Vratham</h3>
-          <p class="ti-sub">సత్యనారాయణ వ్రతం</p>
-          <div class="ti-icons">
-            <img src="assets/images/kumkum-bowl.png"     alt="Kumkum"     loading="lazy">
-            <img src="assets/images/puja-bell.png"       alt="Puja bell"  loading="lazy">
-            <img src="assets/images/diya-with-flame.png" alt="Diya"       loading="lazy">
-            <img src="assets/images/ganesha-symbol.png"  alt="Ganesha"    loading="lazy">
-          </div>
-          <p class="ti-venue">Deepthi Murali Aruna Nilayam</p>
-          <div class="ti-actions">
-            <a class="ti-map" href="https://maps.app.goo.gl/v24yWbdtfHPjc5hW7" target="_blank" rel="noopener">
-              <span>View on Map</span>
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
-            </a>
-            <button class="ti-cal" data-cal data-title="Satyanarayana Vratham" data-date="2026-08-29" data-time="08:00" data-venue="Deepthi Murali Aruna Nilayam, Rajahmundry" data-map="https://maps.app.goo.gl/v24yWbdtfHPjc5hW7">
-              <span>Add to Calendar</span>
-            </button>
-          </div>
-        </div>
-      </li>
-
-      <!-- 6. Reception (30 Aug 11 AM) -->
-      <li class="timeline-item reveal-right">
-        <div class="ti-date">
-          <span class="ti-day">30</span>
-          <span class="ti-month">Aug</span>
-          <span class="ti-dow">Sunday</span>
-        </div>
-        <div class="ti-card card-reception">
-          <p class="ti-tag">11:00 AM onwards</p>
-          <h3 class="ti-title">Reception</h3>
-          <p class="ti-sub">శుభాకాంక్షల సభ</p>
-          <div class="ti-icons">
-            <img src="assets/images/curtain-top-valance.png" alt="Valance" loading="lazy">
-            <img src="assets/images/marigold-garland-2.png"  alt="Garland" loading="lazy">
-            <img src="assets/images/jasmine-garland-2.png"   alt="Jasmine" loading="lazy">
-          </div>
-          <p class="ti-meal">Followed by lunch</p>
-          <p class="ti-venue">Sree Vasavi Convention Centre</p>
-          <div class="ti-actions">
-            <a class="ti-map" href="https://maps.app.goo.gl/2nrLFRsZonMdc6sa8" target="_blank" rel="noopener">
-              <span>View on Map</span>
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
-            </a>
-            <button class="ti-cal" data-cal data-title="Reception" data-date="2026-08-30" data-time="11:00" data-venue="Sree Vasavi Convention Centre, Rajahmundry" data-map="https://maps.app.goo.gl/2nrLFRsZonMdc6sa8">
-              <span>Add to Calendar</span>
-            </button>
-          </div>
-        </div>
-      </li>
-    </ol>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     5. BLESSINGS — rose paper, trees, lotus pond, swans, signoff
-     ============================================================ -->
-<section class="page blessings" id="blessings">
-  <div class="section-decor">
-    <!-- Outer tree silhouettes only — flat illustration -->
-    <img class="tree-outer-l anim-sway parallax-sm" src="assets/images/peepal-tree.png" alt="" loading="lazy" decoding="async">
-    <img class="tree-outer-r anim-sway parallax-sm" src="assets/images/banyan-tree.png" alt="" loading="lazy" decoding="async">
-
-    <!-- Bottom jasmine garlands as feathered footer drape -->
-    <img class="jas-garland-l" src="assets/images/jasmine-garland-2.png" alt="" loading="lazy" decoding="async">
-    <img class="jas-garland-r" src="assets/images/jasmine-garland-2.png" alt="" loading="lazy" decoding="async">
-
-    <!-- Rangoli footer band -->
-    <img class="rangoli" src="assets/images/rangoli-bottom.png" alt="" loading="lazy" decoding="async">
-  </div>
-
-  <div class="page-inner">
-    <p class="eyebrow reveal">Awaiting Your Presence</p>
-    <div class="rule reveal"><span class="leaf"></span></div>
-
-    <p class="blessings-quote reveal">
-      Your warm presence and heartfelt blessings<br>
-      would mean the world to us as we begin<br>
-      this beautiful new journey together.
-    </p>
-
-    <div class="signature reveal-stagger">
-      <div class="signature-line">
-        <p class="signature-couple">Boppana Achyuta Ramayya <span class="amp">&amp;</span> Sirisha</p>
-        <p class="signature-role">Parents of the Bride</p>
+      <!-- Top eyebrow -->
+      <div>
+        <p class="envelope-eyebrow">An Invitation</p>
+        <p class="envelope-telugu">శుభలేఖ</p>
       </div>
-      <div class="signature-line">
-        <p class="signature-couple">Deepthi Murali Krishna <span class="amp">&amp;</span> Aruna</p>
-        <p class="signature-role">Parents of the Groom</p>
+
+      <!-- The wax seal -->
+      <div class="wax-seal" id="waxSeal" role="button" tabindex="0" aria-label="Open the wedding invitation">
+        <span class="seal-monogram">R &amp; P</span>
       </div>
+
+      <!-- Click to open -->
+      <p class="envelope-prompt">Tap the seal to open</p>
+
+      <!-- Date -->
+      <p class="envelope-date">2 7 · 0 8 · 2 0 2 6</p>
+
     </div>
 
-    <p class="signoff reveal">
-      <span class="signoff-script">With love,</span><br>
-      Sri Ramya &amp; Pavan Chowdary
-    </p>
+  </section>
 
-    <p class="footer-credit">27 August 2026 · Rajahmundry</p>
-  </div>
-</section>
+  <!-- Section 2-7 will be built in subsequent blocks -->
 
-
-<!-- ============================================================
-     6. SIGNOFF FOOTER — parchment, corners, paisley, small temple
-     ============================================================ -->
-<section class="page signoff-section" id="signoff">
-  <div class="section-decor">
-    <img class="border-floral" src="assets/images/border-floral.png" alt="" loading="lazy" decoding="async">
-    <img class="corner-2 c2-tl" src="assets/images/ornate-corner-2.png" alt="" loading="lazy" decoding="async">
-    <img class="corner-2 c2-tr" src="assets/images/ornate-corner-2.png" alt="" loading="lazy" decoding="async">
-    <img class="corner-2 c2-bl" src="assets/images/ornate-corner-2.png" alt="" loading="lazy" decoding="async">
-    <img class="corner-2 c2-br" src="assets/images/ornate-corner-2.png" alt="" loading="lazy" decoding="async">
-    <img class="paisley-l" src="assets/images/paisley-motif.png" alt="" loading="lazy" decoding="async">
-    <img class="paisley-r" src="assets/images/paisley-motif.png" alt="" loading="lazy" decoding="async">
-    <img class="ganesha-water anim-pulse" src="assets/images/ganesha-symbol.png" alt="" loading="lazy" decoding="async">
-  </div>
-
-  <div class="page-inner">
-    <p class="eyebrow reveal" style="color:var(--ink-soft)">A celebration of love</p>
-    <h3 class="section-title reveal-scale" style="font-size:clamp(28px, 4vw, 38px); margin: 14px 0">Sri Ramya &amp; Pavan</h3>
-    <p class="reveal" style="font-family: var(--serif); font-style: italic; color: var(--ink-soft); margin-top: 8px">
-      24 – 30 August 2026 · Rajahmundry
-    </p>
-    <p class="reveal" style="font-family: var(--mono); font-size: 11px; letter-spacing: .4em; text-transform: uppercase; color: var(--ink); margin-top: 24px">
-      Muhurtham · 11:47 AM · 27 August
-    </p>
-  </div>
-</section>
-
-<script src="scripts/animations.js"></script>
+  <script src="scripts/animations.js"></script>
 </body>
 </html>
